@@ -1,0 +1,37 @@
+/*
+ * Hero ray ring bar. Geometry: the bar's margin box (24vh - 18vh = 6vh) is
+ * centred in the 100vh flex wrapper, so the pivot (50% 100%) sits 3vh below
+ * the wrapper's midline; translateY(-50%) pushes the bar out to an inner
+ * radius of 12vh and an outer radius of 36vh.
+ *
+ * Each bar gets its angle via --ray-angle and a 60ms-per-index animation-delay
+ * from the inline style, producing a pulse wave that circles the ring every 6s.
+ */
+.ray {
+  position: absolute;
+  right: -1px;
+  width: 2px;
+  height: 24vh;
+  margin-top: -18vh;
+  background-color: #beff01;
+  transform-origin: 50% 100%;
+  transform: rotate(var(--ray-angle)) translateY(-50%);
+  animation-name: rayPulse;
+  animation-duration: 6000ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rayPulse {
+  0% {
+    transform: rotate(var(--ray-angle)) translateY(-50%) scale(1);
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  }
+  10% {
+    transform: rotate(calc(var(--ray-angle) + 10deg)) translateY(-40%) scale(1.25);
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  }
+  20%,
+  100% {
+    transform: rotate(var(--ray-angle)) translateY(-50%) scale(1);
+  }
+}
