@@ -110,17 +110,15 @@ export function HeroParticles({ className }: HeroParticlesProps) {
       canvas.width = Math.round(nextWidth * dpr);
       canvas.height = Math.round(nextHeight * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Re-scatter on every size change: clamping into a temporarily narrow or
+      // short canvas (rotation, window resize, full-page capture) would pin the
+      // dots to one edge.
+      if (nextWidth !== width || nextHeight !== height || particles.length === 0) {
+        particles = Array.from({ length: PARTICLE_COUNT }, () => createParticle(nextWidth, nextHeight));
+      }
       width = nextWidth;
       height = nextHeight;
-
-      if (particles.length === 0) {
-        particles = Array.from({ length: PARTICLE_COUNT }, () => createParticle(width, height));
-      } else {
-        for (const p of particles) {
-          p.x = clamp(p.x, p.radius, width - p.radius);
-          p.y = clamp(p.y, p.radius, height - p.radius);
-        }
-      }
 
       draw();
       sync();
