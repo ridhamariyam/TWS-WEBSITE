@@ -106,7 +106,7 @@ const projectList: Array<[string, string]> = [
 ];
 
 export const projects: ProjectsContent = {
-  backgroundWord: "showcase",
+  backgroundWord: "selected",
   badgeText: "TWS studio • design & development • since 2014 • ",
   link: { label: "View all work", href: "#projects" },
   items: projectList.map(([title, category], i) => ({
