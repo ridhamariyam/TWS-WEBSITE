@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="635" viewBox="0 0 800 635" fill="none">
+<defs>
+  <linearGradient id="s101bg" gradientTransform="rotate(-4 .5 .5)">
+    <stop offset="0" stop-color="rgb(226,226,226)"/><stop offset="1" stop-color="rgb(182,182,182)"/>
+  </linearGradient>
+  <linearGradient id="s101obj" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="rgb(143,143,143)"/><stop offset="1" stop-color="rgb(30,30,30)"/>
+  </linearGradient>
+  <radialGradient id="s101sh"><stop offset="0" stop-color="#000" stop-opacity=".38"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  <filter id="s101blur"><feGaussianBlur stdDeviation="11"/></filter></defs>
+<rect width="800" height="635" fill="url(#s101bg)"/>
+  <rect y="442.12534761300776" width="800" height="192.87465238699224" fill="#000" opacity=".06"/>
+  <polygon points="80,0 360,0 720,635 440.00000000000006,635" fill="#fff" opacity=".07"/>
+  <ellipse cx="425.69667383585124" cy="501.2552261443611" rx="240.04673956131566" ry="48.00934791226313" fill="url(#s101sh)" filter="url(#s101blur)"/>
+  <rect x="229.29479601295665" y="370.320640929098" width="305.51403216894715" height="152.75701608447358" rx="26.186917043052613" fill="url(#s101obj)"/>
+  <rect x="229.29479601295665" y="370.320640929098" width="305.51403216894715" height="34.91588939073682" rx="17.45794469536841" fill="#fff" opacity=".18"/>
+</svg>

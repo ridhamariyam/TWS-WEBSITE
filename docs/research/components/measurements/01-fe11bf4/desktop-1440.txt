@@ -1,0 +1,20 @@
+
+===== 01-fe11bf4 top=0 h=900 =====
+div.section-light [0, 0, 1440, 900] d:flex pos:relative minHeight:900px pr:15px pl:15px fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [110, 0, 1220, 900] d:flex maxWidth:min(100%, 1220px) mr:95px ml:95px fd:column jc:center ai:center
+    div [0, 0, 1440, 900] pos:absolute DATA:{"data-settings": "{\"_position\":\"absolute\"}"}
+        div.crafto-particles-container [0, 0, 1440, 900] pos:relative
+          div.particle-wrapper.has-particle-effect [0, 0, 1440, 900] DATA:{"data-particles-options": "{\"particles\":{\"number\":{\"value\":3,\"density\":{\"value_area\":800}},\"color\":{\"value\":[\"#000000\",\"#BEFF01\"]},\"shape\":{\"type\":[\"circle\"],\"stroke\":{\"color\":\"#232323\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":false,\"
+            canvas.particles-js-canvas-el [0, 0, 1440, 900] overflow:clip aspectRatio:auto 1440 / 900 MEDIA:CANVAS
+    div [720, 0, 0, 900] pos:absolute right:720px left:720px DATA:{"data-settings": "{\"_position\":\"absolute\"}"}
+        div.looping-animation-wrapper [720, 0, 0, 0]
+          div.looping-wrapper [720, 0, 1, 900] d:flex pos:absolute right:-1px flexWrap:wrap ai:center
+    div.entrance-animation.elementor-hidden-mobile_extra.e-transform.animation-done [720, 434, 1440, 32] pos:absolute top:434px right:-720px bottom:434px left:720px DATA:{"data-anime": "{\"duration\":600,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1],\"translateX\":[50,0]}", "data-settings": "{\"_position\":\"absolute\",\"_transform_translateX_effect\":{\"unit\":\"%\",\"size\":-50,\"sizes\":[]},\"_
+      div [-150, 434, 1540, 32] ml:-100px tf:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -1, -770, 0, 0, 1)
+        span.crafto-heading [-150, 434, 1540, 32] fs:650px fw:600 lh:32px ls:-40px color:rgb(111, 112, 113) ta:center
+          span.crafto-primary-title [-150, 434, 1540, 32] fs:650px fw:600 lh:32px ls:-40px color:rgb(190, 255, 1) ta:center tr:0.3s ease-in-out TEXT(8 chars)
+    div.elementor-widget__width-initial [171, 340, 1098, 220] pos:relative
+        div.crafto-heading [171, 340, 1098, 220] fs:120px fw:600 lh:110px ls:-4px color:rgb(111, 112, 113) ta:center
+          span.crafto-primary-title.entrance-animation.animation-done.appear [283, 322, 875, 255] fs:120px fw:600 lh:110px ls:-4px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out DATA:{"data-anime": "{\"el\":\"lines\",\"easing\":\"easeOutQuad\",\"delay\":500,\"duration\":600,\"staggervalue\":300,\"opacity\":[0,1],\"translateY\":[30,0]}"}
+            span.d-inline [283, 322, 875, 145] ta:center TEXT(16 chars)
+            span.d-inline [342, 432, 757, 145] ta:center TEXT(14 chars)

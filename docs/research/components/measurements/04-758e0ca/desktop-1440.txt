@@ -1,0 +1,22 @@
+
+===== 04-758e0ca top=1873 h=257 =====
+div.section-light [0, 0, 1440, 257] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113)
+  div [110, 0, 1220, 257] d:flex maxWidth:min(100%, 1220px) pb:80px mr:110px ml:110px flexWrap:wrap
+    div.section-light [110, 0, 1220, 177] d:flex pos:relative fd:column
+      div.entrance-animation.animation-done.appear.anime-complete [110, 0, 1220, 177] pos:relative DATA:{"data-anime": "{\"duration\":800,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"targets\":\".elementor-element-a092d2b.entrance-animation > .elementor-widget-container > .process-step-box > .process-step-item\",\"opacity\":[0,1],\"translateY\":[40,0]}"}
+          div.processstep-direction-horizontal.process-step-box.process-step-style-6 [110, 0, 1220, 177] d:flex tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+            div.process-step-item [110, 0, 407, 177] pos:relative pt:48.7969px pr:61px pl:61px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [135, -15, 100, 90] pos:absolute top:-15px right:282.172px bottom:101.797px left:25px fs:90px fw:700 lh:90px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [171, 49, 285, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(10 chars)
+              div.process-step-content [171, 86, 256, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [171, 86, 256, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)
+            div.process-step-item [517, 0, 407, 177] pos:relative pt:48.7969px pr:61px pl:61px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [542, -15, 117, 90] pos:absolute top:-15px right:264.266px bottom:101.797px left:25px fs:90px fw:700 lh:90px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [578, 49, 285, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(15 chars)
+              div.process-step-content [578, 86, 256, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [578, 86, 256, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)
+            div.process-step-item [923, 0, 407, 177] pos:relative pt:48.7969px pr:61px pl:61px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [948, -15, 119, 90] pos:absolute top:-15px right:262.875px bottom:101.797px left:25px fs:90px fw:700 lh:90px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [984, 49, 285, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(19 chars)
+              div.process-step-content [984, 86, 256, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [984, 86, 256, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)

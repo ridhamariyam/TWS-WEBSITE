@@ -1,0 +1,25 @@
+
+===== 09-dc2f35d top=6891 h=259 =====
+div.section-light [0, 0, 768, 259] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [24, 0, 720, 259] d:flex maxWidth:min(100%, 720px) pt:70px pb:40px
+    div.entrance-animation.section-light.animation-done [24, 70, 300, 149] d:flex pos:relative pr:15px pl:15px fd:column
+      div [39, 70, 270, 149] pos:relative
+        div [-38, 70, 347, 149] ml:-76.8px
+          div.crafto-heading [-38, 70, 347, 149] fs:148.75px fw:600 lh:148.75px ls:-10px color:rgb(111, 112, 113)
+            span.crafto-primary-title [-38, 54, 319, 180] fs:148.75px fw:600 lh:148.75px ls:-10px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+    div.section-light [324, 70, 420, 149] d:flex pos:relative pr:15px pl:15px fd:column
+      div.entrance-animation.animation-done [339, 70, 390, 149] pos:relative
+        div [339, 70, 428, 149] mr:-38.4px
+          div.crafto-heading [339, 70, 428, 149] fs:148.75px fw:600 lh:148.75px ls:-10px color:rgb(111, 112, 113)
+            span.crafto-primary-title [339, 54, 534, 180] fs:148.75px fw:600 lh:148.75px ls:-10px color:rgb(190, 255, 1) tr:0.3s ease-in-out TEXT(8 chars)
+      div.entrance-animation.elementor-hidden-mobile_extra.section-light.animation-done [229, -20, 200, 200] d:flex pos:absolute top:-90px right:315px bottom:38.75px left:-95px fd:column jc:center ai:center DATA:{"data-settings": "{\"position\":\"absolute\"}"}
+        div [229, -20, 200, 200] pos:relative
+            div.crafto-image-wrapper [229, -20, 200, 200]
+              div.image-box [229, -20, 200, 200]
+                div.image-wrapper [229, -20, 200, 200]
+                  img.ewww_webp_loaded [229, -20, 200, 200] overflow:clip aspectRatio:auto 295 / 295 IMG nat[295, 295] DATA:{"loading": "lazy"}
+        div.has-float.animation-rotate.crafto-floating-effect-infinite--yes [229, -20, 200, 200] pos:absolute DATA:{"data-settings": "{\"_position\":\"absolute\",\"crafto_floating_effects_show\":\"yes\",\"crafto_floating_effects_rotate_duration\":{\"unit\":\"ms\",\"size\":8000,\"sizes\":[]},\"crafto_floating_effects_rotate_infinite\":\"yes\",\"crafto_floating_effects_rotate_delay\":{\"unit\":\"ms\",\"size\":\"\",\"si
+            div.crafto-image-wrapper [219, -29, 219, 219] tf:matrix(-0.994952, 0.10035, -0.10035, -0.994952, 0, 0) animationName:rotation animationDuration:8s
+              div.image-box [219, -29, 219, 219]
+                div.image-wrapper [219, -29, 219, 219]
+                  img.ewww_webp_loaded [219, -29, 219, 219] overflow:clip aspectRatio:auto 295 / 295 IMG nat[295, 295] DATA:{"loading": "lazy"}

@@ -1,0 +1,75 @@
+
+===== 08-de3dbf9 top=7206 h=1889 =====
+div.section-light [0, 0, 390, 1889] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113)
+  div [0, 0, 390, 1889] d:flex pt:50px fd:column flexWrap:wrap
+    div.section-light [0, 50, 390, 110] d:flex pos:relative mb:19.5px fd:column flexWrap:wrap ai:center
+      div.section-light [0, 50, 390, 41] d:flex pos:relative pr:15px pl:15px mb:20px fd:column flexWrap:wrap ai:center
+        div [91, 50, 207, 41] pos:relative
+            h2.crafto-heading [91, 50, 207, 41] fs:41.256px fw:600 lh:41.256px ls:-3px color:rgb(28, 29, 31) ta:center
+              span.crafto-primary-title [91, 45, 207, 50] ta:center tr:0.3s ease-in-out TEXT(12 chars)
+      div.section-light [0, 111, 390, 49] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap ai:center
+        div [93, 111, 205, 49] pos:relative
+            div.crafto-button-wrapper [93, 111, 205, 49] pos:relative
+              a.btn-icon- [93, 111, 205, 49] d:inline-block pos:relative pt:14px pr:26px pb:14px pl:26px fs:14px fw:700 lh:21px ls:0.5px color:rgb(255, 255, 255) tt:uppercase ta:center overflow:hidden tr:0.3s ease-in-out
+                div [119, 125, 153, 21] d:flex jc:center ai:center fs:14px fw:700 lh:21px ls:0.5px color:rgb(28, 29, 31) tt:uppercase ta:center tr:0.3s ease-in-out
+                  span [119, 125, 153, 21] tt:uppercase ta:center TEXT(17 chars)
+                span.btn-hover-animation [93, 111, 50, 49] pos:absolute right:154.578px z:-1 tt:uppercase ta:center bg:rgb(190, 255, 1) borderTopWidth:2px borderBottomWidth:2px br:100px tr:0.3s
+    div.section-light [0, 180, 390, 1709] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap
+      div.entrance-animation.animation-done [15, 180, 360, 1709] pos:relative DATA:{"data-settings": "{\"crafto_post_type_source\":\"post\"}"}
+          ul.grid.crafto-blog-list.blog-classic.grid-4col [0, 180, 390, 1709] d:flex mr:-15px ml:-15px flexWrap:wrap
+            li.grid-item.grid-gutter.blog-filter-16.post-3850 [0, 180, 390, 397] d:list-item pr:15px pl:15px mb:30px
+              div.blog-post [15, 180, 360, 397]
+                div.blog-post-images [15, 180, 360, 259] pos:relative br:6px overflow:hidden
+                  a.image-link [15, 180, 360, 259] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                    img.image-greyscale.wp-post-image.ewww_webp_loaded [15, 180, 360, 259] overflow:clip tr:0.6s cubic-bezier(0.37, 0, 0.63, 1) filter:grayscale(1) aspectRatio:auto 600 / 430 IMG nat[388, 279] DATA:{"loading": "lazy"}
+                    span.screen-reader-text [14, -169821, 1, 1] pos:absolute top:-170000px right:361px bottom:170260px mt:-1px mr:-1px mb:-1px ml:-1px overflow:hidden TEXT(14 chars)
+                div.post-details [15, 439, 360, 138] pt:20px pb:20px
+                  div.post-author-meta [15, 459, 360, 32] d:flex mb:10px flexWrap:wrap ai:center fs:13px lh:32px color:rgb(111, 112, 113) tt:uppercase
+                    div.blog-category.alt-font [15, 459, 197, 32] d:flex flexWrap:wrap fs:13px color:rgb(111, 112, 113) tt:uppercase
+                      a [15, 459, 73, 32] d:flex ai:center fs:14px fw:700 color:rgb(28, 29, 31) tt:uppercase tr:0.3s ease-in-out TEXT(5 chars)
+                        ::after mt:-1px mr:1px ml:1px ff:bootstrap-icons fs:22px color:rgba(111, 112, 113, 0.7) tt:uppercase borderTopColor:rgba(111, 112, 113, 0.7) content
+                      span.post-date.published [88, 459, 124, 32] fs:14px fw:500 lh:32px color:rgb(111, 112, 113) tt:uppercase tf:matrix(1, 0, 0, 1, 0, 0) tr:0.5s cubic-bezier(0.37, 0, 0.63, 1)
+                        span [88, 466, 124, 17] tt:uppercase TEXT(15 chars)
+                  a.entry-title [15, 501, 360, 56] fs:17px fw:600 lh:28px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(57 chars)
+            li.grid-item.grid-gutter.blog-filter-17.post-3849 [0, 607, 390, 397] d:list-item pr:15px pl:15px mb:30px
+              div.blog-post [15, 607, 360, 397]
+                div.blog-post-images [15, 607, 360, 259] pos:relative br:6px overflow:hidden
+                  a.image-link [15, 607, 360, 259] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                    img.image-greyscale.wp-post-image.ewww_webp_loaded [15, 607, 360, 259] overflow:clip tr:0.6s cubic-bezier(0.37, 0, 0.63, 1) filter:grayscale(1) aspectRatio:auto 600 / 430 IMG nat[388, 279] DATA:{"loading": "lazy"}
+                    span.screen-reader-text [14, -169394, 1, 1] pos:absolute top:-170000px right:361px bottom:170260px mt:-1px mr:-1px mb:-1px ml:-1px overflow:hidden TEXT(14 chars)
+                div.post-details [15, 866, 360, 138] pt:20px pb:20px
+                  div.post-author-meta [15, 886, 360, 32] d:flex mb:10px flexWrap:wrap ai:center fs:13px lh:32px color:rgb(111, 112, 113) tt:uppercase
+                    div.blog-category.alt-font [15, 886, 201, 32] d:flex flexWrap:wrap fs:13px color:rgb(111, 112, 113) tt:uppercase
+                      a [15, 886, 77, 32] d:flex ai:center fs:14px fw:700 color:rgb(28, 29, 31) tt:uppercase tr:0.3s ease-in-out TEXT(6 chars)
+                        ::after mt:-1px mr:1px ml:1px ff:bootstrap-icons fs:22px color:rgba(111, 112, 113, 0.7) tt:uppercase borderTopColor:rgba(111, 112, 113, 0.7) content
+                      span.post-date.published [92, 886, 124, 32] fs:14px fw:500 lh:32px color:rgb(111, 112, 113) tt:uppercase tf:matrix(1, 0, 0, 1, 0, 0) tr:0.5s cubic-bezier(0.37, 0, 0.63, 1)
+                        span [92, 893, 124, 17] tt:uppercase TEXT(15 chars)
+                  a.entry-title [15, 928, 360, 56] fs:17px fw:600 lh:28px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(56 chars)
+            li.grid-item.grid-gutter.blog-filter-16.post-3848 [0, 1034, 390, 397] d:list-item pr:15px pl:15px mb:30px
+              div.blog-post [15, 1034, 360, 397]
+                div.blog-post-images [15, 1034, 360, 259] pos:relative br:6px overflow:hidden
+                  a.image-link [15, 1034, 360, 259] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                    img.image-greyscale.wp-post-image.ewww_webp_loaded [15, 1034, 360, 259] overflow:clip tr:0.6s cubic-bezier(0.37, 0, 0.63, 1) filter:grayscale(1) aspectRatio:auto 600 / 430 IMG nat[388, 279] DATA:{"loading": "lazy"}
+                    span.screen-reader-text [14, -168967, 1, 1] pos:absolute top:-170000px right:361px bottom:170260px mt:-1px mr:-1px mb:-1px ml:-1px overflow:hidden TEXT(14 chars)
+                div.post-details [15, 1294, 360, 138] pt:20px pb:20px
+                  div.post-author-meta [15, 1314, 360, 32] d:flex mb:10px flexWrap:wrap ai:center fs:13px lh:32px color:rgb(111, 112, 113) tt:uppercase
+                    div.blog-category.alt-font [15, 1314, 197, 32] d:flex flexWrap:wrap fs:13px color:rgb(111, 112, 113) tt:uppercase
+                      a [15, 1314, 73, 32] d:flex ai:center fs:14px fw:700 color:rgb(28, 29, 31) tt:uppercase tr:0.3s ease-in-out TEXT(5 chars)
+                        ::after mt:-1px mr:1px ml:1px ff:bootstrap-icons fs:22px color:rgba(111, 112, 113, 0.7) tt:uppercase borderTopColor:rgba(111, 112, 113, 0.7) content
+                      span.post-date.published [88, 1314, 124, 32] fs:14px fw:500 lh:32px color:rgb(111, 112, 113) tt:uppercase tf:matrix(1, 0, 0, 1, 0, 0) tr:0.5s cubic-bezier(0.37, 0, 0.63, 1)
+                        span [88, 1321, 124, 17] tt:uppercase TEXT(15 chars)
+                  a.entry-title [15, 1356, 360, 56] fs:17px fw:600 lh:28px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(52 chars)
+            li.grid-item.grid-gutter.blog-filter-16.post-3847 [0, 1462, 390, 397] d:list-item pr:15px pl:15px mb:30px
+              div.blog-post [15, 1462, 360, 397]
+                div.blog-post-images [15, 1462, 360, 259] pos:relative br:6px overflow:hidden
+                  a.image-link [15, 1462, 360, 259] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                    img.image-greyscale.wp-post-image.ewww_webp_loaded [15, 1462, 360, 259] overflow:clip tr:0.6s cubic-bezier(0.37, 0, 0.63, 1) filter:grayscale(1) aspectRatio:auto 600 / 430 IMG nat[388, 279] DATA:{"loading": "lazy"}
+                    span.screen-reader-text [14, -168539, 1, 1] pos:absolute top:-170000px right:361px bottom:170260px mt:-1px mr:-1px mb:-1px ml:-1px overflow:hidden TEXT(14 chars)
+                div.post-details [15, 1721, 360, 138] pt:20px pb:20px
+                  div.post-author-meta [15, 1741, 360, 32] d:flex mb:10px flexWrap:wrap ai:center fs:13px lh:32px color:rgb(111, 112, 113) tt:uppercase
+                    div.blog-category.alt-font [15, 1741, 197, 32] d:flex flexWrap:wrap fs:13px color:rgb(111, 112, 113) tt:uppercase
+                      a [15, 1741, 73, 32] d:flex ai:center fs:14px fw:700 color:rgb(28, 29, 31) tt:uppercase tr:0.3s ease-in-out TEXT(5 chars)
+                        ::after mt:-1px mr:1px ml:1px ff:bootstrap-icons fs:22px color:rgba(111, 112, 113, 0.7) tt:uppercase borderTopColor:rgba(111, 112, 113, 0.7) content
+                      span.post-date.published [88, 1741, 124, 32] fs:14px fw:500 lh:32px color:rgb(111, 112, 113) tt:uppercase tf:matrix(1, 0, 0, 1, 0, 0) tr:0.5s cubic-bezier(0.37, 0, 0.63, 1)
+                        span [88, 1748, 124, 17] tt:uppercase TEXT(15 chars)
+                  a.entry-title [15, 1783, 360, 56] fs:17px fw:600 lh:28px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(50 chars)

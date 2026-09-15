@@ -1,0 +1,45 @@
+
+===== 02-0f4579f top=900 h=32 =====
+div.entrance-animation.section-light.animation-done.appear [0, 0, 1440, 32] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) DATA:{"data-anime": "{\"duration\":800,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"targets\":\".elementor-element-0f4579f.entrance-animation> .e-child,.elementor-element-0f4579f.entrance-animation> .e-con-inner > .e-con-full.e-child,.elementor-element-0
+  div [110, 0, 1220, 32] d:flex maxWidth:min(100%, 1220px) mr:110px ml:110px jc:center ai:center
+    div.section-light [222, 0, 302, 32] d:flex pos:relative pr:15px pl:15px fd:column
+      div [237, 0, 272, 32] pos:relative
+        div [237, 0, 272, 32] pos:relative tr:0.3s ease-in-out
+          div.crafto-icon-box-wrapper [237, 0, 272, 32] d:flex ai:center ta:left
+            div [237, 9, 15, 15] d:flex mr:5px ta:left
+              span [237, 9, 15, 15] d:flex jc:center ai:center fs:15px lh:15px color:rgb(28, 29, 31) ta:center tr:0.3s
+                svg.bi.bi-patch-check-fill [237, 9, 15, 15] pos:relative ta:center overflow:hidden tf:matrix(1, 0, 0, 1, 0, 0) tr:0.3s ease-in-out SVG vb=0 0 16 16 len=605
+                  ::before pos:absolute left:50% ff:bootstrap-icons fs:15px lh:15px color:rgb(28, 29, 31) ta:center content
+            div [257, 0, 252, 32] ta:left
+              span [257, 0, 252, 32] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tt:uppercase ta:left
+                span [257, 0, 252, 32] d:inline-block tt:uppercase ta:left TEXT(30 chars)
+    div.elementor-hidden-mobile_extra.section-light [524, 16, 130, 1] d:flex pos:relative pr:15px pl:15px fd:column
+      div [539, 16, 100, 1] pos:relative
+          div.separator-wrap [539, 16, 100, 1]
+            div.separator-line [539, 16, 100, 1] bg:rgb(28, 29, 31)
+    div.section-light [654, 0, 201, 32] d:flex pos:relative pr:15px pl:15px fd:column
+      div [669, 0, 171, 32] pos:relative
+        div [669, 0, 171, 32] pos:relative tr:0.3s ease-in-out
+          div.crafto-icon-box-wrapper [669, 0, 171, 32] d:flex ai:center ta:left
+            div [669, 9, 15, 15] d:flex mr:5px ta:left
+              span [669, 9, 15, 15] d:flex jc:center ai:center fs:15px lh:15px color:rgb(28, 29, 31) ta:center tr:0.3s
+                svg.bi.bi-geo-alt-fill [669, 9, 15, 15] pos:relative ta:center overflow:hidden tf:matrix(1, 0, 0, 1, 0, 0) tr:0.3s ease-in-out SVG vb=0 0 16 16 len=231
+                  ::before pos:absolute left:50% ff:bootstrap-icons fs:15px lh:15px color:rgb(28, 29, 31) ta:center content
+            div [689, 0, 151, 32] ta:left
+              span [689, 0, 151, 32] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tt:uppercase ta:left
+                span [689, 0, 151, 32] d:inline-block tt:uppercase ta:left TEXT(17 chars)
+    div.elementor-hidden-mobile_extra.section-light [855, 16, 130, 1] d:flex pos:relative pr:15px pl:15px fd:column
+      div [870, 16, 100, 1] pos:relative
+          div.separator-wrap [870, 16, 100, 1]
+            div.separator-line [870, 16, 100, 1] bg:rgb(28, 29, 31)
+    div.section-light [985, 0, 233, 32] d:flex pos:relative pr:15px pl:15px fd:column
+      div [1000, 0, 203, 32] pos:relative
+        div [1000, 0, 203, 32] pos:relative tr:0.3s ease-in-out
+          div.crafto-icon-box-wrapper [1000, 0, 203, 32] d:flex ai:center ta:left
+            div [1000, 9, 15, 15] d:flex mr:5px ta:left
+              span [1000, 9, 15, 15] d:flex jc:center ai:center fs:15px lh:15px color:rgb(28, 29, 31) ta:center tr:0.3s
+                svg.bi.bi-heart-fill [1000, 9, 15, 15] pos:relative ta:center overflow:hidden tf:matrix(1, 0, 0, 1, 0, 0) tr:0.3s ease-in-out SVG vb=0 0 16 16 len=238
+                  ::before pos:absolute left:50% ff:bootstrap-icons fs:15px lh:15px color:rgb(28, 29, 31) ta:center content
+            div [1020, 0, 183, 32] ta:left
+              span [1020, 0, 183, 32] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tt:uppercase ta:left
+                span [1020, 0, 183, 32] d:inline-block tt:uppercase ta:left TEXT(20 chars)

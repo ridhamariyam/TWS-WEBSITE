@@ -1,0 +1,25 @@
+
+===== 03-69da39c top=666 h=934 =====
+div.section-dark.section-light [0, 0, 390, 934] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [0, 0, 390, 934] d:flex pt:50px pb:50px fd:column flexWrap:wrap ai:center
+    div.section-light [0, 50, 390, 299] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap
+      div [15, 50, 360, 299] pos:relative tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: scale(1.1)", "data-top-bottom": "transform: scale(1)"}
+          div.crafto-image-wrapper [15, 50, 360, 299]
+            div.image-box [15, 50, 360, 299]
+              div.image-wrapper [15, 50, 360, 299]
+                img.ewww_webp_loaded [15, 50, 360, 299] overflow:clip aspectRatio:auto 945 / 785 IMG nat[945, 785]
+    div.entrance-animation.section-light.animation-done [0, 384, 390, 500] d:flex pos:relative pr:15px pl:15px mt:35px fd:column flexWrap:wrap
+      div.elementor-widget-laptop__width-initial [15, 384, 360, 183] pos:relative
+          h1.crafto-heading [15, 384, 360, 158] mb:25px fs:52.5px fw:600 lh:52.5px ls:-3px color:rgb(28, 29, 31)
+            span.crafto-primary-title [15, 378, 301, 169] tr:0.3s ease-in-out TEXT(37 chars)
+      div.elementor-widget__width-initial [15, 567, 360, 238] pos:relative
+          span.crafto-heading.no-shadow-animation [15, 574, 356, 224] fs:17px lh:34px color:rgb(111, 112, 113)
+            span.crafto-primary-title [15, 574, 356, 224] tr:0.3s ease-in-out TEXT(236 chars)
+              span.separator [15, 608, 310, 55] pos:relative fs:17px fw:600 lh:34px color:rgb(28, 29, 31) borderBottomWidth:1px TEXT(22 chars)
+      div [15, 805, 172, 79] pos:relative
+        div [15, 835, 172, 49] mt:30px
+          div.crafto-button-wrapper [15, 835, 172, 49] pos:relative
+            a.btn-icon- [15, 835, 172, 49] d:inline-block pos:relative pt:14px pr:26px pb:14px pl:26px fs:14px fw:700 lh:21px ls:0.5px color:rgb(255, 255, 255) tt:uppercase ta:center overflow:hidden tr:0.3s ease-in-out
+              div [41, 849, 120, 21] d:flex jc:center ai:center fs:14px fw:700 lh:21px ls:0.5px color:rgb(28, 29, 31) tt:uppercase ta:center tr:0.3s ease-in-out
+                span [41, 849, 120, 21] tt:uppercase ta:center TEXT(12 chars)
+              span.btn-hover-animation [15, 835, 50, 49] pos:absolute right:121.547px z:-1 tt:uppercase ta:center bg:rgb(190, 255, 1) borderTopWidth:2px borderBottomWidth:2px br:100px tr:0.3s

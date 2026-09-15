@@ -1,0 +1,98 @@
+
+===== 06-f28ba8c top=3296 h=796 =====
+div.section-light [0, 0, 1440, 796] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113)
+  div [110, 0, 1220, 796] d:flex maxWidth:min(100%, 1220px) pt:110px pb:110px mr:110px ml:110px
+    div.section-light [110, 110, 508, 576] d:flex pos:relative pr:15px pl:15px fd:column
+      div.entrance-animation.animation-done.appear.anime-complete [125, 110, 478, 145] pos:relative DATA:{"data-anime": "{\"duration\":600,\"delay\":100,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1],\"translateY\":[30,0]}"}
+          h2.crafto-heading [125, 110, 478, 120] mb:25px fs:60px fw:600 lh:60px ls:-3px color:rgb(28, 29, 31)
+            span.crafto-primary-title [125, 104, 274, 132] tr:0.3s ease-in-out TEXT(16 chars)
+      div.entrance-animation.animation-done.appear.anime-complete [125, 255, 213, 81] pos:relative DATA:{"data-anime": "{\"duration\":600,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1],\"translateY\":[30,0]}"}
+        div [125, 255, 213, 81] mb:48.9688px
+          span.crafto-heading [125, 255, 213, 32] fs:12px fw:500 lh:32px ls:0.5px color:rgb(111, 112, 113) tt:uppercase
+            span.crafto-primary-title [125, 255, 213, 32] pr:25px pl:25px fs:12px fw:500 lh:32px ls:0.5px color:rgb(255, 255, 255) tt:uppercase bg:rgb(28, 29, 31) br:100px tr:0.3s ease-in-out TEXT(21 chars)
+      div.entrance-animation.elementor-hidden-mobile_extra.skrollable.appear [125, 336, 478, 350] pos:relative tf:matrix(1, 0, 0, 1, 0, 0) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translate3d(0px,0px,0px)", "data-top-bottom": "transform: translate3d(-100px,0px,0px)", "data-anime": "{\"duration\":600,\"delay\":300,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\"
+        div [-379, 336, 982, 350] ml:-504px
+          span.crafto-heading [-379, 299, 1117, 423] fs:350px fw:600 lh:350px ls:-20px color:rgb(111, 112, 113)
+            span.crafto-primary-title [-379, 299, 1117, 423] fs:350px fw:600 lh:350px ls:-20px color:rgb(190, 255, 1) tr:0.3s ease-in-out TEXT(6 chars)
+    div.entrance-animation.section-light.animation-done.appear [720, 110, 610, 576] d:flex pos:relative pr:15px pl:15px ml:101.656px fd:column DATA:{"data-anime": "{\"duration\":600,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"targets\":\".elementor-element-edba257.entrance-animation> .e-child,.elementor-element-edba257.entrance-animation> .e-con-inner > .e-con-full.e-child,.elementor-element-edba257.entrance-an
+      div.elementor-widget__width-initial [735, 110, 493, 185] pos:relative
+        div [735, 159, 493, 185] mt:49.2969px mb:40px
+          p [735, 159, 493, 96] mb:25px TEXT(158 chars)
+      div.section-light [735, 295, 580, 63] d:flex pos:relative borderTopWidth:1px
+        div.section-light [735, 296, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [774, 311, 19, 33] pos:relative
+              span.crafto-heading [774, 319, 19, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [774, 319, 19, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(2 chars)
+        div.section-light [832, 296, 387, 62] d:flex pos:relative pt:15px pr:30px pb:15px pl:30px fd:column jc:center
+          div [863, 311, 326, 32] pos:relative
+              div.crafto-heading [863, 311, 326, 32] fs:17px lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                span.crafto-primary-title [863, 317, 210, 20] tr:0.3s ease-in-out TEXT(17 chars)
+                  span.separator [987, 317, 86, 20] pos:relative fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) TEXT(8 chars)
+        div.section-light [1218, 296, 97, 62] d:flex pos:relative pr:15px pl:15px fd:column jc:center ai:center
+          div [1250, 311, 33, 33] pos:relative
+              span.crafto-heading [1250, 319, 33, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [1250, 319, 33, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+      div.section-light [735, 358, 580, 63] d:flex pos:relative borderTopWidth:1px
+        div.section-light [735, 359, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [774, 374, 19, 33] pos:relative
+              span.crafto-heading [774, 382, 19, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [774, 382, 19, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(2 chars)
+        div.section-light [832, 359, 387, 62] d:flex pos:relative pt:15px pr:30px pb:15px pl:30px fd:column jc:center
+          div [863, 374, 326, 32] pos:relative
+              div.crafto-heading [863, 374, 326, 32] fs:17px lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                span.crafto-primary-title [863, 380, 278, 20] tr:0.3s ease-in-out TEXT(17 chars)
+                  span.separator [987, 380, 153, 20] pos:relative fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) TEXT(17 chars)
+        div.section-light [1218, 359, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [1249, 374, 36, 33] pos:relative
+              span.crafto-heading [1249, 382, 36, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [1249, 382, 36, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+      div.section-light [735, 421, 580, 63] d:flex pos:relative borderTopWidth:1px
+        div.section-light [735, 422, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [774, 437, 19, 33] pos:relative
+              span.crafto-heading [774, 445, 19, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [774, 445, 19, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(2 chars)
+        div.section-light [832, 422, 387, 62] d:flex pos:relative pt:15px pr:30px pb:15px pl:30px fd:column jc:center
+          div [863, 437, 326, 32] pos:relative
+              div.crafto-heading [863, 437, 326, 32] fs:17px lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                span.crafto-primary-title [863, 443, 231, 20] tr:0.3s ease-in-out TEXT(19 chars)
+                  span.separator [1007, 443, 86, 20] pos:relative fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) TEXT(8 chars)
+        div.section-light [1218, 422, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [1250, 437, 33, 33] pos:relative
+              span.crafto-heading [1250, 445, 33, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [1250, 445, 33, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+      div.section-light [735, 484, 580, 64] d:flex pos:relative borderTopWidth:1px borderBottomWidth:1px
+        div.section-light [735, 485, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [774, 500, 19, 33] pos:relative
+              span.crafto-heading [774, 508, 19, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [774, 508, 19, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(2 chars)
+        div.section-light [832, 485, 387, 62] d:flex pos:relative pt:15px pr:30px pb:15px pl:30px fd:column jc:center
+          div [863, 500, 326, 32] pos:relative
+              div.crafto-heading [863, 500, 326, 32] fs:17px lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                span.crafto-primary-title [863, 506, 223, 20] tr:0.3s ease-in-out TEXT(17 chars)
+                  span.separator [987, 506, 99, 20] pos:relative fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) TEXT(13 chars)
+        div.section-light [1218, 485, 97, 62] d:flex pos:relative fd:column jc:center ai:center
+          div [1250, 500, 33, 33] pos:relative
+              span.crafto-heading [1250, 508, 33, 17] fs:14px fw:600 lh:32px color:rgb(111, 112, 113)
+                span.crafto-primary-title [1250, 508, 33, 17] fs:14px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+      div.section-light [735, 598, 580, 32] d:flex pos:relative mt:50px ai:center
+        div.section-light [735, 598, 193, 32] d:flex pos:relative fd:column
+          div [735, 598, 193, 32] pos:relative
+              div.crafto-image-wrapper [735, 598, 193, 32]
+                a.image-link [735, 598, 193, 32] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [735, 598, 193, 32]
+                    div.image-wrapper [735, 598, 193, 32]
+                      img.ewww_webp_loaded [735, 601, 170, 30] overflow:clip aspectRatio:auto 170 / 30 IMG nat[170, 30] DATA:{"loading": "lazy"}
+        div.section-light [928, 598, 193, 32] d:flex pos:relative pr:15px pl:15px fd:column
+          div [943, 598, 163, 32] pos:relative
+              div.crafto-image-wrapper [943, 598, 163, 32]
+                a.image-link [943, 598, 163, 32] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [943, 598, 163, 32]
+                    div.image-wrapper [943, 598, 163, 32]
+                      img.ewww_webp_loaded [943, 601, 163, 29] overflow:clip aspectRatio:auto 170 / 30 IMG nat[170, 30] DATA:{"loading": "lazy"}
+        div.section-light [1122, 598, 193, 32] d:flex pos:relative pr:15px pl:15px fd:column
+          div [1137, 598, 163, 32] pos:relative
+              div.crafto-image-wrapper [1137, 598, 163, 32]
+                a.image-link [1137, 598, 163, 32] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [1137, 598, 163, 32]
+                    div.image-wrapper [1137, 598, 163, 32]
+                      img.ewww_webp_loaded [1137, 601, 163, 29] overflow:clip aspectRatio:auto 170 / 30 IMG nat[170, 30] DATA:{"loading": "lazy"}

@@ -1,0 +1,121 @@
+
+===== 05-8c4f346 top=2130 h=1166 =====
+div.section-light [0, 0, 1440, 1166] d:flex pos:relative pr:28.7969px pl:28.7969px fd:column fs:17px lh:32px color:rgb(111, 112, 113)
+  div.section-light [29, 0, 1382, 350] d:flex pos:relative pr:15px pl:15px mb:82.9375px fd:column
+    div [110, 0, 1220, 350] d:flex maxWidth:min(100%, 1220px) mr:66.2031px ml:66.2031px ai:flex-end
+      div.elementor-hidden-mobile_extra.section-light [110, 0, 915, 350] d:flex pos:relative pr:15px pl:15px fd:column
+        div.section-light.skrollable.skrollable-before [-235, 0, 1248, 350] d:flex pos:relative pr:15px pl:15px ml:-360px fd:column tf:matrix(1, 0, 0, 1, 0, 0) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translate3d(0px,0px,0px)", "data-top-bottom": "transform: translate3d(-100px,0px,0px)"}
+          div [-220, 0, 1218, 350] pos:relative
+              div.crafto-heading [-220, 0, 1218, 350] fs:350px fw:600 lh:350px ls:-20px color:rgb(111, 112, 113)
+                span.crafto-primary-title [-220, -37, 1218, 423] fs:350px fw:600 lh:350px ls:-20px color:rgb(190, 255, 1) tr:0.3s ease-in-out TEXT(8 chars)
+          div.entrance-animation.section-light.animation-done.appear [908, -10, 190, 190] d:flex pos:absolute top:-10px right:-85px bottom:170px left:1143.2px fd:column jc:center ai:center DATA:{"data-anime": "{\"duration\":600,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1],\"scale\":[0.7,1]}", "data-settings": "{\"position\":\"absolute\"}"}
+            div [908, -10, 190, 190] pos:relative
+                div.crafto-image-wrapper [908, -10, 190, 190]
+                  div.image-box [908, -10, 190, 190]
+                    div.image-wrapper [908, -10, 190, 190]
+                      img.ewww_webp_loaded [908, -10, 190, 190] overflow:clip aspectRatio:auto 190 / 190 IMG nat[190, 190] DATA:{"loading": "lazy"}
+            div.has-float.animation-rotate.crafto-floating-effect-infinite--yes [908, -11, 190, 190] pos:absolute top:-1px bottom:1px DATA:{"data-settings": "{\"_position\":\"absolute\",\"crafto_floating_effects_show\":\"yes\",\"crafto_floating_effects_rotate_duration\":{\"unit\":\"ms\",\"size\":8000,\"sizes\":[]},\"crafto_floating_effects_rotate_infinite\":\"yes\",\"crafto_floating_effects_rotate_delay\":{\"unit\":\
+                div.crafto-image-wrapper [894, -26, 219, 219] tf:matrix(-0.986296, 0.164984, -0.164984, -0.986296, 0, 0) animationName:rotation animationDuration:8s
+                  div.image-box [894, -26, 219, 219]
+                    div.image-wrapper [894, -26, 219, 219]
+                      img.ewww_webp_loaded [894, -26, 219, 219] overflow:clip aspectRatio:auto 190 / 190 IMG nat[190, 190]
+      div.section-light [1025, 271, 305, 79] d:flex pos:relative pr:15px pl:15px fd:column
+        div.elementor-mobile_extra-align-left [1040, 271, 275, 79] pos:relative ta:right
+          div [1040, 301, 275, 49] mt:30px ta:right
+            div.crafto-button-wrapper [1040, 301, 275, 49] pos:relative ta:right
+              a.btn-icon- [1113, 301, 202, 49] d:inline-block pos:relative pt:14px pr:26px pb:14px pl:26px fs:14px fw:700 lh:21px ls:0.5px color:rgb(255, 255, 255) tt:uppercase ta:center overflow:hidden tr:0.3s ease-in-out
+                div [1139, 315, 150, 21] d:flex jc:center ai:center fs:14px fw:700 lh:21px ls:0.5px color:rgb(28, 29, 31) tt:uppercase ta:center tr:0.3s ease-in-out
+                  span [1139, 315, 150, 21] tt:uppercase ta:center TEXT(16 chars)
+                span.btn-hover-animation [1113, 301, 50, 49] pos:absolute right:151.766px z:-1 tt:uppercase ta:center bg:rgb(190, 255, 1) borderTopWidth:2px borderBottomWidth:2px br:100px tr:0.3s
+  div.section-light [29, 433, 1382, 733] d:flex pos:relative pr:30px pl:30px fd:column
+    div [59, 433, 1322, 733] pos:relative DATA:{"data-settings": "{\"crafto_portfolio_style\":\"portfolio-simple\"}"}
+        div.filter-content [59, 433, 1322, 733]
+          ul.portfolio-simple.portfolio-wrap.no-masonry.grid [44, 433, 1352, 733] d:flex mr:-15px ml:-15px flexWrap:wrap
+            li.portfolio-item.grid-item.portfolio-filter-11 [44, 433, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [59, 473, 308, 337] tf:matrix(1, 0, 0, 1, 0, 40) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(40px)", "data-top-bottom": "transform: translateY(-40px)"}
+                div.portfolio-box [59, 473, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [59, 473, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [59, 473, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [59, 473, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635]
+                  div.portfolio-caption [59, 717, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [103, 747, 117, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [103, 753, 117, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(15 chars)
+                    span.separator-line [230, 763, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [250, 747, 72, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(8 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [382, 433, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [397, 393, 308, 337] tf:matrix(1, 0, 0, 1, 0, -40) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(-40px)", "data-top-bottom": "transform: translateY(40px)"}
+                div.portfolio-box [397, 393, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [397, 393, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [397, 393, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [397, 393, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [397, 637, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [434, 667, 102, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [434, 673, 102, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(12 chars)
+                    span.separator-line [545, 683, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [565, 667, 103, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(11 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [720, 433, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [735, 473, 308, 337] tf:matrix(1, 0, 0, 1, 0, 40) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(40px)", "data-top-bottom": "transform: translateY(-40px)"}
+                div.portfolio-box [735, 473, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [735, 473, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [735, 473, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [735, 473, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [735, 717, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [771, 747, 116, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [771, 753, 116, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(13 chars)
+                    span.separator-line [897, 763, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [917, 747, 90, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(11 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [1058, 433, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [1073, 393, 308, 337] tf:matrix(1, 0, 0, 1, 0, -40) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(-40px)", "data-top-bottom": "transform: translateY(40px)"}
+                div.portfolio-box [1073, 393, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [1073, 393, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [1073, 393, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [1073, 393, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [1073, 637, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [1112, 667, 117, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [1112, 673, 117, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(14 chars)
+                    span.separator-line [1239, 683, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [1259, 667, 84, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(9 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [44, 799, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [59, 819, 308, 337] tf:matrix(1, 0, 0, 1, 0, 20) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(20px)", "data-top-bottom": "transform: translateY(-20px)"}
+                div.portfolio-box [59, 819, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [59, 819, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [59, 819, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [59, 819, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [59, 1064, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [104, 1094, 117, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [104, 1100, 117, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(13 chars)
+                    span.separator-line [230, 1109, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [250, 1094, 72, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(8 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [382, 799, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [397, 779, 308, 337] tf:matrix(1, 0, 0, 1, 0, -20) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(-20px)", "data-top-bottom": "transform: translateY(20px)"}
+                div.portfolio-box [397, 779, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [397, 779, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [397, 779, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [397, 779, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [397, 1024, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [451, 1054, 119, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [451, 1060, 119, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(15 chars)
+                    span.separator-line [580, 1069, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [600, 1054, 50, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(7 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [720, 799, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [735, 819, 308, 337] tf:matrix(1, 0, 0, 1, 0, 20) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(20px)", "data-top-bottom": "transform: translateY(-20px)"}
+                div.portfolio-box [735, 819, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [735, 819, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [735, 819, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [735, 819, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [735, 1064, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [774, 1094, 116, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [774, 1100, 116, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(14 chars)
+                    span.separator-line [900, 1109, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [920, 1094, 84, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(9 chars)
+            li.portfolio-item.grid-item.portfolio-filter-11 [1058, 799, 338, 337] d:list-item pr:15px pl:15px mb:30px
+              div.portfolio-animation.skrollable.skrollable-before [1073, 779, 308, 337] tf:matrix(1, 0, 0, 1, 0, -20) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translateY(-20px)", "data-top-bottom": "transform: translateY(20px)"}
+                div.portfolio-box [1073, 779, 308, 337] overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                  div.portfolio-image [1073, 779, 308, 245] pos:relative bg:rgb(130, 130, 130) br:6px overflow:hidden tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    a [1073, 779, 308, 245] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      img.attachment-full.size-full.wp-post-image.ewww_webp_loaded [1073, 779, 308, 245] overflow:clip tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) filter:brightness(1) contrast(1) saturate(0) blur(0px) hue-rotate(0deg) aspectRatio:auto 800 / 635 IMG nat[800, 635] DATA:{"loading": "lazy"}
+                  div.portfolio-caption [1073, 1024, 308, 92] d:flex pt:30px pb:30px jc:center ai:center ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.title [1126, 1054, 116, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                      a [1126, 1060, 116, 20] fs:17px fw:600 lh:32px color:rgb(28, 29, 31) ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(14 chars)
+                    span.separator-line [1252, 1069, 10, 1] mr:10px ml:10px ta:center bg:rgb(168, 168, 168) tr:0.4s cubic-bezier(0.37, 0, 0.63, 1)
+                    span.subtitle [1272, 1054, 56, 32] ta:center tr:0.4s cubic-bezier(0.37, 0, 0.63, 1) TEXT(6 chars)

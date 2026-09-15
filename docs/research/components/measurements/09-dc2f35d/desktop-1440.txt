@@ -1,0 +1,25 @@
+
+===== 09-dc2f35d top=5296 h=493 =====
+div.section-light [0, 0, 1440, 493] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [110, 0, 1220, 493] d:flex maxWidth:min(100%, 1220px) pt:85px pb:57.5938px mr:110px ml:110px
+    div.entrance-animation.section-light.animation-done.appear [110, 85, 508, 350] d:flex pos:relative pr:15px pl:15px fd:column DATA:{"data-anime": "{\"duration\":500,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1]}"}
+      div [125, 85, 478, 350] pos:relative
+        div [-235, 85, 838, 350] ml:-360px
+          div.crafto-heading [-235, 85, 838, 350] fs:350px fw:600 lh:350px ls:-20px color:rgb(111, 112, 113)
+            span.crafto-primary-title [-235, 48, 765, 423] fs:350px fw:600 lh:350px ls:-20px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(4 chars)
+    div.section-light [618, 85, 712, 350] d:flex pos:relative pr:15px pl:15px fd:column
+      div.entrance-animation.animation-done.appear.anime-complete [633, 85, 682, 350] pos:relative DATA:{"data-anime": "{\"duration\":500,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1]}"}
+        div [633, 85, 754, 350] mr:-72px
+          div.crafto-heading [633, 85, 754, 350] fs:350px fw:600 lh:350px ls:-20px color:rgb(111, 112, 113)
+            span.crafto-primary-title [633, 48, 1284, 423] fs:350px fw:600 lh:350px ls:-20px color:rgb(190, 255, 1) tr:0.3s ease-in-out TEXT(8 chars)
+      div.entrance-animation.elementor-hidden-mobile_extra.section-light.animation-done [493, 5, 295, 295] d:flex pos:absolute top:-80px right:541.656px bottom:135px left:-125px fd:column jc:center ai:center DATA:{"data-anime": "{\"duration\":800,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"opacity\":[0,1],\"scale\":[0.5,1]}", "data-settings": "{\"position\":\"absolute\"}"}
+        div [493, 5, 295, 295] pos:relative
+            div.crafto-image-wrapper [493, 5, 295, 295]
+              div.image-box [493, 5, 295, 295]
+                div.image-wrapper [493, 5, 295, 295]
+                  img.ewww_webp_loaded [493, 5, 295, 295] overflow:clip aspectRatio:auto 295 / 295 IMG nat[295, 295] DATA:{"loading": "lazy"}
+        div.has-float.animation-rotate.crafto-floating-effect-infinite--yes [493, 5, 295, 295] pos:absolute DATA:{"data-settings": "{\"_position\":\"absolute\",\"crafto_floating_effects_show\":\"yes\",\"crafto_floating_effects_rotate_duration\":{\"unit\":\"ms\",\"size\":8000,\"sizes\":[]},\"crafto_floating_effects_rotate_infinite\":\"yes\",\"crafto_floating_effects_rotate_delay\":{\"unit\":\"ms\",\"size\":\"\",\"size
+            div.crafto-image-wrapper [449, -39, 384, 384] tf:matrix(-0.927738, -0.373232, 0.373232, -0.927738, 0, 0) animationName:rotation animationDuration:8s
+              div.image-box [449, -39, 384, 384]
+                div.image-wrapper [449, -39, 384, 384]
+                  img.ewww_webp_loaded [449, -39, 384, 384] overflow:clip aspectRatio:auto 295 / 295 IMG nat[295, 295] DATA:{"loading": "lazy"}

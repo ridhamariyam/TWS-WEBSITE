@@ -1,0 +1,22 @@
+
+===== 04-758e0ca top=1600 h=659 =====
+div.section-light [0, 0, 390, 659] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113)
+  div [0, 0, 390, 659] d:flex flexWrap:wrap jc:center
+    div.section-light [0, 0, 390, 639] d:flex pos:relative mb:20px fd:column flexWrap:wrap
+      div.entrance-animation.animation-done [0, 0, 390, 639] pos:relative
+          div.processstep-direction-horizontal.process-step-box.process-step-style-6 [0, 0, 390, 639] d:flex flexWrap:wrap tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+            div.process-step-item [0, 0, 390, 163] pos:relative pt:35px pr:30px pl:30px mb:30px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [15, -5, 75, 68] pos:absolute top:-5px right:300.375px bottom:100.5px left:15px fs:67.5px fw:700 lh:67.5px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [30, 35, 330, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(10 chars)
+              div.process-step-content [30, 72, 330, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [30, 72, 330, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)
+            div.process-step-item [0, 223, 390, 163] pos:relative pt:35px pr:30px pl:30px mt:30px mb:30px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [15, 218, 88, 68] pos:absolute top:-5px right:286.953px bottom:100.5px left:15px fs:67.5px fw:700 lh:67.5px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [30, 258, 330, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(15 chars)
+              div.process-step-content [30, 295, 330, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [30, 295, 330, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)
+            div.process-step-item [0, 446, 390, 163] pos:relative pt:35px pr:30px pl:30px mt:30px mb:30px fd:column tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+              div.process-step-item-number.text-stroke [15, 441, 89, 68] pos:absolute top:-5px right:285.906px bottom:100.5px left:15px fs:67.5px fw:700 lh:67.5px tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) webkitTextStrokeWidth:1px TEXT(2 chars)
+              div.process-step-title [30, 481, 330, 32] pos:relative mb:5px fs:19px fw:600 lh:32px color:rgb(28, 29, 31) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(19 chars)
+              div.process-step-content [30, 518, 330, 90] d:inline-block fs:17px lh:30px color:rgb(111, 112, 113) tr:0.5s cubic-bezier(0.5, 1, 0.89, 1)
+                p [30, 518, 330, 90] tr:0.5s cubic-bezier(0.5, 1, 0.89, 1) TEXT(81 chars)

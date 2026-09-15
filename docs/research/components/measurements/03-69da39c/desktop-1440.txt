@@ -1,0 +1,31 @@
+
+===== 03-69da39c top=932 h=941 =====
+div.section-dark.section-light [0, 0, 1440, 941] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [110, 0, 1220, 941] d:flex maxWidth:min(100%, 1220px) pt:110px pb:110px mr:110px ml:110px ai:center
+    div.section-light [110, 110, 610, 721] d:flex pos:relative pr:15px pl:15px fd:column
+      div.skrollable.skrollable-between [98, 76, 634, 788] pos:relative tf:matrix(1.09337, 0, 0, 1.09337, 0, 0) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: scale(1.1)", "data-top-bottom": "transform: scale(1)"}
+        div [-217, 76, 949, 788] ml:-288px
+          div.crafto-image-wrapper [-217, 76, 949, 788]
+            div.image-box [-217, 76, 949, 788]
+              div.image-wrapper [-217, 76, 949, 788]
+                img.ewww_webp_loaded [-217, 76, 949, 788] overflow:clip aspectRatio:auto 945 / 785 IMG nat[945, 785]
+    div.entrance-animation.section-light.animation-done.appear [822, 206, 508, 529] d:flex pos:relative pr:15px pl:15px ml:101.656px fd:column DATA:{"data-anime": "{\"duration\":800,\"delay\":200,\"staggervalue\":300,\"easing\":\"easeOutQuad\",\"targets\":\".elementor-element-c19292f.entrance-animation> .e-child,.elementor-element-c19292f.entrance-animation> .e-con-inner > .e-con-full.e-child,.elementor-element-c1929
+      div.elementor-widget-laptop__width-initial [837, 206, 478, 280] pos:relative
+        div [621, 206, 694, 240] ml:-216px
+          h1.crafto-heading [621, 206, 694, 240] mb:40px fs:80px fw:600 lh:80px ls:-3px color:rgb(28, 29, 31)
+            span.crafto-primary-title [621, 197, 628, 257] tr:0.3s ease-in-out TEXT(37 chars)
+      div.elementor-widget__width-initial [837, 486, 454, 170] pos:relative
+          span.crafto-heading.no-shadow-animation [837, 493, 444, 156] fs:17px lh:34px color:rgb(111, 112, 113)
+            span.crafto-primary-title [837, 493, 444, 156] tr:0.3s ease-in-out TEXT(236 chars)
+              span.separator [1048, 527, 185, 21] pos:relative fs:17px fw:600 lh:34px color:rgb(28, 29, 31) borderBottomWidth:1px TEXT(22 chars)
+      div [837, 656, 172, 79] pos:relative
+        div [837, 686, 172, 49] mt:30px
+          div.crafto-button-wrapper [837, 686, 172, 49] pos:relative
+            a.btn-icon- [837, 686, 172, 49] d:inline-block pos:relative pt:14px pr:26px pb:14px pl:26px fs:14px fw:700 lh:21px ls:0.5px color:rgb(255, 255, 255) tt:uppercase ta:center overflow:hidden tr:0.3s ease-in-out
+              div [863, 700, 120, 21] d:flex jc:center ai:center fs:14px fw:700 lh:21px ls:0.5px color:rgb(28, 29, 31) tt:uppercase ta:center tr:0.3s ease-in-out
+                span [863, 700, 120, 21] tt:uppercase ta:center TEXT(12 chars)
+              span.btn-hover-animation [837, 686, 50, 49] pos:absolute right:121.547px z:-1 tt:uppercase ta:center bg:rgb(190, 255, 1) borderTopWidth:2px borderBottomWidth:2px br:100px tr:0.3s
+    div.entrance-animation.elementor-hidden-mobile_extra.skrollable.appear [881, 581, 559, 300] pos:absolute top:581.031px bottom:60px left:881.047px z:-1 tf:matrix(1, 0, 0, 1, -0.0794026, 0) tr:transform 0.65s cubic-bezier(0.23, 1, 0.32, 1) DATA:{"data-bottom-top": "transform: translate3d(0px,0px,0px)", "data-top-bottom": "transform: translate3d(-100px,0px,0px)", "data-anime": "{\"duration\":600,\"delay\":300,\"stag
+      div [881, 581, 732, 300] mr:-172.8px
+        div.crafto-heading [881, 581, 732, 300] fs:300px fw:600 lh:300px ls:-20px color:rgb(111, 112, 113)
+          span.crafto-primary-title [881, 549, 732, 363] fs:300px fw:600 lh:300px ls:-20px color:rgb(190, 255, 1) tr:0.3s ease-in-out TEXT(5 chars)

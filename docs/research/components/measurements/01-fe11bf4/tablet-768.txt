@@ -1,0 +1,18 @@
+
+===== 01-fe11bf4 top=100 h=600 =====
+div.section-light [0, 0, 768, 600] d:flex pos:relative minHeight:600px pr:15px pl:15px fd:column fs:17px lh:32px color:rgb(111, 112, 113) overflow:hidden
+  div [24, 0, 720, 600] d:flex maxWidth:min(100%, 720px) mr:9px ml:9px fd:column jc:center ai:center
+    div [0, 0, 768, 600] pos:absolute DATA:{"data-settings": "{\"_position\":\"absolute\"}"}
+        div.crafto-particles-container [0, 0, 768, 600] pos:relative
+          div.particle-wrapper.has-particle-effect [0, 0, 768, 600] DATA:{"data-particles-options": "{\"particles\":{\"number\":{\"value\":3,\"density\":{\"value_area\":800}},\"color\":{\"value\":[\"#000000\",\"#BEFF01\"]},\"shape\":{\"type\":[\"circle\"],\"stroke\":{\"color\":\"#232323\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":false,\"a
+            canvas.particles-js-canvas-el [0, 0, 768, 600] overflow:clip aspectRatio:auto 768 / 600 MEDIA:CANVAS
+    div [384, -212, 0, 1024] pos:absolute top:-212px right:384px bottom:-212px left:384px DATA:{"data-settings": "{\"_position\":\"absolute\"}"}
+        div.looping-animation-wrapper [384, -212, 0, 0]
+          div.looping-wrapper [384, -212, 1, 1024] d:flex pos:absolute right:-1px flexWrap:wrap ai:center
+    div.entrance-animation.elementor-hidden-mobile_extra.e-transform.animation-done [384, 284, 768, 32] pos:absolute top:284px right:-384px bottom:284px left:384px DATA:{"data-settings": "{\"_position\":\"absolute\",\"_transform_translateX_effect\":{\"unit\":\"%\",\"size\":-50,\"sizes\":[]},\"_transform_translateX_effect_tablet\":{\"unit\":\"%\",\"size\":\"\",\"sizes\":[]},\"_transform_translateX_effect_mobile\":{\"u
+      div [-60, 284, 808, 32] ml:-40px tf:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -1, -404, 0, 0, 1)
+        span.crafto-heading [-60, 284, 808, 32] fs:260px fw:600 lh:32px ls:-15px color:rgb(111, 112, 113) ta:center
+          span.crafto-primary-title [-60, 284, 808, 32] fs:260px fw:600 lh:32px ls:-15px color:rgb(190, 255, 1) ta:center tr:0.3s ease-in-out TEXT(8 chars)
+    div.elementor-widget__width-initial [24, 156, 720, 289] pos:relative
+        div.crafto-heading [24, 156, 720, 289] fs:105px fw:600 lh:96.25px ls:-4px color:rgb(111, 112, 113) ta:center
+          span.crafto-primary-title.crafto-primary-title.entrance-animation.animation-done [42, 140, 684, 320] fs:105px fw:600 lh:96.25px ls:-4px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out TEXT(31 chars)

@@ -1,0 +1,90 @@
+
+===== 99-footer top=9315 h=670 =====
+footer.footer-main-wrapper.site-footer [0, 0, 390, 670] pos:relative fs:17px lh:32px color:rgb(111, 112, 113)
+  div.elementor-1778 [0, 0, 390, 670] DATA:{"data-elementor-type": "wp-post", "data-elementor-id": "1778"}
+    div.section-light [0, 0, 390, 670] d:flex pos:relative fd:column flexWrap:wrap DATA:{"data-settings": "{\"background_background\":\"classic\"}"}
+      div.section-light [0, 0, 390, 166] d:flex pos:relative fd:column borderTopColor:rgba(255, 255, 255, 0.1) borderBottomWidth:1px
+        div [0, 0, 390, 165] d:flex pb:21.0469px flexWrap:wrap jc:center ai:center
+          div.section-light [0, 0, 390, 63] d:flex pos:relative pr:15px pl:15px mb:25px fd:column flexWrap:wrap
+            div [15, 0, 360, 63] pos:relative
+                h5.crafto-heading.no-shadow-animation [15, 0, 360, 63] fs:24px lh:31.5px ls:-1px color:rgb(28, 29, 31) ta:center
+                  span.crafto-primary-title [21, 1, 348, 63] ta:center tr:0.3s ease-in-out TEXT(26 chars)
+                    a [143, 1, 226, 63] ta:center tr:0.3s ease-in-out
+                      span.separator [143, 1, 226, 63] pos:relative fs:24px fw:600 lh:31.5px ls:-1px color:rgb(28, 29, 31) ta:center borderBottomWidth:2px TEXT(14 chars)
+          div.section-light [0, 88, 390, 56] d:flex pos:relative pr:15px pl:15px flexWrap:wrap jc:center ai:center
+            div [170, 88, 50, 56] pos:relative
+                div.crafto-image-wrapper [170, 88, 50, 56]
+                  a.image-link [170, 88, 50, 56] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                    div.image-box [170, 88, 50, 56]
+                      div.image-wrapper [170, 88, 50, 56]
+                        img [170, 88, 50, 56] overflow:clip aspectRatio:auto 100 / 112 IMG nat[100, 112]
+      div.section-light [0, 166, 390, 333] d:flex pos:relative fd:column
+        div [0, 166, 390, 333] d:flex fd:column flexWrap:wrap
+          div.section-light [0, 166, 390, 333] d:flex pos:relative pb:40px flexWrap:wrap
+            div.section-light [0, 166, 390, 93] d:flex pos:relative pr:15px pl:15px mb:25px fd:column flexWrap:wrap ai:center
+              div [134, 166, 122, 37] pos:relative
+                  div.crafto-heading [134, 166, 122, 32] mb:5px fs:17px fw:600 lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                    span.crafto-primary-title [134, 172, 122, 20] fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(15 chars)
+              div.elementor-widget__width-initial [15, 203, 360, 56] pos:relative
+                  div.text-editor [15, 203, 360, 56]
+                    div.text-editor-content [15, 203, 360, 56] fs:15px lh:28px color:rgb(111, 112, 113) ta:center
+                      p [15, 203, 360, 56] ta:center TEXT(50 chars)
+            div.section-light [0, 284, 390, 93] d:flex pos:relative pr:15px pl:15px mb:25px fd:column flexWrap:wrap ai:center
+              div [137, 284, 116, 37] pos:relative
+                  div.crafto-heading [137, 284, 116, 32] mb:5px fs:17px fw:600 lh:32px ls:-0.5px color:rgb(111, 112, 113)
+                    span.crafto-primary-title [137, 290, 116, 20] fs:17px fw:600 lh:32px ls:-0.5px color:rgb(28, 29, 31) tr:0.3s ease-in-out TEXT(15 chars)
+              div.elementor-widget__width-initial [15, 321, 360, 56] pos:relative
+                  div.text-editor [15, 321, 360, 56]
+                    div.text-editor-content [15, 321, 360, 56] fs:15px lh:28px color:rgb(111, 112, 113) ta:center TEXT(53 chars)
+            div.section-light [0, 402, 390, 57] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap jc:flex-end ai:center
+              div [134, 402, 122, 25] pos:relative
+                div [134, 402, 122, 25] mb:-7px
+                  div.crafto-heading [134, 402, 122, 32]
+                    span.crafto-primary-title [134, 408, 122, 20] fs:17px lh:32px color:rgb(28, 29, 31) tr:0.3s ease-in-out
+                      a [134, 408, 122, 20] tr:0.3s ease-in-out TEXT(14 chars)
+              div [120, 427, 150, 32] pos:relative
+                  div.crafto-heading.no-shadow-animation [120, 427, 150, 32] ta:center
+                    span.crafto-primary-title [120, 433, 150, 21] fs:17px lh:32px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                      a [120, 433, 150, 21] ta:center tr:0.3s ease-in-out
+                        span.separator [120, 433, 150, 21] pos:relative fs:17px fw:600 lh:28px color:rgb(28, 29, 31) ta:center borderBottomWidth:1px TEXT(15 chars)
+      div.section-light [0, 499, 390, 171] d:flex pos:relative fd:column borderTopWidth:1px
+        div [0, 500, 390, 170] d:flex pt:30px pb:25px fd:column flexWrap:wrap jc:center ai:center
+          div.section-light [0, 530, 390, 77] d:flex pos:relative pr:15px pl:15px mb:6px flexWrap:wrap jc:center ai:center
+            div [15, 530, 360, 77] pos:relative
+              div [15, 530, 360, 72] mb:5px
+                div.crafto-navigation-wrapper [15, 530, 360, 72]
+                  ul.menu.crafto-navigation-link.crafto-simple-menu [15, 530, 360, 72] fs:17px color:rgb(111, 112, 113) ta:center
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-home [32, 530, 56, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [32, 530, 56, 36] d:flex pos:relative pt:8px pr:10px pb:8px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [32, 538, 46, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [32, 538, 46, 20] ta:center TEXT(4 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1698 [93, 530, 79, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [93, 530, 79, 36] d:flex pos:relative pt:8px pr:10px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [103, 538, 59, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [103, 538, 59, 20] ta:center TEXT(6 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1700 [177, 530, 93, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [177, 530, 93, 36] d:flex pos:relative pt:8px pr:10px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [187, 538, 73, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [187, 538, 73, 20] ta:center TEXT(9 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1703 [274, 530, 83, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [274, 530, 83, 36] d:flex pos:relative pt:8px pr:10px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [284, 538, 63, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [284, 538, 63, 20] ta:center TEXT(8 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1702 [91, 566, 73, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [91, 566, 73, 36] d:flex pos:relative pt:8px pr:10px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [101, 574, 53, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [101, 574, 53, 20] ta:center TEXT(6 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1701 [169, 566, 54, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [169, 566, 54, 36] d:flex pos:relative pt:8px pr:10px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [179, 574, 34, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [179, 574, 34, 20] ta:center TEXT(4 chars)
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-1699 [228, 566, 71, 36] d:inline-block pos:relative jc:center ta:center tr:0.3s ease-in-out
+                      a.left-menu-nav-link.before [228, 566, 71, 36] d:flex pos:relative pt:8px pb:8px pl:10px ai:center fs:16px fw:600 lh:28px color:rgb(28, 29, 31) ta:center tr:0.3s ease-in-out
+                        div.submenu-icon-content [238, 574, 61, 20] fs:16px fw:600 color:rgb(28, 29, 31) ta:center
+                          span [238, 574, 61, 20] ta:center TEXT(7 chars)
+          div.section-light [0, 613, 390, 32] d:flex pos:relative pr:15px pl:15px flexWrap:wrap jc:center
+            div [22, 613, 346, 32] pos:relative
+                div.crafto-heading.no-shadow-animation [22, 613, 346, 32] fs:15px lh:32px color:rgb(111, 112, 113) ta:center
+                  span.crafto-primary-title [22, 619, 346, 20] ta:center tr:0.3s ease-in-out TEXT(35 chars)
+                    a [292, 619, 76, 20] ta:center tr:0.3s ease-in-out
+                      span.separator [292, 619, 76, 20] pos:relative fs:15px fw:500 lh:32px color:rgb(28, 29, 31) ta:center borderBottomWidth:1px TEXT(8 chars)

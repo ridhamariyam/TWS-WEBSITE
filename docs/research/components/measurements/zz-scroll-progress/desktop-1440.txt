@@ -1,0 +1,7 @@
+
+===== zz-scroll-progress top=369 h=162 =====
+div.scroll-progress.hide-in-tablet [1388, 0, 32, 162] pos:fixed top:450px right:20px bottom:288.391px left:1388px z:111 fs:17px lh:32px color:rgb(111, 112, 113) op:0 tf:matrix(1, 0, 0, 1, 0, -80.8047) tr:0.3s linear mixBlendMode:difference
+  div.scroll-top [1388, 0, 32, 162] d:flex fd:column jc:center ai:center
+    span.scroll-text [1388, 0, 32, 87] mb:15px fs:11px lh:32px color:rgb(255, 255, 255) tt:uppercase tf:matrix(-1, 0, 0, -1, 0, 0) TEXT(13 chars)
+    span.scroll-line [1403, 102, 2, 60] pos:relative bg:rgba(255, 255, 255, 0.15)
+      span.scroll-point [1403, 102, 2, 0] pos:absolute bottom:60px bg:rgb(255, 255, 255)

@@ -1,0 +1,95 @@
+
+===== 07-d5bb535 top=6338 h=869 =====
+div.section-dark.section-light [0, 0, 390, 869] d:flex pos:relative fd:column fs:17px lh:32px color:rgb(111, 112, 113) bg:rgb(28, 29, 31) DATA:{"data-settings": "{\"background_background\":\"classic\"}"}
+  div [0, 0, 390, 869] d:flex pt:50px pb:50px fd:column flexWrap:wrap
+    div.section-light [0, 0, 390, 869] d:flex pos:absolute minHeight:100% pr:15px pl:15px fd:column flexWrap:wrap bgi:url(demo-web-agency-bg-01.png) backgroundSize:cover DATA:{"data-settings": "{\"background_background\":\"classic\",\"position\":\"absolute\"}"}
+    div.entrance-animation.section-light.animation-done [0, 50, 390, 373] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap
+      div.el-testimonial-carousel-style-18.elementor--star-style-star_bootstrap [15, 50, 360, 373] pos:relative DATA:{"data-settings": "{\"crafto_testimonial_carousel_layout_type\":\"testimonial-carousel-style-18\",\"crafto_navigation\":\"yes\"}"}
+          div.testimonial-carousel-wrapper [15, 50, 360, 373] d:flex pos:relative flexWrap:wrap
+            div.carousel-title-box [15, 50, 360, 73] d:flex fd:column
+              div.testimonial-carousel-content-box [15, 50, 264, 63] d:flex mb:10px ai:center
+                div.testimonial-carousel-number [15, 51, 134, 60] mr:10px fs:60px fw:700 lh:60px color:rgb(255, 255, 255) TEXT(4 chars)
+                div.testimonial-carousel-rating-box [159, 50, 120, 63] ta:center
+                  div.review-star-icon [159, 50, 120, 31] pt:6px pr:20px pb:5px pl:20px fs:16px color:rgb(255, 255, 255) ta:center bg:rgb(190, 255, 1) br:30px
+                    div [179, 56, 80, 20] ta:center
+                      i [179, 58, 16, 16] d:inline-block pos:relative fs:16px lh:16px color:rgb(255, 255, 255) ta:center
+                        ::before pos:absolute ff:bootstrap-icons fs:16px lh:16px color:rgb(28, 29, 31) ta:center overflow:hidden content
+                        ::after ff:bootstrap-icons fs:16px lh:16px color:rgb(111, 112, 113) ta:center content
+                      i [195, 58, 16, 16] d:inline-block pos:relative fs:16px lh:16px color:rgb(255, 255, 255) ta:center
+                        ::before pos:absolute ff:bootstrap-icons fs:16px lh:16px color:rgb(28, 29, 31) ta:center overflow:hidden content
+                        ::after ff:bootstrap-icons fs:16px lh:16px color:rgb(111, 112, 113) ta:center content
+                      i [211, 58, 16, 16] d:inline-block pos:relative fs:16px lh:16px color:rgb(255, 255, 255) ta:center
+                        ::before pos:absolute ff:bootstrap-icons fs:16px lh:16px color:rgb(28, 29, 31) ta:center overflow:hidden content
+                        ::after ff:bootstrap-icons fs:16px lh:16px color:rgb(111, 112, 113) ta:center content
+                      i [227, 58, 16, 16] d:inline-block pos:relative fs:16px lh:16px color:rgb(255, 255, 255) ta:center
+                        ::before pos:absolute ff:bootstrap-icons fs:16px lh:16px color:rgb(28, 29, 31) ta:center overflow:hidden content
+                        ::after ff:bootstrap-icons fs:16px lh:16px color:rgb(111, 112, 113) ta:center content
+                      i [243, 58, 16, 16] d:inline-block pos:relative fs:16px lh:16px color:rgb(255, 255, 255) ta:center
+                        ::before pos:absolute ff:bootstrap-icons fs:16px lh:16px color:rgb(28, 29, 31) ta:center overflow:hidden content
+                        ::after ff:bootstrap-icons fs:16px lh:16px color:rgb(111, 112, 113) ta:center content
+                  span.subheading [159, 81, 120, 32] fs:13px fw:500 lh:32px color:rgb(255, 255, 255) tt:uppercase ta:center TEXT(13 chars)
+            div.testimonials-carousel-wrap [15, 123, 360, 300]
+              div.swiper.testimonial-carousel.testimonial-carousel-style-18.magic-cursor [15, 123, 360, 300] pos:relative pt:90px overflow:hidden DATA:{"data-settings": "{\"navigation\":\"yes\",\"pagination\":\"\",\"pagination_style\":\"dots\",\"number_style\":\"number-style-1\",\"autoplay\":\"yes\",\"autoplay_speed\":3000,\"pause_on_hover\":\"yes\",\"loop\":\"yes\",\"effect\":\"slide\",\"speed\":500,\"image_spacing\
+                div.swiper-wrapper [-765, 213, 360, 210] d:flex pos:relative tf:matrix(1, 0, 0, 1, -780, 0) tr:transform
+                  div.elementor-repeater-item-f330156.swiper-slide.swiper-slide-next [-765, 213, 360, 178] pos:relative mr:30px tf:matrix(1, 0, 0, 1, 0, 0) tr:transform DATA:{"role": "group", "aria-label": "-", "data-swiper-slide-index": "1"}
+                    div.testimonials-wrapper [-765, 213, 360, 178]
+                      div.testimonial-carousel-content [-765, 213, 360, 126] d:inline-block mb:20px fs:24px lh:31.5px ls:-0.5px color:rgb(255, 255, 255) TEXT(109 chars)
+                        span.content-highlights [-765, 245, 107, 31] fs:24px fw:500 lh:31.5px ls:-0.5px color:rgb(255, 255, 255) borderBottomWidth:2px TEXT(7 chars)
+                      span.testimonial-carousel-name [-765, 365, 195, 22] d:inline-block fs:15px fw:600 lh:22px ls:2px color:rgb(190, 255, 1) tt:uppercase TEXT(16 chars)
+                  div.elementor-repeater-item-c7ea4c8.swiper-slide.swiper-slide-prev [-375, 213, 360, 178] pos:relative mr:30px tf:matrix(1, 0, 0, 1, 0, 0) tr:transform DATA:{"role": "group", "aria-label": "-", "data-swiper-slide-index": "2"}
+                    div.testimonials-wrapper [-375, 213, 360, 178]
+                      div.testimonial-carousel-content [-375, 213, 360, 126] d:inline-block mb:20px fs:24px lh:31.5px ls:-0.5px color:rgb(255, 255, 255) TEXT(108 chars)
+                        span.content-highlights [-163, 245, 130, 31] fs:24px fw:500 lh:31.5px ls:-0.5px color:rgb(255, 255, 255) borderBottomWidth:2px TEXT(11 chars)
+                      span.testimonial-carousel-name [-375, 365, 163, 22] d:inline-block fs:15px fw:600 lh:22px ls:2px color:rgb(190, 255, 1) tt:uppercase TEXT(14 chars)
+                  div.elementor-repeater-item-70efd33.swiper-slide.swiper-slide-active [15, 213, 360, 210] pos:relative mr:30px tf:matrix(1, 0, 0, 1, 0, 0) tr:transform DATA:{"role": "group", "aria-label": "-", "data-swiper-slide-index": "0"}
+                    div.testimonials-wrapper [15, 213, 360, 210]
+                      div.testimonial-carousel-content [15, 213, 360, 158] d:inline-block mb:20px fs:24px lh:31.5px ls:-0.5px color:rgb(255, 255, 255) TEXT(120 chars)
+                        span.content-highlights [63, 214, 112, 31] fs:24px fw:500 lh:31.5px ls:-0.5px color:rgb(255, 255, 255) borderBottomWidth:2px TEXT(9 chars)
+                      span.testimonial-carousel-name [15, 396, 167, 22] d:inline-block fs:15px fw:600 lh:22px ls:2px color:rgb(190, 255, 1) tt:uppercase TEXT(14 chars)
+                div [15, 133, 60, 60] d:flex pos:absolute top:10px right:300px bottom:229.5px z:9 jc:center ai:center fs:25px lh:32px color:rgb(255, 255, 255) ta:center bg:rgb(51, 52, 54) br:100% tr:0.3s DATA:{"role": "button", "aria-label": "-"}
+                  svg [38, 154, 15, 17] fs:16px lh:32px color:rgb(255, 255, 255) ta:center overflow:hidden tr:0.3s SVG vb=0 0 448 512 len=306
+                  span [45, -249868, 1, 1] pos:absolute top:-250000px right:30.5px bottom:250061px left:30.5px mt:-1px mr:-1px mb:-1px ml:-1px ta:center overflow:hidden TEXT(8 chars)
+                div [85, 133, 60, 60] d:flex pos:absolute top:10px right:10px bottom:229.5px left:70px z:9 jc:center ai:center fs:25px lh:32px color:rgb(255, 255, 255) ta:center bg:rgb(51, 52, 54) br:100% tr:0.3s DATA:{"role": "button", "aria-label": "-"}
+                  svg [108, 154, 15, 17] fs:16px lh:32px color:rgb(255, 255, 255) ta:center overflow:hidden tr:0.3s SVG vb=0 0 448 512 len=307
+                  span [115, -249868, 1, 1] pos:absolute top:-250000px right:30.5px bottom:250061px left:30.5px mt:-1px mr:-1px mb:-1px ml:-1px ta:center overflow:hidden TEXT(4 chars)
+    div.section-light [0, 422, 390, 61] d:flex pos:relative pr:15px pl:15px fd:column
+      div [15, 422, 360, 61] pos:relative
+          div.separator-wrap [15, 452, 360, 1]
+            div.separator-line [15, 452, 360, 1] mt:30px mb:30px bg:rgba(255, 255, 255, 0.1)
+    div.entrance-animation.section-light.animation-done [0, 483, 390, 335] d:flex pos:relative fd:column
+      div [0, 483, 390, 335] d:flex flexWrap:wrap jc:center ai:center
+        div.section-light [0, 483, 390, 35] d:flex pos:relative pr:15px pl:15px mb:40px fd:column flexWrap:wrap ai:center
+          div [122, 483, 146, 35] pos:relative
+              div.crafto-image-wrapper [122, 483, 146, 35]
+                a.image-link [122, 483, 146, 35] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [122, 483, 146, 35]
+                    div.image-wrapper [122, 483, 146, 35]
+                      img [122, 483, 146, 35] overflow:clip tr:0.3s aspectRatio:auto 1900 / 455 IMG nat[1900, 455] DATA:{"loading": "lazy"}
+        div.section-light [0, 558, 390, 35] d:flex pos:relative pr:15px pl:15px mb:40px fd:column flexWrap:wrap ai:center
+          div [131, 558, 128, 35] pos:relative
+              div.crafto-image-wrapper [131, 558, 128, 35]
+                a.image-link [131, 558, 128, 35] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [131, 558, 128, 35]
+                    div.image-wrapper [131, 558, 128, 35]
+                      img [131, 558, 128, 35] overflow:clip tr:0.3s aspectRatio:auto 1900 / 518 IMG nat[1900, 518] DATA:{"loading": "lazy"}
+        div.section-light [0, 633, 390, 35] d:flex pos:relative pr:15px pl:15px mb:40px fd:column flexWrap:wrap ai:center
+          div [143, 633, 104, 35] pos:relative
+              div.crafto-image-wrapper [143, 633, 104, 35]
+                a.image-link [143, 633, 104, 35] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [143, 633, 104, 35]
+                    div.image-wrapper [143, 633, 104, 35]
+                      img [143, 633, 104, 35] overflow:clip tr:0.3s aspectRatio:auto 1900 / 639 IMG nat[1900, 639] DATA:{"loading": "lazy"}
+        div.section-light [0, 708, 390, 35] d:flex pos:relative pr:15px pl:15px mb:40px fd:column flexWrap:wrap ai:center
+          div [120, 708, 150, 35] pos:relative
+              div.crafto-image-wrapper [120, 708, 150, 35]
+                a.image-link [120, 708, 150, 35] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [120, 708, 150, 35]
+                    div.image-wrapper [120, 708, 150, 35]
+                      img [120, 708, 150, 35] overflow:clip tr:0.3s aspectRatio:auto 1900 / 444 IMG nat[1900, 444] DATA:{"loading": "lazy"}
+        div.section-light [0, 783, 390, 35] d:flex pos:relative pr:15px pl:15px fd:column flexWrap:wrap ai:center
+          div [137, 783, 116, 35] pos:relative
+              div.crafto-image-wrapper [137, 783, 116, 35]
+                a.image-link [137, 783, 116, 35] fs:17px lh:32px color:rgb(41, 70, 243) tr:0.3s ease-in-out
+                  div.image-box [137, 783, 116, 35]
+                    div.image-wrapper [137, 783, 116, 35]
+                      img [137, 783, 116, 35] overflow:clip tr:0.3s aspectRatio:auto 1900 / 574 IMG nat[1900, 574] DATA:{"loading": "lazy"}
