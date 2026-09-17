@@ -22,11 +22,11 @@ export function ConversionCtaSection() {
 
       <Reveal
         as="h2"
-        className="text-title4 m-0 max-w-[calc((var(--grid-column-width)*12)+(var(--grid-gutter-width)*11))] text-primitive-white"
+        className="type-title4 m-0 max-w-[calc((var(--grid-column-width)*12)+(var(--grid-gutter-width)*11))] text-primitive-white"
       >
         Start your free website trial today
       </Reveal>
-      <Reveal as="p" className="text-body max-w-[14em] text-primitive-white">
+      <Reveal as="p" className="type-body-medium text-primitive-white">
         No credit card required. Cancel anytime.
       </Reveal>
       <Reveal>

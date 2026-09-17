@@ -38,7 +38,7 @@ export function CustomersServedSection() {
 
       <Reveal
         as="h2"
-        className="text-subtitle1 page-gutter mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] pb-10 text-center text-balance text-primitive-white bp744:pb-16 bp1020:pb-20"
+        className="type-subtitle1 page-gutter mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] pb-10 text-center text-balance text-primitive-white bp744:pb-16 bp1020:pb-20"
       >
         Trusted by 14 million entrepreneurs worldwide
       </Reveal>

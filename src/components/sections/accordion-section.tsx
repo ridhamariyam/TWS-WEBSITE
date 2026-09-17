@@ -18,11 +18,14 @@ import type { RichRun } from "@/types/content";
 
 export function AccordionRow({
   title,
+  titleAs: Title = "h2",
   titleClassName,
   children,
   iconSize = 16,
 }: {
   title: string;
+  /** The source nests a real heading inside the trigger — h2 at top level, h3 in the FAQ. */
+  titleAs?: "h2" | "h3";
   titleClassName?: string;
   children: React.ReactNode;
   iconSize?: number;
@@ -49,7 +52,7 @@ export function AccordionRow({
         onClick={toggle}
         className="flex w-full cursor-pointer items-center justify-between bg-transparent px-(--grid-gutter-width) py-6 text-left text-inherit bp744:py-8"
       >
-        <span className={cn("text-subtitle1", titleClassName)}>{title}</span>
+        <Title className={cn("type-subtitle1", titleClassName)}>{title}</Title>
         <span className="ml-4 shrink-0">
           <TogglePlusIcon
             width={iconSize}
@@ -86,7 +89,7 @@ export function RichParagraph({
   className?: string;
 }) {
   return (
-    <p className={cn("text-body", className)}>
+    <p className={cn("type-body", className)}>
       {runs.map((run, i) =>
         typeof run === "string" ? (
           <span key={i}>{run}</span>

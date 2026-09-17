@@ -133,10 +133,10 @@ export function GrowYourBusinessSection() {
       className="bg-primitive-white pb-20 text-primitive-black bp1020:pb-30"
     >
       <Reveal className="page-gutter pb-6 text-center bp744:pb-8 bp1020:pb-10">
-        <h2 className="text-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))] text-balance">
+        <h2 className="type-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))] text-balance">
           Grow your business
         </h2>
-        <p className="text-body mt-6">You deserve a website that can do it all.</p>
+        <p className="type-body mt-6">You deserve a website that can do it all.</p>
       </Reveal>
 
       <div className="overflow-y-auto px-4 pb-6 bp744:px-6 bp744:pb-8 bp1020:flex bp1020:items-center bp1020:justify-center bp1020:pb-10">
@@ -164,7 +164,7 @@ export function GrowYourBusinessSection() {
                 type="button"
                 onClick={() => go(i)}
                 aria-current={i === active}
-                className="text-body relative z-[1] flex cursor-pointer items-center justify-center rounded-full px-4 py-3 whitespace-nowrap select-none"
+                className="type-body relative z-[1] flex cursor-pointer items-center justify-center rounded-full px-4 py-3 whitespace-nowrap select-none"
               >
                 {card.pill}
               </button>
@@ -207,14 +207,14 @@ export function GrowYourBusinessSection() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </picture>
-                <h3 className="text-subtitle2 font-clarkson-serif relative z-[1] max-w-[365px]">
+                <h3 className="type-subtitle2 font-clarkson-serif relative z-[1] max-w-[365px]">
                   {card.title}
                 </h3>
-                <p className="text-body relative z-[1] max-w-[365px]">{card.body}</p>
-                <p className="text-footnote absolute bottom-8 left-8 hidden opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.645,0.045,0.355,1)] group-hover:opacity-100 bp1020:block">
+                <p className="type-body relative z-[1] max-w-[365px]">{card.body}</p>
+                <p className="type-footnote absolute bottom-8 left-8 hidden opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.645,0.045,0.355,1)] group-hover:opacity-100 bp1020:block">
                   {card.footnote}
                 </p>
-                <p className="text-subtitle3 absolute right-8 bottom-8 select-none">
+                <p className="type-subtitle3 absolute right-8 bottom-8 select-none">
                   <ArrowRightIcon width={22} height={22} />
                 </p>
               </Link>

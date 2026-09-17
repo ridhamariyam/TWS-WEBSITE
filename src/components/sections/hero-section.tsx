@@ -44,8 +44,12 @@ export function HeroSection() {
 
       <div className="relative z-[1] mx-auto flex w-[calc((var(--grid-column-width)*11)+(var(--grid-gutter-width)*10))] flex-col items-center pt-40 pb-30 text-center bp744:w-full bp744:pb-18 bp1280:pb-20">
         <Reveal className="w-full">
-          <h1 className="text-title3 text-primitive-white">
-            <span>A website</span> makes it real
+          <h1 className="type-title3 text-primitive-white">
+            {/* .hero-text__static is a centred flex column, so each child is a line. */}
+            <span className="flex flex-col text-center bp744:text-nowrap">
+              <span>A website</span>
+              makes it real
+            </span>
           </h1>
         </Reveal>
         <Reveal>
@@ -60,7 +64,7 @@ export function HeroSection() {
           </Cta>
         </Reveal>
         <Reveal>
-          <p className="text-body text-primitive-white">
+          <p className="type-body text-primitive-white">
             Start for free. No credit card required.
           </p>
         </Reveal>

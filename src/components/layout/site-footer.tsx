@@ -45,7 +45,7 @@ export function SiteFooter() {
       <div className="page-gutter grid gap-12 pt-16 pb-10 bp1020:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] bp1020:gap-16">
         <div className="flex flex-col gap-6">
           <SquarespaceMark width={29} height={24} />
-          <p className="text-subtitle3">A website makes it real</p>
+          <p className="type-subtitle3">A website makes it real</p>
         </div>
 
         <div className="grid gap-x-8 gap-y-0 bp744:grid-cols-2 bp1020:grid-cols-4">
@@ -57,11 +57,11 @@ export function SiteFooter() {
 
       <div className="page-gutter flex flex-col gap-8 pb-10 bp744:flex-row bp744:items-center bp744:justify-between">
         <div className="flex flex-col gap-4 bp744:flex-row bp744:items-center bp744:gap-8">
-          <span className="text-footnote flex items-center gap-3 text-gray-500">
+          <span className="type-footnote flex items-center gap-3 text-gray-500">
             <IcannLogo width={45} height={45} />
             We are an ICANN accredited registrar.
           </span>
-          <span className="text-footnote flex items-center gap-3 text-gray-500">
+          <span className="type-footnote flex items-center gap-3 text-gray-500">
             <SslLogo width={26} height={29} />
             Data traffic protected by SSL encryption
           </span>
@@ -82,16 +82,16 @@ export function SiteFooter() {
       </div>
 
       <div className="page-gutter flex flex-col gap-4 border-t border-white/10 py-8 bp744:flex-row bp744:items-center bp744:justify-between">
-        <p className="text-footnote text-gray-500">
+        <p className="type-footnote text-gray-500">
           *From TIME. © 2025 TIME USA LLC. All rights reserved. Used under
           license.
         </p>
-        <div className="text-footnote flex flex-wrap items-center gap-6 text-gray-500">
+        <div className="type-footnote flex flex-wrap items-center gap-6 text-gray-500">
           {LEGAL.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="cta cta--inline cta--has-inline-underline"
+              className="cta cta--inline hover:underline hover:underline-offset-4"
             >
               {item.label}
             </a>
@@ -128,7 +128,7 @@ function FooterColumnGroup({
         onClick={toggle}
         className="flex w-full items-center justify-between py-4 text-left bp744:pointer-events-none bp744:py-0 bp744:pb-4"
       >
-        <span className="text-footnote text-gray-500">{column.heading}</span>
+        <span className="type-footnote text-gray-500">{column.heading}</span>
         <CaretDownSmallIcon
           width={8}
           height={7}
@@ -154,7 +154,7 @@ function FooterColumnGroup({
           <li key={link.label + link.href}>
             <a
               href={link.href}
-              className="cta cta--inline cta--light cta--has-inline-underline text-footnote"
+              className="cta cta--inline cta--light type-footnote hover:underline hover:underline-offset-4"
             >
               {link.label}
             </a>
@@ -185,7 +185,7 @@ function LocaleSetting({
         aria-label={ariaLabel}
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="text-footnote flex cursor-pointer items-center gap-2 rounded-lg bg-surface-card p-3 transition-opacity duration-300 hover:opacity-80"
+        className="type-footnote flex cursor-pointer items-center gap-2 rounded-lg bg-surface-card p-3 transition-opacity duration-300 hover:opacity-80"
       >
         {icon}
         {label}
@@ -209,7 +209,7 @@ function LocaleSetting({
               <button
                 type="button"
                 className={cn(
-                  "text-footnote w-full rounded px-4 py-2 hover:bg-white/10",
+                  "type-footnote w-full rounded px-4 py-2 hover:bg-white/10",
                   option === label && "bg-white/10",
                 )}
               >

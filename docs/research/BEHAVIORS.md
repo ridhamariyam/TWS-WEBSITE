@@ -52,12 +52,22 @@ Full declarations in `docs/research/css/cta.css`.
 
 ## Header — `global-navigation`
 
-- **Does NOT change on scroll.** Captured computed styles at scrollY 0, 300 and
-  2000: `position: fixed`, `height: 80px`, `background: rgba(0,0,0,0)`,
-  `border: none`, `transform: none` at all three. The class stays
-  `global-navigation--not-sticky global-navigation--nav-items-visible`.
-  It declares `transition: background-color .5s cubic-bezier(.165,.84,.44,1),
-  top .3s cubic-bezier(.455,.03,.515,.955)` but nothing on this page triggers it.
+- **Scroll state — CORRECTED.** An earlier pass concluded the header never
+  changes, because programmatic `scrollTo` does not fire the site's scroll
+  listener. Driving the page with real wheel events shows otherwise:
+
+  | scrollY | class | background |
+  | --- | --- | --- |
+  | 0 | `global-navigation__header` | `rgba(0,0,0,0)` |
+  | > 0 | `+ --has-scrolled` | `#000` (caught mid-fade at `rgba(0,0,0,.953)`) |
+
+  Transition: `background-color .5s cubic-bezier(.165,.84,.44,1)`.
+  Height, position and transform do NOT change — only the background.
+- **Nav label colour is always white** (`.text--light` on the inner span,
+  measured `rgb(255,255,255)` at both scrollY 0 and 2200). Over the white
+  sections the labels only *look* dark because the black bar is behind them.
+- Any measurement that depends on a scroll listener or IntersectionObserver must
+  be taken with real input events, not `window.scrollTo`.
 - **Mega-menu:** PRODUCTS / SOLUTIONS / RESOURCES open a panel.
   `.global-navigation__accordion-inner` transitions
   `grid-template-rows .7s cubic-bezier(.165,.84,.44,1)` from `0fr` to `1fr`,

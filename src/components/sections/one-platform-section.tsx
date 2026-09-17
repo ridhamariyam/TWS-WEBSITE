@@ -97,10 +97,10 @@ export function OnePlatformSection() {
       className="bg-primitive-white pb-20 text-primitive-black bp1020:pb-30"
     >
       <Reveal className="page-gutter grid gap-6 pt-20 bp1020:grid-cols-2 bp1020:gap-10">
-        <h2 className="text-subtitle1 max-w-[calc((var(--grid-column-width)*5)+(var(--grid-gutter-width)*4))] text-balance">
+        <h2 className="type-subtitle1 max-w-[calc((var(--grid-column-width)*5)+(var(--grid-gutter-width)*4))] text-balance">
           Everything you need on one platform
         </h2>
-        <p className="text-body max-w-[calc((var(--grid-column-width)*5)+(var(--grid-gutter-width)*4))]">
+        <p className="type-body max-w-[calc((var(--grid-column-width)*5)+(var(--grid-gutter-width)*4))]">
           Power your day-to-day with all the tools and AI guidance you need to
           manage your business, seamlessly integrated in one place.
         </p>
@@ -179,8 +179,8 @@ function PlatformCardView({
         className="relative flex h-(--card-height) w-(--card-width) shrink-0 flex-col items-start justify-between overflow-hidden rounded-lg bg-surface-raised p-6 text-primitive-white transition-shadow duration-300"
       >
         <div className="relative z-[1] flex w-full flex-col gap-2">
-          <h3 className="text-subtitle3">{card.title}</h3>
-          <p className="text-body">{card.body}</p>
+          <h3 className="type-subtitle3">{card.title}</h3>
+          <p className="type-body">{card.body}</p>
         </div>
 
         <div className="absolute inset-0 z-0 h-full w-full">

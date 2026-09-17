@@ -75,10 +75,10 @@ export function GetStartedSection() {
       className="relative overflow-hidden bg-primitive-white text-primitive-black"
     >
       <Reveal className="page-gutter pt-20 text-center bp1020:pt-30">
-        <h2 className="text-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-balance">
+        <h2 className="type-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-balance">
           Getting started has never been easier with AI
         </h2>
-        <p className="text-body mt-6">No experience required.</p>
+        <p className="type-body mt-6">No experience required.</p>
       </Reveal>
 
       <div className="page-gutter mt-12 grid gap-6 bp1020:mx-auto bp1020:max-w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))] bp1020:grid-cols-2 bp1020:gap-10">
@@ -95,7 +95,7 @@ export function GetStartedSection() {
                 loop
                 muted
                 playsInline
-                preload="none"
+                preload="metadata"
               >
                 <source src={`${DIR}/${card.video}.webm`} type="video/webm" />
                 <source src={`${DIR}/${card.video}.mp4`} type="video/mp4" />
@@ -114,17 +114,17 @@ export function GetStartedSection() {
             <div className="flex w-full flex-grow flex-col items-center gap-4 bg-primitive-black px-12 pt-4 pb-10 text-center">
               <p
                 className={cn(
-                  "text-subtitle2",
+                  "type-subtitle2",
                   styles.eyebrow,
                   inView && (i === 0 ? styles.eyebrowInView : styles.eyebrowInViewDelayed),
                 )}
               >
                 {card.eyebrow}
               </p>
-              <p className="text-body w-full flex-grow text-gray-500">
+              <p className="type-body w-full flex-grow text-gray-500">
                 {card.title}
               </p>
-              <span className="text-subtitle3 inline-flex items-center gap-2">
+              <span className="type-subtitle3 inline-flex items-center gap-2">
                 {card.cta}
                 <ArrowRightIcon width={16} height={16} />
               </span>
@@ -133,12 +133,12 @@ export function GetStartedSection() {
         ))}
       </div>
 
-      <p className="text-footnote page-gutter mt-10 text-center">
+      <p className="type-footnote page-gutter mt-10 text-center">
         Blueprint AI, one of TIME&rsquo;s Best Inventions of 2025*
       </p>
 
       <Reveal className="page-gutter mt-20 text-center">
-        <h2 className="text-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-balance">
+        <h2 className="type-subtitle1 mx-auto max-w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-balance">
           Start with a website template designed for your business
         </h2>
       </Reveal>
@@ -156,7 +156,7 @@ export function GetStartedSection() {
               loading="lazy"
               className="aspect-[3/4] w-full rounded-lg object-cover"
             />
-            <span className="text-subtitle3 mt-4 inline-flex items-center gap-2">
+            <span className="type-subtitle3 mt-4 inline-flex items-center gap-2">
               Start with this template
               <ArrowRightIcon width={16} height={16} />
             </span>
@@ -171,7 +171,7 @@ export function GetStartedSection() {
       </div>
 
       {/* Joins this white section to the black one below it. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-full bg-[linear-gradient(transparent_85%,#000_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[360px] bg-[linear-gradient(transparent_0%,#000_100%)]" />
     </section>
   );
 }

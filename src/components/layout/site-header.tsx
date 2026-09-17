@@ -18,10 +18,15 @@ import {
 import styles from "./site-header.module.css";
 
 /*
- * The header is fixed and fully transparent at every scroll position — verified
- * by reading computed styles at scrollY 0, 300 and 2000 on the live page, which
- * were byte-identical. There is deliberately no scroll listener here: link
- * colour is inherited so each section paints the nav its own colour.
+ * The header is fixed and transparent over the hero, then fades to a solid black
+ * bar as soon as the page scrolls — the live site toggles
+ * `.global-navigation__header--has-scrolled` at scrollY > 0, giving
+ * `background-color: #000` under
+ * `transition: background-color .5s cubic-bezier(.165,.84,.44,1)`.
+ *
+ * Nav labels are white at every scroll position (`.text--light`); they read as
+ * dark-on-white only because the black bar sits behind them over the light
+ * sections.
  *
  * The full nav row only exists at >=1280px; below that it is the glyph mark plus
  * a hamburger that opens the clip-path drawer.
@@ -41,7 +46,15 @@ export function SiteHeader() {
   const [drawerDismissing, setDrawerDismissing] = useState(false);
   const [activeSolution, setActiveSolution] = useState(0);
   const [mobileSection, setMobileSection] = useState<MenuKey | null>(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(window.scrollY > 0);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // The drawer plays swipeOut before unmounting, so closing is two-phase.
   const closeDrawer = useCallback(() => {
@@ -78,7 +91,13 @@ export function SiteHeader() {
         <span className="cta__label">Skip to Main Content</span>
       </a>
 
-      <div className="absolute inset-x-0 top-0 flex h-(--global-nav-height) items-center justify-between px-4">
+      <div
+        className={cn(
+          "absolute inset-x-0 top-0 flex h-(--global-nav-height) items-center justify-between px-4 text-primitive-white",
+          "transition-[background-color] duration-500 ease-[cubic-bezier(0.165,0.84,0.44,1)]",
+          (hasScrolled || openMenu) && "bg-primitive-black",
+        )}
+      >
         <div className="flex flex-1">
           <Link href="/" aria-label="Squarespace homepage" className="block">
             <SquarespaceWordmark
@@ -99,13 +118,13 @@ export function SiteHeader() {
             <button
               key={key}
               type="button"
-              className="cta cta--inline flex h-full items-center justify-center gap-1"
+              className="cta cta--inline cta--light flex h-full items-center justify-center gap-1"
               aria-expanded={openMenu === key}
               aria-controls={`nav-menu-${key}`}
               onMouseEnter={() => setOpenMenu(key)}
               onClick={() => setOpenMenu(openMenu === key ? null : key)}
             >
-              <span className="text-eyebrow">{label}</span>
+              <span className="type-eyebrow">{label}</span>
               <ChevronDownIcon
                 className={cn(
                   "transition-transform duration-300",
@@ -119,8 +138,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="mr-4 flex flex-1 items-center justify-end gap-8">
-          <a href="/login" className="cta cta--inline hidden bp1280:block">
-            <span className="text-eyebrow">Log In</span>
+          <a href="/login" className="cta cta--inline cta--light hidden bp1280:block">
+            <span className="type-eyebrow">Log In</span>
           </a>
           <Cta
             variant="primary-subtle"
@@ -188,7 +207,7 @@ export function SiteHeader() {
                     setMobileSection(mobileSection === key ? null : key)
                   }
                 >
-                  <span className="text-subtitle2">{label}</span>
+                  <span className="type-subtitle2">{label}</span>
                   <ChevronDownIcon
                     className={cn(
                       "transition-transform duration-300",
@@ -209,8 +228,8 @@ export function SiteHeader() {
                     <ul className="flex flex-col gap-4 pb-6">
                       {flatten(key).map((item) => (
                         <li key={item.href + item.label}>
-                          <a href={item.href} className="cta cta--inline">
-                            <span className="text-body">{item.label}</span>
+                          <a href={item.href} className="cta cta--inline cta--light">
+                            <span className="type-body">{item.label}</span>
                           </a>
                         </li>
                       ))}
@@ -219,8 +238,8 @@ export function SiteHeader() {
                 </div>
               </div>
             ))}
-            <a href="/login" className="cta cta--inline block py-5">
-              <span className="text-subtitle2">Log In</span>
+            <a href="/login" className="cta cta--inline cta--light block py-5">
+              <span className="type-subtitle2">Log In</span>
             </a>
           </div>
         </div>
@@ -242,14 +261,14 @@ function ProductsMenu() {
     <div className="grid grid-cols-5 gap-10">
       {PRODUCTS_MENU.map((group) => (
         <div key={group.heading}>
-          <p className="text-eyebrow mb-5 text-gray-500">{group.heading}</p>
+          <p className="type-eyebrow mb-5 text-gray-500">{group.heading}</p>
           <ul className="flex flex-col gap-3">
             {group.links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="cta cta--inline">
-                  <span className="text-body">{link.label}</span>
+                <a href={link.href} className="cta cta--inline cta--light">
+                  <span className="type-body">{link.label}</span>
                   {"description" in link && link.description ? (
-                    <span className="text-footnote block text-gray-500">
+                    <span className="type-footnote block text-gray-500">
                       {link.description}
                     </span>
                   ) : null}
@@ -279,28 +298,28 @@ function SolutionsMenu({
             <button
               type="button"
               className={cn(
-                "w-full rounded-lg px-4 py-3 text-left transition-colors duration-300",
+                "cta cta--inline cta--light w-full rounded-lg px-4 py-3 text-left transition-colors duration-300",
                 i === active ? "bg-white/10" : "hover:bg-white/5",
               )}
               onMouseEnter={() => onSelect(i)}
               onFocus={() => onSelect(i)}
               onClick={() => onSelect(i)}
             >
-              <span className="text-body">{group.heading}</span>
+              <span className="type-body">{group.heading}</span>
             </button>
           </li>
         ))}
       </ul>
       <div>
-        <a href={current.href} className="cta cta--inline">
-          <span className="text-subtitle2">{current.heading}</span>
+        <a href={current.href} className="cta cta--inline cta--light">
+          <span className="type-subtitle2">{current.heading}</span>
         </a>
-        <p className="text-body mt-2 text-gray-500">{current.blurb}</p>
+        <p className="type-body mt-2 text-gray-500">{current.blurb}</p>
         <ul className="mt-8 grid grid-cols-3 gap-x-10 gap-y-4">
           {current.links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="cta cta--inline">
-                <span className="text-body">{link.label}</span>
+              <a href={link.href} className="cta cta--inline cta--light">
+                <span className="type-body">{link.label}</span>
               </a>
             </li>
           ))}
@@ -315,9 +334,9 @@ function ResourcesMenu() {
     <ul className="grid grid-cols-3 gap-x-10 gap-y-8">
       {RESOURCES_MENU.map((item) => (
         <li key={item.href}>
-          <a href={item.href} className="cta cta--inline">
-            <span className="text-subtitle3 block">{item.label}</span>
-            <span className="text-body mt-1 block text-gray-500">
+          <a href={item.href} className="cta cta--inline cta--light">
+            <span className="type-subtitle3 block">{item.label}</span>
+            <span className="type-body mt-1 block text-gray-500">
               {item.description}
             </span>
           </a>

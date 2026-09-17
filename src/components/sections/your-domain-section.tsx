@@ -17,7 +17,7 @@ export function YourDomainSection() {
     >
       <Reveal
         as="h2"
-        className="text-subtitle1 mb-14 w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))] text-center bp744:w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] bp1440:w-[calc((var(--grid-column-width)*4)+(var(--grid-gutter-width)*3))]"
+        className="type-subtitle1 mb-14 w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))] text-center bp744:w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] bp1440:w-[calc((var(--grid-column-width)*4)+(var(--grid-gutter-width)*3))]"
       >
         Find the perfect domain for your website
       </Reveal>
@@ -41,7 +41,7 @@ export function YourDomainSection() {
             autoCapitalize="off"
             spellCheck={false}
             placeholder="Start your search here"
-            className="text-body absolute h-[62px] w-full overflow-hidden rounded-lg border-[20px_56px_20px_64px] border-solid border-transparent bg-black/5 p-0 leading-[140%] text-primitive-black placeholder:text-gray-500 bp1020:bg-white/20 bp1020:text-primitive-white"
+            className="type-body absolute h-[62px] w-full overflow-hidden rounded-lg border-[20px_56px_20px_64px] border-solid border-transparent bg-black/5 p-0 leading-[140%] text-primitive-black placeholder:text-gray-500 bp1020:bg-white/20 bp1020:text-primitive-white"
           />
           <button
             type="submit"
@@ -55,7 +55,7 @@ export function YourDomainSection() {
 
       <Reveal
         as="p"
-        className="text-footnote flex w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] flex-wrap justify-center gap-1 text-gray-800 bp744:text-center bp1020:text-primitive-white"
+        className="type-footnote flex w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] flex-wrap justify-center gap-1 text-gray-800 bp744:text-center bp1020:text-primitive-white"
       >
         Already have a domain?{" "}
         <a

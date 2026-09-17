@@ -89,7 +89,7 @@ export function MadeWithSqspSection() {
         </picture>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.15)_60%,rgba(0,0,0,0.85)_100%)]" />
         <div className="pointer-events-none absolute inset-0 z-[100] flex flex-col items-center justify-center">
-          <h2 className="text-title2 text-center text-primitive-white">
+          <h2 className="type-title2 text-center text-primitive-white">
             <span className="block font-clarkson font-normal">Made with</span>
             <span className="block font-clarkson font-normal">Squarespace</span>
           </h2>

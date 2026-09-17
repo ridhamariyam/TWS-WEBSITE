@@ -5,7 +5,7 @@
 - **Screenshot:** `docs/design-references/desktop-1440-01-hero-top.png`, `mobile-390-01-hero.png`
 - **Ground-truth CSS:** `docs/research/css/global-navigation.css` (285 blocks — the authority)
 - **Ground-truth DOM:** `docs/research/html/00-header.html` (3235 lines)
-- **Interaction model:** hover/click mega-menu on desktop; click drawer on mobile. **Not scroll-driven.**
+- **Interaction model:** hover/click mega-menu on desktop; click drawer on mobile; plus a scroll-triggered background.
 
 ## Structure
 
@@ -22,10 +22,13 @@ header#global-navigation.global-navigation
 
 ## Key measurements
 
-- `position: fixed`, `z-index: 900`, `background: transparent` at **all** scroll positions.
+- `position: fixed`, `z-index: 900`. Background is transparent at scrollY 0 and
+  `#000` at scrollY > 0 (`--has-scrolled`), with
+  `transition: background-color .5s cubic-bezier(.165,.84,.44,1)`. Nothing else
+  about the header changes on scroll.
 - Height is `var(--global-nav-height)`: 64 → 68 (≥375) → 72 (≥600) → **80px** (≥1280).
-- Link/label colour is inherited — it is black over the white sections and white
-  over the black ones. Do not add a scroll listener; the sections own the colour.
+- Link/label colour is **always white** (`.text--light`); the scrolled black bar
+  is what makes it legible over the light sections.
 - Nav labels: Clarkson 500, 14px, uppercase (`.cta--tertiary`-like).
 - `GET STARTED`: `.cta--primary.cta--light` → white bg, black text, radius 4px,
   padding 23px 28px.

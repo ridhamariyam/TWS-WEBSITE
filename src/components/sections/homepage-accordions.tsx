@@ -37,7 +37,7 @@ export function HomepageAccordions() {
               key={step.heading}
               className="grid gap-2 bp1020:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] bp1020:gap-10"
             >
-              <h3 className="text-subtitle3">{step.heading}</h3>
+              <h3 className="type-subtitle3">{step.heading}</h3>
               <RichParagraph runs={step.body} />
             </li>
           ))}
@@ -50,7 +50,8 @@ export function HomepageAccordions() {
             <AccordionRow
               key={entry.question}
               title={entry.question}
-              titleClassName="text-subtitle3"
+              titleAs="h3"
+              titleClassName="type-subtitle3"
             >
               <div className="flex flex-col gap-4">
                 {entry.answer.map((para, i) => (
@@ -72,9 +73,9 @@ export function HomepageAccordions() {
               rel="noopener noreferrer"
               className={`${styles.supportCard} cta cta--inline group rounded-lg bg-surface-card p-8`}
             >
-              <h3 className="text-subtitle2">{link.title}</h3>
-              <p className="text-body mt-2">{link.body}</p>
-              <p className="text-body mt-6" aria-hidden="true">
+              <h3 className="type-subtitle2">{link.title}</h3>
+              <p className="type-body mt-2">{link.body}</p>
+              <p className="type-body mt-6" aria-hidden="true">
                 <span className={styles.supportArrow}>→</span>
               </p>
             </a>

@@ -30,23 +30,27 @@ const DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function DigitReel({ digit, spin }: { digit: string; spin: boolean }) {
   const target = Number(digit);
-  // Before arming, park two full turns above so the settle reads as a count-up.
-  const offset = spin ? target : target - DIGITS.length * 2;
+  // Before arming, park two full turns back so the settle reads as a count-up.
+  const landed = spin ? target : target - DIGITS.length * 2;
 
   return (
-    <span className="relative mx-[0.28em] inline-block" aria-hidden="true">
-      {/* Reserves the slot: one digit tall and wide, never rendered. */}
-      <span className="invisible">{digit}</span>
-      <span
-        className="absolute inset-0 flex flex-col transition-transform duration-[1600ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
-        style={{ transform: `translateY(${-offset * 100}%)` }}
-      >
-        {DIGITS.map((d) => (
-          <span key={d} className="flex shrink-0 basis-full justify-center">
-            {d}
-          </span>
-        ))}
-      </span>
+    // Zero-width, full-height slot. The numbers inside are absolutely
+    // positioned and centred, so each glyph overflows the slot symmetrically —
+    // this is what keeps the digits tight instead of adding a glyph's width of
+    // padding. Spacing between digits is the 0.28em margin alone.
+    <span
+      className="relative block w-0 self-stretch [margin-inline:0.28em]"
+      aria-hidden="true"
+    >
+      {DIGITS.map((d, i) => (
+        <span
+          key={d}
+          className="absolute inset-0 flex justify-center transition-transform duration-[1600ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
+          style={{ transform: `translateY(${(i - landed) * 100}%)` }}
+        >
+          {d}
+        </span>
+      ))}
     </span>
   );
 }
@@ -54,7 +58,7 @@ function DigitReel({ digit, spin }: { digit: string; spin: boolean }) {
 function Counter({ value, spin }: { value: string; spin: boolean }) {
   return (
     <p
-      className="text-title3 flex justify-center overflow-y-clip font-light [line-height:normal]"
+      className="type-title3 flex justify-center overflow-y-clip font-light [line-height:normal]"
       aria-label={value}
     >
       {[...value].map((char, i) =>
@@ -97,7 +101,7 @@ export function HeroStats() {
   return (
     <div className="bg-primitive-black">
       <div className="flex items-center justify-center bg-primitive-black pt-20 pb-10">
-        <p className="text-body w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-center text-gray-200 bp744:w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] bp1280:w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))]">
+        <p className="type-body w-[calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))] text-center text-gray-200 bp744:w-[calc((var(--grid-column-width)*6)+(var(--grid-gutter-width)*5))] bp1280:w-[calc((var(--grid-column-width)*10)+(var(--grid-gutter-width)*9))]">
           Join millions of entrepreneurs who run their business on Squarespace.
         </p>
       </div>
@@ -116,7 +120,7 @@ export function HeroStats() {
             style={{ animationDelay: `${0.2 * (i + 1)}s` }}
           >
             <Counter value={stat.value} spin={spin} />
-            <p className="text-footnote">{stat.label}</p>
+            <p className="type-footnote">{stat.label}</p>
           </div>
         ))}
       </div>
