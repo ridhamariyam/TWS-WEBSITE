@@ -1,0 +1,80 @@
+/*
+ * Header motion that Tailwind utilities can't express.
+ *
+ * The mobile drawer does not slide — it is revealed by a clip-path wipe that
+ * starts as a sliver past the right edge and opens to the full rectangle. Both
+ * keyframe sets are verbatim from docs/research/css/global-navigation.css.
+ */
+
+.drawer {
+  clip-path: polygon(105% 0%, 100% 0%, 101% 100%, 100% 100%);
+}
+
+.drawerOpen {
+  animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards swipeIn;
+}
+
+.drawerClosing {
+  animation: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards swipeOut;
+}
+
+@keyframes swipeIn {
+  0% {
+    clip-path: polygon(101% 0%, 100% 0%, 101% 100%, 116% 100%);
+  }
+  to {
+    clip-path: polygon(0% 0%, 101% 0%, 101% 101%, 0% 101%);
+  }
+}
+
+@keyframes swipeOut {
+  0% {
+    clip-path: polygon(0% 0%, 101% 0%, 101% 101%, 0% 101%);
+  }
+  to {
+    clip-path: polygon(105% 0%, 100% 0%, 101% 100%, 100% 100%);
+  }
+}
+
+/*
+ * Menus open by animating the grid track from 0fr to 1fr, which lets the panel
+ * measure its own height without a JS measurement pass.
+ */
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    grid-template-rows 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
+    padding 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
+    visibility 0.7s step-end;
+}
+
+.collapsible > * {
+  overflow: hidden;
+}
+
+.collapsibleOpen {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    grid-template-rows 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
+    padding 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
+    visibility 0.7s step-start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawerOpen,
+  .drawerClosing {
+    animation: none;
+  }
+  .drawerOpen {
+    clip-path: polygon(0% 0%, 101% 0%, 101% 101%, 0% 101%);
+  }
+  .collapsible,
+  .collapsibleOpen {
+    transition: none;
+  }
+}
