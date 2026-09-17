@@ -152,3 +152,14 @@ export type FooterContent = {
   copyright: string;
   locale: { language: string; region: string };
 };
+
+/* ------------------------------------------------------------------ rich text */
+
+/** A run of body copy: plain strings interleaved with inline links. */
+export type RichRun = string | { label: string; href: string };
+
+export type FaqEntry = {
+  question: string;
+  /** Paragraphs, each a run of strings and inline links. */
+  answer: RichRun[][];
+};

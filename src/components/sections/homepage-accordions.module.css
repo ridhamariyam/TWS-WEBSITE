@@ -1,0 +1,40 @@
+/*
+ * The support card's arrow jitters horizontally while the card is hovered —
+ * `animation: 1.1s linear infinite supportHoverArrow` in the source, applied via
+ * a `--hovered` class. Here the hover lives in CSS instead of JS state.
+ */
+
+.supportCard {
+  display: block;
+}
+
+.supportArrow {
+  display: inline-block;
+}
+
+.supportCard:hover .supportArrow {
+  animation: 1.1s linear infinite supportHoverArrow;
+}
+
+@keyframes supportHoverArrow {
+  0% {
+    transform: translate(0);
+  }
+  20%,
+  30% {
+    transform: translate(2px);
+  }
+  70%,
+  80% {
+    transform: translate(-2px);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .supportCard:hover .supportArrow {
+    animation: none;
+  }
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Cta } from "@/components/ui/cta";
 import {
@@ -43,28 +43,27 @@ export function SiteHeader() {
   const [mobileSection, setMobileSection] = useState<MenuKey | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  // Close the mega-menu on Escape or when focus/pointer leaves the header.
-  useEffect(() => {
-    if (!openMenu && !drawerOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== "Escape") return;
-      setOpenMenu(null);
-      closeDrawer();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [openMenu, drawerOpen]);
-
   // The drawer plays swipeOut before unmounting, so closing is two-phase.
-  function closeDrawer() {
-    if (!drawerOpen) return;
+  const closeDrawer = useCallback(() => {
     setDrawerDismissing(true);
     window.setTimeout(() => {
       setDrawerOpen(false);
       setDrawerDismissing(false);
       setMobileSection(null);
     }, 600);
-  }
+  }, []);
+
+  // Escape closes whichever surface is open.
+  useEffect(() => {
+    if (!openMenu && !drawerOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpenMenu(null);
+      if (drawerOpen) closeDrawer();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [openMenu, drawerOpen, closeDrawer]);
 
   return (
     <header

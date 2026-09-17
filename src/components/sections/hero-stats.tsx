@@ -72,15 +72,16 @@ function Counter({ value, spin }: { value: string; spin: boolean }) {
 
 export function HeroStats() {
   const ref = useRef<HTMLDivElement>(null);
-  const [spin, setSpin] = useState(false);
+  // Reduced motion skips the spin entirely and renders the settled value.
+  const [spin, setSpin] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setSpin(true);
-      return;
-    }
+    if (!el || spin) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
@@ -91,7 +92,7 @@ export function HeroStats() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [spin]);
 
   return (
     <div className="bg-primitive-black">
