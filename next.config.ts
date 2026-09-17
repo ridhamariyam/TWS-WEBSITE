@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     root: projectRoot,
   },
   images: {
-    // All imagery is local SVG placeholders for now.
+    // Assets are downloaded originals served straight from public/.
     unoptimized: true,
   },
 };

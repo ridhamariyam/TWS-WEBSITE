@@ -1,10 +1,21 @@
-export type LinkItem = {
+/**
+ * Content shapes for the squarespace.com homepage clone.
+ *
+ * Every field here mirrors something that actually exists in the live page's
+ * DOM — copy is verbatim and asset paths point at files pulled down by
+ * `scripts/download-assets.mjs`.
+ */
+
+export type Link = {
   label: string;
   href: string;
 };
 
-export type NavItem = LinkItem & {
-  children?: LinkItem[];
+/** A call-to-action button. The site's `.cta` classes map onto these variants. */
+export type Cta = Link & {
+  variant?: "primary" | "secondary" | "inline";
+  theme?: "light" | "dark";
+  hasArrow?: boolean;
 };
 
 export type ImageAsset = {
@@ -14,113 +25,130 @@ export type ImageAsset = {
   height: number;
 };
 
-/** Plain strings interleaved with emphasised fragments (ink, semibold, underlined). */
-export type RichText = Array<string | { emphasis: string }>;
+export type VideoAsset = {
+  /** Preferred source; the site serves webm first with an mp4 fallback. */
+  webm?: string;
+  mp4: string;
+  poster?: string;
+  width: number;
+  height: number;
+};
+
+/* ---------------------------------------------------------------- navigation */
+
+export type NavSubmenuItem = Link & {
+  description?: string;
+  icon?: string;
+};
+
+export type NavItem = {
+  label: string;
+  /** Present when the item opens a mega-menu instead of navigating. */
+  submenu?: NavSubmenuItem[];
+  href?: string;
+};
 
 export type HeaderContent = {
-  logo: ImageAsset;
   nav: NavItem[];
-  cta: LinkItem;
+  logIn: Link;
+  getStarted: Cta;
+};
+
+/* -------------------------------------------------------------------- hero */
+
+export type HeroSlide = {
+  id: string;
+  /** Business vertical shown in the slide, e.g. "barber", "plants". */
+  name: string;
+  desktop: VideoAsset;
+  mobile: VideoAsset;
 };
 
 export type HeroContent = {
-  backgroundWord: string;
-  lines: string[];
+  headingLines: string[];
+  cta: Cta;
+  disclaimer: string;
+  slides: HeroSlide[];
 };
 
-export type FeatureItem = {
-  icon: "badge" | "pin" | "heart";
+/* --------------------------------------------------- pill-filtered carousel */
+
+/** One card inside a `grow-your-business` style carousel. */
+export type FeatureCard = {
+  id: string;
+  title: string;
+  body: string;
+  image?: ImageAsset;
+  video?: VideoAsset;
+  cta?: Cta;
+};
+
+/** A pill that filters which cards the carousel shows. */
+export type FilterPill = {
+  id: string;
   label: string;
+  cards: FeatureCard[];
 };
 
-export type AboutContent = {
-  heading: string;
-  body: RichText;
-  link: LinkItem;
-  backgroundWord: string;
-  image: ImageAsset;
-};
-
-export type ProcessStep = {
-  number: string;
+export type PillCarouselContent = {
   title: string;
-  description: string;
+  body: string;
+  pills: FilterPill[];
 };
 
-export type Project = {
+/* --------------------------------------------------------- card carousel */
+
+export type PlatformCard = {
+  id: string;
   title: string;
-  category: string;
+  body: string;
+  image?: ImageAsset;
+  video?: VideoAsset;
   href: string;
-  image: ImageAsset;
 };
 
-export type ProjectsContent = {
-  backgroundWord: string;
-  badgeText: string;
-  link: LinkItem;
-  items: Project[];
+export type CardCarouselContent = {
+  title: string;
+  body: string;
+  cards: PlatformCard[];
 };
 
-export type AwardRow = {
-  count: string;
+/* --------------------------------------------------------------- stats */
+
+export type Stat = {
+  value: string;
   label: string;
-  source: string;
-  year: string;
 };
 
-export type AwardsContent = {
-  heading: string;
-  tag: string;
-  backgroundWord: string;
+export type StatsContent = {
   intro: string;
-  rows: AwardRow[];
-  logos: ImageAsset[];
+  stats: Stat[];
 };
 
-export type Testimonial = {
-  quote: RichText;
-  author: string;
+/* ------------------------------------------------------------- accordion */
+
+export type AccordionEntry = {
+  id: string;
+  question: string;
+  answer: string;
 };
 
-export type TestimonialsContent = {
-  rating: string;
-  ratingLabel: string;
-  background: string;
-  items: Testimonial[];
-  logos: ImageAsset[];
-};
-
-export type BlogPost = {
-  category: string;
-  date: string;
+export type AccordionSectionContent = {
   title: string;
-  href: string;
-  image: ImageAsset;
+  entries: AccordionEntry[];
 };
 
-export type BlogContent = {
+/* ---------------------------------------------------------------- footer */
+
+export type FooterColumn = {
   heading: string;
-  link: LinkItem;
-  posts: BlogPost[];
-};
-
-export type CtaContent = {
-  darkWord: string;
-  limeWord: string;
-  badgeText: string;
-};
-
-export type Office = {
-  name: string;
-  lines: string[];
+  links: Link[];
 };
 
 export type FooterContent = {
-  tagline: RichText;
-  logo: ImageAsset;
-  offices: Office[];
-  phone: string;
-  email: string;
-  nav: LinkItem[];
-  copyright: RichText;
+  columns: FooterColumn[];
+  social: Array<{ name: "facebook" | "instagram" | "pinterest"; href: string }>;
+  legal: Link[];
+  copyright: string;
+  locale: { language: string; region: string };
 };
