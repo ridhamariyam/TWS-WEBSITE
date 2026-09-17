@@ -52,7 +52,7 @@ export function SiteHeader() {
               width={header.logo.width}
               height={header.logo.height}
               loading="eager"
-              className="block h-[56px] w-[50px]"
+              className="block h-[32px] w-auto"
             />
           </Link>
         </div>

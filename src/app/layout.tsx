@@ -16,7 +16,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "TWS — Web Agency",
+  title: "The Web Studio",
   description: "TWS is a digital agency crafting brands, websites and products.",
 };
 

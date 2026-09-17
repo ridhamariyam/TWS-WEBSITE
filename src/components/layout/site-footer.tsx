@@ -42,7 +42,7 @@ export function SiteFooter() {
                 alt={logo.alt}
                 width={logo.width}
                 height={logo.height}
-                className="block h-[56px] w-[50px]"
+                className="block h-[32px] w-auto"
               />
             </Link>
           </div>

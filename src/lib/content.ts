@@ -1,8 +1,15 @@
 /**
- * Homepage copy and imagery. Everything here is TWS placeholder content,
- * written to the same lengths and line structure as the reference layout so
- * the design holds. Replace with final copy and photography before launch.
+ * TWS — The Web Studio
+ *
+ * Homepage content based on the approved TWS Website Strategy & Copy.
+ *
+ * Positioning:
+ * Strategy, design and technology under one focused studio.
+ *
+ * Primary tagline:
+ * Small studio. Serious work.
  */
+
 import type {
   AboutContent,
   AwardsContent,
@@ -18,101 +25,239 @@ import type {
   TestimonialsContent,
 } from "@/types/content";
 
-const logo = { src: "/images/brand/tws-mark.svg", alt: "TWS", width: 100, height: 112 };
+const logo = {
+  src: "/images/brand/tws-wordmark.png",
+  alt: "TWS — The Web Studio.",
+  width: 400,
+  height: 159,
+};
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 export const primaryNav: LinkItem[] = [
   { label: "Home", href: "#" },
-  { label: "Agency", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Projects", href: "#projects" },
-  { label: "People", href: "#testimonials" },
-  { label: "Blog", href: "#blog" },
+  { label: "Services", href: "#services" },
+  { label: "Work", href: "#projects" },
+  { label: "Studio", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const header: HeaderContent = {
   logo,
-  nav: primaryNav.map((item) =>
-    item.label === "Expertise"
-      ? {
-          ...item,
-          children: [
-            { label: "Brand strategy", href: "#expertise" },
-            { label: "Web design", href: "#expertise" },
-            { label: "Development", href: "#expertise" },
-            { label: "Digital marketing", href: "#expertise" },
-          ],
-        }
-      : item,
-  ),
-  cta: { label: "Let's talk", href: "#contact" },
+
+  nav: primaryNav,
+
+  cta: {
+    label: "Start a project",
+    href: "#contact",
+  },
 };
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 export const hero: HeroContent = {
-  backgroundWord: "branding",
-  lines: ["We build bold", "digital brands"],
+  backgroundWord: "TWS.  ",
+
+  lines: [
+    "Your website is",
+    "the first conversation",
+    "with your business.",
+  ],
 };
 
+/* =========================================================
+   HERO / TRUST SIGNALS
+   ========================================================= */
+
 export const features: FeatureItem[] = [
-  { icon: "badge", label: "Full-service digital studio" },
-  { icon: "pin", label: "Working across time zones" },
-  { icon: "heart", label: "Loved by our clients" },
+  {
+    icon: "badge",
+    label: "Strategy first",
+  },
+  {
+    icon: "pin",
+    label: "One focused studio",
+  },
+  {
+    icon: "heart",
+    label: "Built with intent",
+  },
 ];
 
+/* =========================================================
+   THE BELIEF / ABOUT
+   ========================================================= */
+
 export const about: AboutContent = {
-  heading: "We shape brands people remember.",
+  heading: "Trust is decided before anyone reads a word.",
+
   body: [
-    "Every project starts with listening. With ",
-    { emphasis: "10+ years of craft" },
-    " behind us, we pair sharp strategy with thoughtful design to build websites and brands that feel effortless to use and grow with our clients.",
+    "A website is not a digital brochure. For most businesses, it's the first real interaction a stranger has with them — before a call, a visit, a booking or a sale. ",
+    {
+      emphasis: "TWS treats that decision as the whole job.",
+    },
+    " Strategy comes before decoration. Design has a reason behind every choice. Technology supports the experience instead of getting in its way.",
   ],
-  link: { label: "Meet the team", href: "#testimonials" },
-  backgroundWord: "story",
+
+  link: {
+    label: "Why TWS",
+    href: "#studio",
+  },
+
+  backgroundWord: "trust",
+
   image: {
     src: "/images/about/workspace.svg",
-    alt: "The TWS studio workspace",
+    alt: "TWS studio",
     width: 945,
     height: 785,
   },
 };
 
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
 export const processSteps: ProcessStep[] = [
   {
     number: "01",
-    title: "Brand strategy",
-    description: "Research and positioning that give your brand a clear, confident direction.",
+    title: "Think",
+    description:
+      "Understand the business, the audience, the positioning and the goal — before anything is designed.",
   },
+
   {
     number: "02",
-    title: "Web design",
-    description: "Considered interfaces that guide visitors and turn attention into action.",
+    title: "Design",
+    description:
+      "Translate the strategy into a clear, distinctive digital experience — structured around how people decide.",
   },
+
   {
     number: "03",
-    title: "Development",
-    description: "Fast, accessible builds engineered to scale as your business grows.",
+    title: "Build",
+    description:
+      "Develop the experience for performance, responsiveness and scale — built to last, not just launch.",
+  },
+
+  {
+    number: "04",
+    title: "Grow",
+    description:
+      "Launch, measure and improve. A website is a starting point, not a finished thing.",
   },
 ];
 
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+const serviceList = [
+  {
+    title: "Web Design & Development",
+    category: "Web",
+    description:
+      "Websites that look considered and work properly.",
+  },
+
+  {
+    title: "E-commerce",
+    category: "Commerce",
+    description:
+      "Stores built to sell, not just display.",
+  },
+
+  {
+    title: "Web Applications",
+    category: "Applications",
+    description:
+      "Tools your business — or your customers — actually use.",
+  },
+
+  {
+    title: "UI / UX Design",
+    category: "Experience",
+    description:
+      "Every screen, designed with a reason.",
+  },
+
+  {
+    title: "Digital Strategy",
+    category: "Strategy",
+    description:
+      "The thinking that comes before the design.",
+  },
+];
+
+export const services = {
+  heading: "What we do.",
+
+  intro:
+    "Strategy, design and technology working together — under one focused studio.",
+
+  items: serviceList.map((service) => service),
+};
+
+/* =========================================================
+   WHY TWS
+   ========================================================= */
+
+export const studio = {
+  heading: "Small studio. Serious work.",
+
+  body: [
+    "TWS is intentionally small. Not because it can't grow — because growing the wrong way costs clients the thing they're actually paying for: direct access to the people doing the thinking.",
+
+    "There's no account manager translating your brief to a design team you'll never meet, and no developer three layers removed from the strategy.",
+
+    "Strategy, design and technology sit in the same room, working on the same problem — yours.",
+
+    "It's more structure than a freelancer, and more focus than a large agency: a studio built to stay in the room for the whole project, not just the first meeting.",
+
+    "It's a different way of working. It's also why the work holds up.",
+  ],
+
+  backgroundWord: "studio",
+};
+
+/* =========================================================
+   SELECTED WORK
+   ========================================================= */
+
+/**
+ * Replace these with real TWS projects before launch.
+ *
+ * Do NOT publish invented results.
+ * The strategy explicitly requires real, measured outcomes.
+ */
+
 const projectList: Array<[string, string]> = [
-  ["Northline Coffee", "Branding"],
-  ["Atlas Journal", "Editorial"],
-  ["Soft Form", "Product"],
-  ["Paperlane", "Packaging"],
-  ["Ember Goods", "Identity"],
-  ["Quiet Hours", "Digital"],
-  ["Field Notes", "Campaign"],
-  ["Stone & Salt", "Packaging"],
+  ["Project One", "Real Estate"],
+  ["Project Two", "Hospitality"],
+  ["Project Three", "E-commerce"],
+  ["Project Four", "Professional Services"],
 ];
 
 export const projects: ProjectsContent = {
   backgroundWord: "selected",
-  badgeText: "TWS studio • design & development • since 2014 • ",
-  link: { label: "View all work", href: "#projects" },
+
+  badgeText:
+    "TWS — Strategy / Design / Technology — Selected Work — ",
+
+  link: {
+    label: "View our work",
+    href: "#projects",
+  },
+
   items: projectList.map(([title, category], i) => ({
     title,
     category,
     href: "#projects",
+
     image: {
       src: `/images/projects/project-0${i + 1}.svg`,
       alt: `${title} project preview`,
@@ -122,83 +267,146 @@ export const projects: ProjectsContent = {
   })),
 };
 
-export const awards: AwardsContent = {
-  heading: "Industry recognition",
-  tag: "Made with intent",
-  backgroundWord: "honors",
-  intro:
-    "Our work has been recognised by design juries around the world, proof that careful craft and clear strategy pay off for the brands we partner with.",
-  rows: [
-    { count: "6X", label: "Site of the day", source: "Honorline", year: "2025" },
-    { count: "3X", label: "Developer award", source: "Pixelboard", year: "2024" },
-    { count: "5X", label: "Site of the month", source: "Honorline", year: "2023" },
-    { count: "2X", label: "Best portfolio", source: "Studiorank", year: "2022" },
-  ],
-  logos: [1, 2, 3].map((n) => ({
-    src: `/images/awards/award-0${n}.svg`,
-    alt: ["Honorline", "Pixelboard", "Studiorank"][n - 1],
-    width: 170,
-    height: 30,
-  })),
-};
+/* =========================================================
+   INDUSTRIES
+   ========================================================= */
 
-export const testimonials: TestimonialsContent = {
-  rating: "4.96",
-  ratingLabel: "Client rating",
-  background: "/images/testimonials/dot-field.svg",
+export const industries = {
+  heading: "Where we do our best work.",
+
+  intro:
+    "TWS works best with businesses where a digital presence carries real weight — where trust is decided online before a call, a booking or a visit ever happens.",
+
   items: [
     {
-      quote: [
-        "Working with TWS felt like having a ",
-        { emphasis: "brilliant" },
-        " in-house team. They listened, moved fast and delivered beyond our brief.",
-      ],
-      author: "@Maya Fernandes",
+      title: "Real Estate",
+      description:
+        "A property is a considered decision. The website needs to build the same confidence a good agent would — before the first viewing.",
     },
+
     {
-      quote: [
-        "The new site doubled our enquiries in three months. Clear process, ",
-        { emphasis: "thoughtful" },
-        " design and zero surprises.",
-      ],
-      author: "@Daniel Okafor",
+      title: "Hospitality",
+      description:
+        "Hotels and resorts are booked on trust and imagination. The website has to do both — sell an experience, and remove every doubt about booking it.",
     },
+
     {
-      quote: [
-        "From strategy to launch every detail was handled with care. Our brand finally looks like the ",
-        { emphasis: "company" },
-        " we are.",
-      ],
-      author: "@Priya Raman",
+      title: "Healthcare",
+      description:
+        "Patients choose a clinic the way they choose a doctor — carefully. The website needs to earn that confidence in seconds, not sell it in paragraphs.",
+    },
+
+    {
+      title: "Professional Services",
+      description:
+        "When the product is expertise, the website is the only proof a prospect gets before the first conversation. It has to carry the weight alone.",
+    },
+
+    {
+      title: "Startups & Technology",
+      description:
+        "An early-stage company is judged by its website before its product. It has to look like where the company is going, not just where it is.",
+    },
+
+    {
+      title: "E-commerce",
+      description:
+        "Every screen between browsing and buying is a chance to lose the sale. The website has to remove friction, not add polish for its own sake.",
     },
   ],
-  logos: [
-    ["Northwind", 146],
-    ["Globex", 128],
-    ["Initech", 104],
-    ["Vandelay", 150],
-    ["Umbra", 116],
-  ].map(([alt, width], i) => ({
-    src: `/images/clients/client-0${i + 1}.svg`,
-    alt: String(alt),
-    width: Number(width),
-    height: 35,
-  })),
 };
 
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+/**
+ * Keep this section only when real client testimonials are available.
+ * Placeholder quotes from the previous template have intentionally
+ * been removed because fabricated testimonials should never go live.
+ */
+
+export const testimonials: TestimonialsContent = {
+  rating: "",
+  ratingLabel: "",
+
+  background: "/images/testimonials/dot-field.svg",
+
+  items: [],
+
+  logos: [],
+};
+
+/* =========================================================
+   AWARDS
+   ========================================================= */
+
+/**
+ * Do not publish fabricated awards or recognition.
+ * Populate this section only with verified TWS awards.
+ */
+
+export const awards: AwardsContent = {
+  heading: "Recognition",
+  tag: "Built with intent",
+  backgroundWord: "honors",
+
+  intro:
+    "Recognition earned through considered strategy, design and technology.",
+
+  rows: [],
+
+  logos: [],
+};
+
+/* =========================================================
+   INSIGHTS
+   ========================================================= */
+
+/**
+ * Editorial section.
+ *
+ * Replace placeholder posts with actual TWS articles before launch.
+ */
+
 export const blog: BlogContent = {
-  heading: "Latest insights",
-  link: { label: "Read the journal", href: "#blog" },
+  heading: "Thinking behind the work.",
+
+  link: {
+    label: "View all insights",
+    href: "#blog",
+  },
+
   posts: [
-    ["Strategy", "12 August 2026", "How to brief a design agency and get the site you want."],
-    ["Design", "28 July 2026", "Choosing a type pairing that carries your brand voice."],
-    ["Development", "9 July 2026", "Why page speed is still the quietest conversion booster."],
-    ["Branding", "21 June 2026", "Building a colour system that scales across channels."],
+    [
+      "Strategy",
+      "Insight",
+      "Why your website is part of the business strategy.",
+    ],
+
+    [
+      "Design",
+      "Insight",
+      "Designing around how people decide.",
+    ],
+
+    [
+      "Development",
+      "Insight",
+      "Building websites that hold up beyond launch.",
+    ],
+
+    [
+      "Business",
+      "Insight",
+      "What your website tells people before you meet.",
+    ],
   ].map(([category, date, title], i) => ({
     category,
     date,
     title,
     href: "#blog",
+
     image: {
       src: `/images/blog/post-0${i + 1}.svg`,
       alt: title,
@@ -208,21 +416,53 @@ export const blog: BlogContent = {
   })),
 };
 
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
 export const cta: CtaContent = {
-  darkWord: "start",
-  limeWord: "something",
-  badgeText: "Let's build something great • TWS studio • ",
+  darkWord: "build",
+
+  limeWord: "what's next",
+
+  badgeText:
+    "Start a conversation — TWS — The Web Studio — Strategy / Design / Technology — ",
 };
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 export const footer: FooterContent = {
-  tagline: ["Have a project in mind? ", { emphasis: "Let's talk." }],
-  logo,
-  offices: [
-    { name: "TWS - Studio One", lines: ["120 Harbour Street, Level 4,", "Waterfront District"] },
-    { name: "TWS - Studio Two", lines: ["48 Market Lane, Suite 9,", "Old Town Quarter"] },
+  tagline: [
+    "TWS — The Web Studio. ",
+    {
+      emphasis: "Strategy, design and technology, under one studio.",
+    },
   ],
-  phone: "+ 000 123 4567",
-  email: "hello@tws.studio",
+
+  logo,
+
+  offices: [
+    {
+      name: "TWS — The Web Studio",
+      lines: [
+        "Calicut, Kerala",
+        "India",
+      ],
+    },
+  ],
+
+  phone: "",
+
+  email: "thewebstudioagency@gmail.com",
+
   nav: primaryNav,
-  copyright: ["© 2026 TWS Studio. Designed & built by ", { emphasis: "TWS" }],
+
+  copyright: [
+    "© 2026 TWS — The Web Studio. ",
+    {
+      emphasis: "Built with intent.",
+    },
+  ],
 };
