@@ -1,0 +1,107 @@
+/* Rules touching `.stats` in squarespace.com's homepage CSS.
+ * 24 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.stats__number {
+  justify-content:center;
+  display:flex;
+  position:absolute;
+  inset:0;
+}
+.stats__digit {
+  margin-inline:.28em;
+  position:relative;
+}
+.stats__counter {
+  justify-content:center;
+  font-weight:300;
+  line-height:normal;
+  display:flex;
+  overflow-y:clip;
+}
+.stats__counter--static {
+  display:none;
+}
+.stats__counter-suffix--space-before {
+  margin-left:.2em;
+  display:inline-block;
+}
+html[lang]:not([lang^=en]) [data-has-localized-counter=true] .stats__counter {
+  display:none;
+}
+.stats__card-localized-counter {
+  font-weight:300;
+}
+html[lang^=en] .stats__card-localized-counter,html:not([lang]) .stats__card-localized-counter {
+  display:none;
+}
+.stats__card {
+  text-align:center;
+  opacity:0;
+  width:var(--stats-width);
+  flex-direction:column;
+  gap:12px;
+  display:flex;
+}
+.stats__card--reveal-one,.stats__card--reveal-two,.stats__card--reveal-three {
+  animation:1.2s cubic-bezier(.23,1,.32,1) forwards fadeIn;
+}
+.stats__card--reveal-one {
+  animation-delay:.2s;
+}
+.stats__card--reveal-two {
+  animation-delay:.4s;
+}
+.stats__card--reveal-three {
+  animation-delay:.6s;
+}
+.stats {
+  justify-content:center;
+  align-items:flex-start;
+  gap:16px;
+  padding:80px 0;
+  display:flex;
+}
+.stats--no-padding-top {
+  padding-top:0;
+}
+.homepage-hero .stats__card-title-nonen {
+  display:none;
+}
+}
+@media (prefers-reduced-motion:reduce) {
+  .stats__counter {
+    display:none;
+  }
+  .stats__counter--static {
+    display:flex;
+  }
+  .homepage-hero .stats__card-title-nonen {
+    display:inline-block;
+  }
+}
+@media (width<=743px) {
+  .stats__card--mobile-hide {
+    display:none;
+  }
+}
+@media (width>=744px) {
+  .stats__card {
+    gap:16px;
+  }
+  .stats {
+    gap:64px;
+  }
+}
+@media (width>=744px) and (width<=1019px) {
+  .stats__card--tablet-hide {
+    display:none;
+  }
+}
+@media (width>=1020px) {
+  .stats {
+    gap:120px;
+    padding:120px 0;
+  }
+}

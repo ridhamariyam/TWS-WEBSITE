@@ -1,0 +1,12 @@
+/* Rules touching `.collection-template-picker` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.collection-template-picker .global-navigation--not-sticky,.collection-template-store .global-navigation--not-sticky {
+  position:absolute;
+}
+.collection-template-picker .global-navigation--nav-items-visible .global-navigation__desktop,.collection-template-picker .global-navigation--nav-items-visible .global-navigation__desktop__account-container,.collection-template-picker .global-navigation--nav-items-visible .global-navigation__desktop__menu-bar,.collection-template-picker .global-navigation--nav-items-visible .global-navigation__mobile__drawer-button,.collection-template-picker .global-navigation--nav-items-visible .global-navigation__mobile__account-info__logged-in {
+  pointer-events:auto;
+  visibility:visible;
+}

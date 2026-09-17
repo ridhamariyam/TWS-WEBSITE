@@ -1,0 +1,33 @@
+/* Rules touching `.customers-served` in squarespace.com's homepage CSS.
+ * 7 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.customers-served {
+  background-color:var(--primitive-black);
+}
+.customers-served__faces {
+  padding-top:80px;
+  padding-bottom:40px;
+}
+.customers-served__headline {
+  padding-bottom:40px;
+}
+}
+@media (width>=744px) {
+  .customers-served__faces {
+    padding-bottom:56px;
+  }
+  .customers-served__headline {
+    padding-bottom:64px;
+  }
+}
+@media (width>=1020px) {
+  .customers-served__faces {
+    padding-top:0;
+    padding-bottom:80px;
+  }
+  .customers-served__headline {
+    padding-bottom:80px;
+  }
+}

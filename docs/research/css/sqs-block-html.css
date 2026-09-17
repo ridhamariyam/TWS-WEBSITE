@@ -1,0 +1,33 @@
+/* Rules touching `.sqs-block-html` in squarespace.com's homepage CSS.
+ * 6 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.offers-modal .sqs-block-html,.offers-modal .sqs-block-form {
+  width:100%;
+  padding:0;
+}
+.offers-modal .sqs-layout .sqs-row [class*=sqs-col-] .sqs-block-html:last-child {
+  padding-top:40px;
+}
+}
+@media (width>=744px) {
+  .offers-modal .sqs-block-html h1,.offers-modal .sqs-block-form h1,.offers-modal .sqs-block-html p,.offers-modal .sqs-block-form p {
+    padding-right:40px;
+  }
+}
+@media (width>=1020px) {
+  .offers-modal .sqs-block-html h1,.offers-modal .sqs-block-form h1,.offers-modal .sqs-block-html p,.offers-modal .sqs-block-form p {
+    padding-right:74px;
+  }
+}
+@media (width>=1280px) {
+  .offers-modal .sqs-layout .sqs-row [class*=sqs-col-] .sqs-block-html:last-child {
+    padding-top:48px;
+  }
+}
+@media (width>=1440px) {
+  .offers-modal .sqs-block-html h1,.offers-modal .sqs-block-form h1,.offers-modal .sqs-block-html p,.offers-modal .sqs-block-form p {
+    padding-right:48px;
+  }
+}

@@ -1,0 +1,19 @@
+/* Rules touching `.collection-template-store` in squarespace.com's homepage CSS.
+ * 4 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.collection-template-store .global-navigation {
+  opacity:0;
+  transition:top .3s cubic-bezier(.455,.03,.515,.955);
+}
+.collection-template-store .global-navigation--loaded {
+  opacity:1;
+  transition:opacity .3s cubic-bezier(.455,.03,.515,.955);
+}
+.collection-template-picker .global-navigation--not-sticky,.collection-template-store .global-navigation--not-sticky {
+  position:absolute;
+}
+html.has-promo-banner:not(.has-promo-banner--exempt) body:not(.collection-template-store) #global-navigation {
+  top:var(--promo-banner-height);
+}

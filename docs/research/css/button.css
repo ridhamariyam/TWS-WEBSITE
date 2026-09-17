@@ -1,0 +1,18 @@
+/* Rules touching `.button` in squarespace.com's homepage CSS.
+ * 3 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.offers-modal .button,.offers-modal .cta,.offers-modal .link--is-button,.offers-modal .link.is-button {
+  background-color:var(--primitive-white);
+  color:var(--primitive-black);
+}
+.offers-modal .button--is-outline {
+  color:var(--primitive-white);
+  background-color:#0000;
+  box-shadow:inset 0 0 0 1px #fff;
+}
+.offers-modal .button--is-outline:hover {
+  background-color:var(--primitive-white);
+  color:var(--primitive-black);
+}

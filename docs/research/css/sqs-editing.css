@@ -1,0 +1,12 @@
+/* Rules touching `.sqs-editing` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.offers-modal .sqs-layout:not(.sqs-editing) .sqs-block.sqs-block-spacer.spacer-block:first-child {
+  height:0;
+  padding:0;
+}
+.offers-modal .sqs-layout:not(.sqs-editing) .sqs-row .sqs-block-image:not(.float):first-child {
+  padding-bottom:10px;
+}

@@ -1,0 +1,43 @@
+/* Rules touching `.grow-your-business` in squarespace.com's homepage CSS.
+ * 9 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.grow-your-business {
+  background-color:var(--primitive-white);
+  padding-bottom:80px;
+}
+.grow-your-business__headline-body {
+  margin-top:24px;
+}
+.grow-your-business__headline,.grow-your-business__pills {
+  padding-bottom:24px;
+}
+.grow-your-business__pills {
+  padding-left:16px;
+  padding-right:16px;
+  overflow-y:auto;
+}
+}
+@media (width>=744px) {
+  .grow-your-business__headline,.grow-your-business__pills {
+    padding-bottom:32px;
+  }
+  .grow-your-business__pills {
+    padding-left:24px;
+    padding-right:24px;
+  }
+}
+@media (width>=1020px) {
+  .grow-your-business {
+    padding-bottom:120px;
+  }
+  .grow-your-business__headline,.grow-your-business__pills {
+    padding-bottom:40px;
+  }
+  .grow-your-business__pills {
+    justify-content:center;
+    align-items:center;
+    display:flex;
+  }
+}

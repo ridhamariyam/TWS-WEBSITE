@@ -1,0 +1,14 @@
+/* Rules touching `.conversion-component` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.conversion-component__cta {
+  display:none;
+}
+}
+@media (width>=1020px) {
+  .conversion-component__cta {
+    display:flex;
+  }
+}

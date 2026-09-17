@@ -1,0 +1,18 @@
+/* Rules touching `.copy-icon` in squarespace.com's homepage CSS.
+ * 4 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.copy-icon {
+  stroke:none;
+  color:var(--primitive-black);
+}
+.copy-icon--theme-light {
+  color:var(--primitive-white);
+}
+.promo-banner .promo-banner__copy-code .promo-banner__code-text,.promo-banner .promo-banner__copy-code .copy-icon {
+  transition:color .3s cubic-bezier(.455,.03,.515,.955);
+}
+.promo-banner .promo-banner__copy-code:hover .promo-banner__code-text,.promo-banner .promo-banner__copy-code:hover .copy-icon.copy-icon--theme-light {
+  color:var(--primitive-black);
+}

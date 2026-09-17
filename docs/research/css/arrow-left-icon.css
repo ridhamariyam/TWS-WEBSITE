@@ -1,0 +1,13 @@
+/* Rules touching `.arrow-left-icon` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.arrow-left-icon {
+  stroke:none;
+  fill:none;
+  color:var(--primitive-black);
+}
+.arrow-left-icon--theme-light {
+  color:var(--primitive-white);
+}

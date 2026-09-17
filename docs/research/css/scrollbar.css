@@ -1,0 +1,49 @@
+/* Rules touching `.scrollbar` in squarespace.com's homepage CSS.
+ * 9 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.scrollbar {
+  width:100%;
+  padding:0 var(--grid-gutter-width);
+  position:absolute;
+  bottom:80px;
+  left:0;
+}
+.scrollbar__wrapper {
+  width:100%;
+  position:relative;
+}
+.scrollbar__background {
+  background-color:var(--color-gray-200);
+  width:100%;
+  height:1px;
+}
+.scrollbar__background--theme-light {
+  background-color:#fff3;
+}
+.scrollbar__bar {
+  width:var(--scrollbar-width,calc(100%/3));
+  cursor:grab;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.scrollbar__ui {
+  background-color:var(--primitive-black);
+  height:1px;
+}
+.scrollbar__ui--theme-light {
+  background-color:var(--primitive-white);
+}
+}
+@media (prefers-reduced-motion:reduce) {
+  .scrollbar {
+    display:none;
+  }
+}
+@media (width>=1280px) {
+  .scrollbar {
+    bottom:120px;
+  }
+}

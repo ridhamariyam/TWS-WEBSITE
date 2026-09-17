@@ -1,0 +1,12 @@
+/* Rules touching `.pause-icon` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.pause-icon {
+  fill:none;
+  color:var(--primitive-black);
+}
+.pause-icon--theme-light {
+  color:var(--primitive-white);
+}

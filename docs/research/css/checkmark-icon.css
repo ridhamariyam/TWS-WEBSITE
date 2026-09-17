@@ -1,0 +1,11 @@
+/* Rules touching `.checkmark-icon` in squarespace.com's homepage CSS.
+ * 2 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.checkmark-icon {
+  color:var(--primitive-black);
+}
+.checkmark-icon--theme-light {
+  color:var(--primitive-white);
+}

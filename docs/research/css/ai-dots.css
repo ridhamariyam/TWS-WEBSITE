@@ -1,0 +1,63 @@
+/* Rules touching `.ai-dots` in squarespace.com's homepage CSS.
+ * 11 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.ai-dots {
+  --defaultTransform:scale(1)translate(0%,0%);
+  --defaultTiming:14s;
+  aspect-ratio:1;
+  width:22px;
+  animation:14s cubic-bezier(.645,.045,.355,1) infinite rotateAnimation;
+  position:relative;
+}
+.ai-dots--no-animation {
+  animation:none;
+}
+.ai-dots__dot {
+  background:var(--primitive-black);
+  transform-origin:50%;
+  border-radius:100%;
+  position:absolute;
+}
+.ai-dots__dot--large {
+  width:59.5%;
+  height:59.5%;
+  animation:scaleAnimationLarge var(--defaultTiming)linear infinite;
+  top:4%;
+  left:0;
+}
+.ai-dots__dot--medium {
+  width:38.13%;
+  height:38.13%;
+  animation:scaleAnimationMedium var(--defaultTiming)linear infinite;
+  top:40%;
+  right:0;
+}
+.ai-dots__dot--small {
+  width:24%;
+  height:24%;
+  animation:scaleAnimationSmall var(--defaultTiming)linear infinite;
+  bottom:6%;
+  left:30%;
+}
+.ai-dots__dot--light {
+  background:var(--primitive-white);
+}
+.ai-dots__dot--no-animation {
+  animation:none;
+}
+}
+@media (prefers-reduced-motion:no-preference) {
+  .ai-dots__dot {
+    transition:background-color .2s cubic-bezier(.645,.045,.355,1);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .ai-dots {
+    animation:none;
+  }
+  .ai-dots__dot {
+    animation:none;
+  }
+}

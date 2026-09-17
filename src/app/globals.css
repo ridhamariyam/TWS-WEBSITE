@@ -464,17 +464,19 @@
 }
 
 /*
- * Scroll reveal. The live site sets inline `opacity: 0` server-side and flips it
- * to 1 once the element intersects the viewport; there is no transition on the
- * element itself, so the fade is owned here.
+ * Scroll reveal. The live site server-renders `style="opacity:0;transform:
+ * translateY(25px)"` on headlines, body copy and avatars, then clears both once
+ * the element intersects the viewport. There is no transition on the element
+ * itself, so the easing is owned here — matched to the 1.2s cubic-bezier(.23,1,
+ * .32,1) the stats cards use for their own fadeIn.
  */
 @layer utilities {
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(25px);
     transition:
-      opacity 0.6s var(--ease-out-quint),
-      transform 0.6s var(--ease-out-quint);
+      opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .reveal[data-revealed="true"] {
@@ -488,5 +490,273 @@
       transform: none;
       transition: none;
     }
+  }
+}
+
+/*
+ * The `.cta` system, transcribed from docs/research/css/cta.css.
+ *
+ * The arrow mechanic is the fiddly part and is worth keeping in CSS rather than
+ * utilities: the icon parks at translateX(-100%) inside a 1em-wide clipped slot,
+ * the label sits shifted right by half the gap, and on hover the icon slides to
+ * 0 while the label slides left — so the arrow appears to push the text over.
+ */
+@layer components {
+  .cta {
+    color: var(--color-primitive-black);
+  }
+
+  .cta--light {
+    color: var(--color-primitive-white);
+  }
+
+  .cta:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .cta--primary,
+  .cta--primary-subtle,
+  .cta--secondary {
+    --cta-arrow-gap: 8px;
+    --cta-arrow-margin-right: -4px;
+    --cta-hover-offset: 2px;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none;
+    border-radius: 4px;
+    padding: 23px 28px;
+    font-family: var(--font-clarkson);
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1em;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .cta--primary {
+    background-color: var(--color-primitive-black);
+    color: var(--color-primitive-white);
+  }
+
+  .cta--primary.cta--light {
+    background-color: var(--color-primitive-white);
+    color: var(--color-primitive-black);
+  }
+
+  .cta--primary-subtle {
+    background-color: var(--color-primitive-black);
+    color: var(--color-primitive-white);
+  }
+
+  .cta--secondary {
+    --cta-arrow-gap: 17px;
+    background-color: transparent;
+    color: var(--color-primitive-black);
+    box-shadow: inset 0 0 0 2px
+      color-mix(in srgb, var(--color-primitive-black) 20%, transparent);
+  }
+
+  .cta--secondary.cta--light {
+    color: var(--color-primitive-white);
+    box-shadow: inset 0 0 0 2px
+      color-mix(in srgb, var(--color-primitive-white) 20%, transparent);
+  }
+
+  .cta--tertiary {
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 4px 0;
+    font-family: var(--font-clarkson);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1em;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .cta--inline {
+    appearance: none;
+    cursor: pointer;
+    display: inline;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: transparent;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+  }
+
+  /* Two half-width underlines that sweep in from opposite edges on hover. */
+  .cta--tertiary.cta--underline-hover,
+  .cta--has-inline-underline {
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor);
+    background-position:
+      0 100%,
+      100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .cta--tertiary.cta--underline-hover {
+    background-size:
+      51% 2px,
+      50% 2px;
+  }
+
+  .cta--has-inline-underline {
+    background-size:
+      51% 1px,
+      50% 1px;
+  }
+
+  .cta__label {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .cta--has-arrow span[data-arrow="true"] {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+  }
+
+  .cta--primary span[data-arrow="true"],
+  .cta--primary-subtle span[data-arrow="true"],
+  .cta--secondary span[data-arrow="true"] {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    width: 1em;
+    margin-left: var(--cta-arrow-gap);
+    margin-right: var(--cta-arrow-margin-right);
+  }
+
+  .cta--primary .cta__arrow-icon,
+  .cta--primary-subtle .cta__arrow-icon,
+  .cta--secondary .cta__arrow-icon {
+    display: block;
+    line-height: 1;
+    transform: translateX(-100%);
+  }
+
+  .cta--primary.cta--has-arrow .cta__label,
+  .cta--primary-subtle.cta--has-arrow .cta__label,
+  .cta--secondary.cta--has-arrow .cta__label {
+    transform: translateX(
+      calc(var(--cta-arrow-gap) / 2 + 0.5em + var(--cta-arrow-margin-right) / 2)
+    );
+  }
+
+  @media (hover: hover) {
+    .cta--primary:hover {
+      background-color: var(--color-gray-200);
+      color: var(--color-primitive-black);
+    }
+    .cta--primary.cta--light:hover {
+      background-color: var(--color-gray-900);
+      color: var(--color-primitive-white);
+    }
+    .cta--primary-subtle:hover {
+      background-color: var(--color-gray-800);
+    }
+    .cta--primary-subtle.cta--light:hover {
+      background-color: var(--color-gray-200);
+    }
+    .cta--secondary:hover {
+      background-color: transparent;
+      color: var(--color-primitive-black);
+      box-shadow: inset 0 0 0 2px var(--color-primitive-black);
+    }
+    .cta--secondary.cta--light:hover {
+      background-color: var(--color-primitive-white);
+      color: var(--color-primitive-black);
+      box-shadow: inset 0 0 0 2px var(--color-primitive-white);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .cta--primary:hover.cta--has-arrow .cta__label,
+    .cta--primary-subtle:hover.cta--has-arrow .cta__label,
+    .cta--secondary:hover.cta--has-arrow .cta__label {
+      transform: translateX(calc(-6px + var(--cta-hover-offset)));
+    }
+    .cta--primary:hover span[data-arrow="true"],
+    .cta--primary-subtle:hover span[data-arrow="true"],
+    .cta--secondary:hover span[data-arrow="true"] {
+      transform: translateX(var(--cta-hover-offset));
+    }
+    .cta--primary:hover .cta__arrow-icon,
+    .cta--primary-subtle:hover .cta__arrow-icon,
+    .cta--secondary:hover .cta__arrow-icon {
+      transform: translateX(0);
+      transition: transform 0.35s var(--ease-in-out-cubic);
+    }
+    .cta--tertiary:hover {
+      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideIn;
+    }
+    .cta--tertiary {
+      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideOut;
+    }
+    .cta--has-inline-underline.cta--underline-hover {
+      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideIn;
+    }
+    .cta--has-inline-underline.cta--underline-hover:hover {
+      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideOut;
+    }
+  }
+}
+
+@keyframes ctaUnderlineSlideIn {
+  0% {
+    background-position:
+      -200% 100%,
+      -100% 100%;
+  }
+  to {
+    background-position:
+      0 100%,
+      100% 100%;
+  }
+}
+
+@keyframes ctaUnderlineSlideOut {
+  0% {
+    background-position:
+      0 100%,
+      100% 100%;
+  }
+  to {
+    background-position:
+      210% 100%,
+      300% 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

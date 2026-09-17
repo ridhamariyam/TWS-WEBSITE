@@ -1,0 +1,49 @@
+/* Rules touching `.scrollable-container` in squarespace.com's homepage CSS.
+ * 9 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.scrollable-container {
+  position:relative;
+}
+.scrollable-container__content {
+  --scrollbar-offset:0px;
+  padding-bottom:calc(80px + var(--scrollbar-offset));
+  scroll-snap-type:x mandatory;
+  position:relative;
+  overflow:auto;
+}
+.scrollable-container__content--dragging {
+  scroll-snap-type:none;
+}
+.scrollable-container__content--has-scrollbar {
+  --scrollbar-offset:24px;
+}
+}
+@media (prefers-reduced-motion:no-preference) {
+  .scrollable-container__content::-webkit-scrollbar {
+    display:none;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .scrollable-container__content {
+    --scrollbar-offset:0px;
+    overflow:auto;
+    transform:none;
+  }
+}
+@media (width>=744px) {
+  .scrollable-container__content--has-scrollbar {
+    --scrollbar-offset:32px;
+  }
+}
+@media (width>=1280px) {
+  .scrollable-container__content--has-scrollbar {
+    --scrollbar-offset:40px;
+  }
+  .scrollable-container__content {
+    padding-bottom:calc(120px + var(--scrollbar-offset));
+    transform:translateX(var(--transformX));
+    overflow:visible;
+  }
+}

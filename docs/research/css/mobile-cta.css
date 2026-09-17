@@ -1,0 +1,56 @@
+/* Rules touching `.mobile-cta` in squarespace.com's homepage CSS.
+ * 11 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.mobile-cta {
+  width:100%;
+  padding:0 var(--grid-gutter-width);
+  z-index:100;
+  visibility:hidden;
+  opacity:0;
+  background-color:#0000;
+  justify-content:center;
+  transition:opacity .25s linear,visibility .25s step-end;
+  display:flex;
+  position:relative;
+  left:0;
+}
+.mobile-cta--is-sticky {
+  position:fixed;
+  bottom:16px;
+}
+.mobile-cta--is-default-variant {
+  padding:0;
+}
+.mobile-cta--is-visible {
+  visibility:visible;
+  opacity:1;
+  transition:opacity .25s linear,visibility .25s step-start;
+}
+.mobile-cta__link {
+  text-align:center;
+  width:100%;
+  transition:background-color .2s linear,color .2s linear;
+}
+html:not([lang^=ja]) .mobile-cta__link[data-lang-code=ja],html[lang^=ja] .mobile-cta__link:not([data-lang-code=ja]),html:not([lang^=ko]) .mobile-cta__link[data-lang-code=ko],html[lang^=ko] .mobile-cta__link:not([data-lang-code=ko]) {
+  display:none;
+}
+.mobile-cta__sticky-spacer {
+  height:var(--height);
+}
+.mobile-cta__sticky-spacer--is-hidden {
+  display:none;
+}
+.mobile-cta__sticky-ref {
+  margin-top:16px;
+}
+.mobile-cta__sticky-ref--is-centered-variant {
+  margin-top:-24px;
+}
+}
+@media (width>=1020px) {
+  .mobile-cta {
+    display:none;
+  }
+}

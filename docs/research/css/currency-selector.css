@@ -1,0 +1,14 @@
+/* Rules touching `.currency-selector` in squarespace.com's homepage CSS.
+ * 3 blocks, ordered base -> widest breakpoint.
+ * Extracted verbatim; this is the authority for the clone's styling.
+ */
+
+.currency-selector {
+  display:none;
+}
+.currency-selector--is-visible {
+  display:block;
+}
+.currency-selector__title--is-hidden {
+  display:none;
+}
