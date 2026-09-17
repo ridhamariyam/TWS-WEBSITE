@@ -31,7 +31,14 @@ export function Reveal({
       ref={ref}
       data-revealed={revealed}
       className={cn("reveal", className)}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      // Driven inline, exactly as the live page does it: the server renders
+      // `style="opacity:0;transform:translateY(25px)"` and clears both on
+      // intersection. Inline also sidesteps any cascade-layer ordering.
+      style={{
+        opacity: revealed ? 1 : 0,
+        transform: revealed ? "none" : "translateY(25px)",
+        ...(delay ? { transitionDelay: `${delay}ms` } : {}),
+      }}
       {...props}
     >
       {children}
