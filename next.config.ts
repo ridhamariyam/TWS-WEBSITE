@@ -38,11 +38,20 @@ const nextConfig: NextConfig = {
     const hidden = SITE_LAUNCHED
       ? HIDDEN_PAGES
       : [...HIDDEN_PAGES, ...PRE_LAUNCH_PAGES, "/coming-soon"];
-    return hidden.map((source) => ({
-      source,
-      destination: "/",
-      permanent: false,
-    }));
+    return [
+      // One address: www goes to the bare domain, keeping the path.
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.thewebstudio.agency" }],
+        destination: "https://thewebstudio.agency/:path*",
+        permanent: true,
+      },
+      ...hidden.map((source) => ({
+        source,
+        destination: "/",
+        permanent: false,
+      })),
+    ];
   },
   async rewrites() {
     // beforeFiles, so it wins over src/app/page.tsx.
