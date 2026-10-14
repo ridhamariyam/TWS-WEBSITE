@@ -1,0 +1,195 @@
+/*
+ * Scroll-driven video takeover.
+ *
+ * `--p` is the only input: 0 is the contained frame, 1 is full bleed. The
+ * component writes it on `.viewport` and everything below derives from it, so
+ * no two properties can drift apart.
+ *
+ * The video never resizes — it is always a full-viewport cover layer, and what
+ * changes is the window `clip-path` cuts out of it. No crossfade, no second
+ * element, and no layout work per frame.
+ */
+
+.section {
+  position: relative;
+}
+
+.runway {
+  /* Scroll distance the pinned frame has to play out in. */
+  height: 260svh;
+}
+
+.viewport {
+  --p: 0;
+  /* Contained state: the inset from each edge, and the corner softness. */
+  --inset-x: 16%;
+  --inset-y: 18%;
+  --radius: 18px;
+
+  --live-x: calc(var(--inset-x) * (1 - var(--p)));
+  --live-y: calc(var(--inset-y) * (1 - var(--p)));
+  --live-r: calc(var(--radius) * (1 - var(--p)));
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  /* Percentages resolve against this box, which is exactly the viewport, so
+     the same values drive the frame and the caption. */
+  clip-path: inset(var(--live-y) var(--live-x) round var(--live-r));
+  /*
+   * What the frame holds until the still and the film are fetched — neither is
+   * in the markup, so both stay off the initial load. Also what a reader with
+   * no JavaScript sees.
+   *
+   * Script swaps `background-image` for the still, which is why this crops with
+   * `cover` from the centre: a video `poster` is letterboxed by WebKit whatever
+   * `object-fit` says.
+   */
+  background-color: var(--aurora-charcoal);
+  background-image: var(--aurora-field);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Slightly tighter crop while contained, settling as it takes over. */
+  transform: scale(calc(1.08 - 0.08 * var(--p)));
+}
+
+/*
+ * A 16:9 film covering a portrait viewport is a 26% slice of its own frame —
+ * the shot reads as an unexplained close-up on a phone, and as a tight crop
+ * on a tablet. Below the desktop breakpoint the film is fitted instead, so
+ * every screen is shown the same picture. The letterbox is invisible: the
+ * section is black, and so is everything either side of it.
+ */
+@media (width < 1020px) {
+  .video {
+    object-fit: contain;
+    transform: none;
+  }
+
+  /*
+   * The bars a fitted film leaves have to be black, or the aurora — and the
+   * still painted over it — show above and below the picture, which is the
+   * frame reading as broken rather than as a letterbox.
+   *
+   * The still is fitted to the same box, and it is the film's own aspect, so
+   * it sits exactly where the picture will and the handover is invisible.
+   */
+  .stage {
+    background-color: #000;
+    background-size: contain;
+  }
+}
+
+/* Legibility for the caption while contained; gone by full bleed. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 52%, rgb(0 0 0 / 0.62) 100%);
+  opacity: calc(1 - var(--p));
+}
+
+.frame {
+  position: absolute;
+  top: var(--live-y);
+  right: var(--live-x);
+  bottom: var(--live-y);
+  left: var(--live-x);
+  border: 1px solid #242424;
+  border-radius: var(--live-r);
+  opacity: calc(1 - var(--p));
+  pointer-events: none;
+}
+
+/*
+ * The pause control. WCAG 2.2.2: the film autoplays, loops and runs past five
+ * seconds, so there has to be a way to stop it. It rides the same `--live-*`
+ * insets as the caption but outlives it — the film is still playing.
+ */
+.pause {
+  position: absolute;
+  right: calc(var(--live-x) + 2rem);
+  top: calc(var(--live-y) + 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 999px;
+  color: #fff;
+  background-color: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.pause:hover {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.caption {
+  position: absolute;
+  left: calc(var(--live-x) + 2rem);
+  right: calc(var(--live-x) + 2rem);
+  bottom: calc(var(--live-y) + 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  /* Clears out early, so the takeover finishes on footage alone. */
+  opacity: calc(1 - var(--p) * 2.2);
+}
+
+.eyebrow {
+  color: #c7ff2f;
+}
+
+.line {
+  color: #fff;
+  max-width: 34ch;
+}
+
+@media (width < 1020px) {
+  .viewport {
+    --inset-x: 8%;
+    --inset-y: 16%;
+  }
+
+  .caption {
+    left: calc(var(--live-x) + 1.25rem);
+    right: calc(var(--live-x) + 1.25rem);
+    bottom: calc(var(--live-y) + 1.25rem);
+  }
+}
+
+@media (width < 744px) {
+  .runway {
+    /* Less scroll to get through it on a phone. */
+    height: 150svh;
+  }
+
+  .viewport {
+    --inset-x: 5%;
+    --inset-y: 12%;
+    --radius: 12px;
+  }
+}
+
+/* Reduced motion: no pinning, no scrub. The frame sits there, contained. */
+.static .runway {
+  height: 100svh;
+}

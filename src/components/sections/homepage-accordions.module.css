@@ -1,8 +1,5 @@
-/*
- * The support card's arrow jitters horizontally while the card is hovered —
- * `animation: 1.1s linear infinite supportHoverArrow` in the source, applied via
- * a `--hovered` class. Here the hover lives in CSS instead of JS state.
- */
+/* The card's arrow jitters while the card is hovered. Hover lives in CSS
+ * rather than in React state. */
 
 .supportCard {
   display: block;

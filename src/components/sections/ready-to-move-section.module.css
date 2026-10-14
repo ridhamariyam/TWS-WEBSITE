@@ -1,0 +1,161 @@
+/*
+ * "Ready to move forward?", after the closing carousel block on
+ * waverunmedia.com: the mark, a two-line question, one button, and a wheel of
+ * twelve cards turning as the page scrolls, only its top arc showing. Values
+ * from docs/research/waverunmedia.com (source rem is 10px; px here).
+ */
+.section {
+  padding-top: 60px;
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-ink);
+}
+
+@media (width >= 1024px) {
+  .section {
+    padding-top: 96px;
+  }
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 48px;
+  margin: 0 auto 32px;
+}
+
+.title {
+  margin: 0 0 48px;
+  font-size: max(40px, min(3.5vw, 68px));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.line {
+  display: block;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.word {
+  display: inline-block;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 56px;
+  padding: 16px 32px;
+  border-radius: 100px;
+  background-color: var(--color-lime);
+  color: var(--color-primitive-black);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    background-color 0.1s,
+    color 0.1s;
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-primitive-black);
+  color: var(--color-primitive-white);
+}
+
+/* The arrow, folded away until the button is hovered. */
+.arrow {
+  display: block;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.3s cubic-bezier(0.04, 0.05, 0.12, 1.52);
+}
+
+.arrow svg {
+  display: block;
+  width: 66px;
+  height: 18px;
+  margin-left: 8px;
+}
+
+.button:hover .arrow,
+.button:focus-visible .arrow {
+  max-width: 74px;
+}
+
+/* The window onto the wheel: its top arc only. */
+.window {
+  width: 85vw;
+  aspect-ratio: 1 / 0.35;
+  margin: 80px auto 0;
+  overflow: hidden;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  will-change: transform;
+}
+
+.slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -100%;
+  transform-origin: center bottom;
+  transform: rotate(calc(var(--n) * 30deg)) translateY(-20vw);
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-charcoal);
+  box-shadow: rgb(0 0 0 / 0.2) -2px 6px 20px 14px;
+  transition: transform 0.2s ease-out;
+}
+
+.slide:first-child {
+  z-index: 2;
+}
+
+.slide:hover {
+  z-index: 15;
+  transform: rotate(calc(var(--n) * 30deg)) translateY(-20vw) translateY(-10px) scale(1.05);
+}
+
+.media {
+  display: block;
+  width: 15.8vw;
+  height: auto;
+  aspect-ratio: 305 / 385;
+  object-fit: cover;
+}
+
+/* Entrances, as the section arrives: the mark and the button rise out of a
+ * blur (.4s, the button .2s later); the question's words rise from below
+ * their line, one after another. */
+@media (prefers-reduced-motion: no-preference) {
+  .fade {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(20px);
+    transition:
+      opacity 0.4s ease-out var(--delay, 0s),
+      filter 0.4s ease-out var(--delay, 0s),
+      transform 0.4s ease-out var(--delay, 0s);
+  }
+
+  .word {
+    filter: blur(20px);
+    transform: translateY(100%);
+    transition:
+      filter 0.5s ease-out calc(var(--i) * 0.1s),
+      transform 0.5s ease-out calc(var(--i) * 0.1s);
+  }
+
+  .section[data-in] .fade,
+  .section[data-in] .word {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}

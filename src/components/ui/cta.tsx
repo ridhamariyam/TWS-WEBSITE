@@ -1,31 +1,23 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { ArrowRightIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
+import { ArrowRightIcon } from "@/components/ui/icons";
+import { isInternalHref } from "@/lib/site-links";
 
 /**
- * The site's one button primitive. Renders an <a> when `href` is given and a
- * <button> otherwise, so the same component covers nav links, form submits and
- * carousel controls.
- *
- * Visual variants map 1:1 onto the `.cta--*` classes in globals.css, which are
- * transcribed from docs/research/css/cta.css. `theme="light"` is the site's
- * naming for "sits on a dark background" — it inverts to white.
+ * The site's one button primitive: an <a> when `href` is given, a <button>
+ * otherwise. Variants map 1:1 onto the `.cta--*` classes in globals.css.
+ * `theme="light"` means "sits on a dark background" and inverts to white. It
+ * is the default because the whole site is dark; `theme="dark"` is for a
+ * button set on a light surface.
  */
 
-export type CtaVariant =
-  | "primary"
-  | "primary-subtle"
-  | "secondary"
-  | "tertiary"
-  | "inline";
+export type CtaVariant = "primary" | "primary-subtle" | "secondary" | "inline";
 
 type CtaOwnProps = {
   variant?: CtaVariant;
   theme?: "light" | "dark";
-  /** Renders the sliding arrow that pushes the label left on hover. */
+  /** Renders the arrow that pushes the label left on hover. */
   hasArrow?: boolean;
-  /** Adds the sweeping double underline used by inline text links. */
-  underline?: boolean;
   href?: string;
   className?: string;
   children: React.ReactNode;
@@ -37,9 +29,8 @@ export type CtaProps = CtaOwnProps &
 
 export function Cta({
   variant = "primary",
-  theme = "dark",
+  theme = "light",
   hasArrow = false,
-  underline = false,
   href,
   className,
   children,
@@ -50,8 +41,6 @@ export function Cta({
     `cta--${variant}`,
     theme === "light" && "cta--light",
     hasArrow && "cta--has-arrow",
-    underline && variant === "tertiary" && "cta--underline-hover",
-    underline && variant === "inline" && "cta--has-inline-underline",
     className,
   );
 
@@ -67,8 +56,7 @@ export function Cta({
   );
 
   if (href) {
-    const external = href.startsWith("http") || href.startsWith("#");
-    const Tag = external ? "a" : Link;
+    const Tag = isInternalHref(href) ? Link : "a";
     return (
       <Tag
         href={href}

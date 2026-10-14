@@ -1,15 +1,12 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { useReveal } from "@/hooks/use-reveal";
 
 /**
- * Wraps content in the site's scroll reveal.
- *
- * The live page server-renders `style="opacity:0;transform:translateY(25px)"`
- * on headlines, body copy and avatars, then clears both once the element
- * intersects the viewport. This reproduces that with the `.reveal` utility,
- * which also no-ops under `prefers-reduced-motion: reduce`.
+ * Wraps content in the site's scroll reveal. Renders visible and is hidden
+ * only if it starts below the fold, so anything already on screen paints with
+ * the document. See `useReveal`.
  */
 export function Reveal({
   as: Tag = "div",
@@ -19,26 +16,18 @@ export function Reveal({
   ...props
 }: {
   as?: React.ElementType;
-  /** Stagger, in ms — the stats cards use 0 / 100 / 200. */
+  /** Stagger, in ms. */
   delay?: number;
   className?: string;
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>) {
-  const { ref, revealed } = useReveal<HTMLElement>();
+  const { ref } = useReveal<HTMLElement>();
 
   return (
     <Tag
       ref={ref}
-      data-revealed={revealed}
       className={cn("reveal", className)}
-      // Driven inline, exactly as the live page does it: the server renders
-      // `style="opacity:0;transform:translateY(25px)"` and clears both on
-      // intersection. Inline also sidesteps any cascade-layer ordering.
-      style={{
-        opacity: revealed ? 1 : 0,
-        transform: revealed ? "none" : "translateY(25px)",
-        ...(delay ? { transitionDelay: `${delay}ms` } : {}),
-      }}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       {...props}
     >
       {children}

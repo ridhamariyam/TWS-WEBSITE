@@ -1,0 +1,81 @@
+/*
+ * The studio's place: an address row over a dark world map, after
+ * artistudyo.com's contact page. Values from docs/research/artistudyo.com.
+ */
+.section {
+  padding-block: 0 clamp(4rem, 3rem + 4vw, 7.5rem);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 70px;
+}
+
+.address {
+  position: relative;
+  padding-left: 25px;
+  color: var(--color-ink);
+  font-size: clamp(1.25rem, 1rem + 0.6vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.address:hover {
+  opacity: 0.8;
+}
+
+.pin {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 18px;
+  transform: translateY(-50%);
+}
+
+.divider {
+  flex: 1 1 0%;
+  height: 0.5px;
+  margin: 0 60px;
+  background: rgb(255 255 255 / 0.5);
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-primitive-black) url("/images/world-map.svg") center / cover no-repeat;
+}
+
+/* The studio's "+": white, centred on the point. */
+.marker {
+  position: absolute;
+  width: clamp(14px, 1.6vw, 24px);
+  height: clamp(14px, 1.6vw, 24px);
+  transform: translate(-50%, -50%);
+  color: var(--color-primitive-white);
+}
+
+/* Below 768px the row stacks: address, then the email. */
+@media (width < 768px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-block: 40px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .address {
+    white-space: normal;
+  }
+}

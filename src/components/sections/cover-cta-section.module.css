@@ -1,0 +1,57 @@
+/* Source: .cover-cta on waverunmedia.com (docs/research/waverunmedia.com). */
+
+.section {
+  padding: 16px;
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100svh - 32px);
+  padding: 96px var(--grid-margin);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgb(0 0 0 / 0.3);
+}
+
+.film {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  height: 100% !important;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.text {
+  max-width: 52ch;
+  margin: 0 auto;
+  font-size: clamp(16px, 1.27vw, 18.3px);
+  line-height: 1.5;
+}
+
+@media (width >= 1024px) {
+  .content {
+    max-width: 638px;
+  }
+}

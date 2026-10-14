@@ -1,173 +1,165 @@
-import type { FaqEntry } from "@/types/content";
+import type { RichRun } from "@/types/content";
+import { aboutHref, ROUTES, serviceHref } from "@/lib/site-links";
 
 /**
- * Homepage FAQ, generated from the live DOM (docs/research/html/10-faq.html).
+ * The questions a first conversation actually opens with, and the studio's
+ * answers to them.
  *
- * Answers are arrays of paragraphs, and each paragraph is a run of plain
- * strings and inline links, so the links survive verbatim rather than being
- * flattened into text.
+ * Every answer here is something the site can stand behind today. TWS opened
+ * in 2026 and its first projects are still in build, so nothing below claims
+ * a client list, a delivery record, a turnaround it has never had to hit, or
+ * a price it has never charged. Where the honest answer is "it depends" or
+ * "not yet", that is the answer given — the budget bands are the ones the
+ * enquiry form asks about, and the stages are the four in process-content.
+ *
+ * Shared by the homepage's FAQ block and /faq, so the two cannot drift.
  */
+
+export type FaqEntry = {
+  /** Stable id: the anchor on /faq and the key in the structured data. */
+  id: string;
+  question: string;
+  /** Paragraphs, each a run of strings and inline links. */
+  answer: RichRun[][];
+};
+
 export const FAQ_ENTRIES: FaqEntry[] = [
   {
-    "question": "How do I create a website with Squarespace?",
-    "answer": [
+    id: "new-studio",
+    question: "You're a new studio. Why should I trust you with this?",
+    answer: [
       [
-        " You can create your own website by starting a free trial and selecting a professionally designed website template that suits your vision, or create a fully custom website with Squarespace's ",
-        {
-          "label": "AI website builder",
-          "href": "/websites/ai-website-builder"
-        },
-        " . Use our drag-and-drop editor to customize layouts, images, colors, and fonts. From there, add new pages and features using pre-built layouts or create your own. "
-      ]
-    ]
-  },
-  {
-    "question": "Do I need to know how to code to build a website?",
-    "answer": []
-  },
-  {
-    "question": "What is a website builder and which one is best for me?",
-    "answer": [
-      [
-        " A website builder is a platform or tool that allows individuals and businesses to create and manage websites without prior coding or web design experience. Look for a website creator that offers a free trial, user-friendly interface, pre-designed templates, drag-and-drop editing functionality, and various customization options. "
-      ]
-    ]
-  },
-  {
-    "question": "How much does it cost to create a website?",
-    "answer": [
-      [
-        " After a free 14-day trial, Squarespace subscriptions start at $19/mo and give you access to your own custom website and selling tools. More advanced plans offer state-of-the-art ecommerce features and lower payment processing fees. "
-      ]
-    ]
-  },
-  {
-    "question": "Can I get a custom domain name for my website?",
-    "answer": [
-      [
-        " Yes, you can get a custom domain name for your website on Squarespace. Look for a domain registrar that offers a wide variety of top-level domains (TLDs) and extensions, and that lets you manage your domain through its platform. "
-      ]
-    ]
-  },
-  {
-    "question": "How can I offer services with my Squarespace website?",
-    "answer": [
-      [
-        " Squarespace makes it easy to showcase your offerings with specific website templates catered to all types of professional services, including consultants, lawyers, designers, and photographers, as well as website templates for various experiences like camps, retreats, adventure travel, and more. "
+        "Because you can see the work rather than a logo wall. TWS opened in 2026, and the two projects it is building — a product site with a 3D model viewer, and a commerce platform with a storefront on top of it — are written up on ",
+        { label: "the work page", href: ROUTES.work },
+        " in enough detail to judge: what was built, what it was built with, and where it stands.",
       ],
       [
-        " You can list services and packages directly on your site with a streamlined checkout process, complete with service descriptions and itineraries, pricing, and imagery. You can also let clients book time or schedule appointments directly through integrated tools like Acuity Scheduling . "
+        "What a new studio can offer is attention. You are talking to the people doing the work, and nothing is being subcontracted past them.",
       ],
-      [
-        " Additionally, ",
-        {
-          "label": "Squarespace Invoicing",
-          "href": "/invoicing"
-        },
-        " gives you tools to create professional branded invoices that help you win more clients, all tracked and managed from your Squarespace account. You can also accept several major payment methods directly on your site and offer a seamless checkout experience through ",
-        {
-          "label": "Squarespace Payments",
-          "href": "/payments"
-        },
-        " . "
-      ]
-    ]
+    ],
   },
   {
-    "question": "Can I sell products online with a Squarespace website?",
-    "answer": [
+    id: "cost",
+    question: "What does a project cost?",
+    answer: [
       [
-        " Squarespace offers a range of tools to help sellers manage their ",
-        {
-          "label": "online stores",
-          "href": "/online-stores"
-        },
-        " , including ",
-        {
-          "label": "payment processing",
-          "href": "/payments"
-        },
-        " , inventory management, shipping, ",
-        {
-          "label": "invoicing",
-          "href": "/invoicing"
-        },
-        " , and marketing. "
+        "It depends on what is being built, and anyone quoting before they know is guessing. Projects here run up to ₹3,00,000, and the enquiry form asks which band you have in mind — under ₹50,000, ₹50,000–₹1,00,000, ₹1,00,000–₹2,00,000, ₹2,00,000–₹3,00,000, or not sure yet — because a five-page site and a store are not the same conversation.",
       ],
       [
-        " Simple, flexible payment and checkout options make shopping on your ",
-        {
-          "label": "ecommerce website",
-          "href": "/ecommerce-website"
-        },
-        " easy for customers. You'll have access to more ways to sell, from gift cards and digital downloads to offering subscriptions, as well as integrations with popular social media and search platforms that allow you to sync your product catalog to sell via other platforms like Facebook and Google. "
+        "You get a fixed price for a defined scope before anything starts. No hourly meter, and no invoice that arrives larger than the number agreed.",
+      ],
+    ],
+  },
+  {
+    id: "timeline",
+    question: "How long does it take?",
+    answer: [
+      [
+        "A straightforward marketing site is usually weeks rather than months; a store or a web application is longer, because there is more to get right than there is to design. The form asks whether you need it as soon as possible, in one to three months, in three to six, or whether you are still exploring — that answer shapes the plan more than any other.",
       ],
       [
-        " Sellers can showcase their products with detailed ",
-        {
-          "label": "product listings",
-          "href": "/ecommerce/sell-products"
-        },
-        " (including comprehensive descriptions, embedded videos, images, and related products); product categories; and unlimited products. Inventory tools help you manage your product stock with a simplified interface, while shipping tools let you set up flexible shipping options, print labels, and more. "
-      ]
-    ]
+        "Whatever the length, you get the dates at the start, and you hear about a slip from us before you notice it yourself.",
+      ],
+    ],
   },
   {
-    "question": "Does Squarespace offer AI-powered website building tools?",
-    "answer": [
+    id: "process",
+    question: "How do you actually work?",
+    answer: [
       [
-        " Yes, Squarespace's ",
-        {
-          "label": "suite of AI tools",
-          "href": "/design-intelligence"
-        },
-        " can help you create a personalized website in minutes. Blueprint AI allows you to ",
-        {
-          "label": "build a website with AI",
-          "href": "/websites/ai-website-builder"
-        },
-        " by combining powerful technology with 20 years of design expertise, generating an entire website alongside personalized content with tailored text and high-quality images that match your brand vision. You can also use Squarespace AI tools to create website copy, product descriptions, blog posts, and email campaigns. "
-      ]
-    ]
-  },
-  {
-    "question": "Can I connect my website to social media and third-party apps?",
-    "answer": [
-      [
-        " You can connect your Squarespace website to social media and third-party apps, which allows you to push content to social media platforms, display social media feeds on your website, and integrate with services like print on demand providers. "
+        "Four stages: think, design, build, grow. We get into the business before anything is drawn, turn that into something people can use, engineer it properly, and keep improving it after launch. It is set out stage by stage under ",
+        { label: "how we work", href: aboutHref("process") },
+        ".",
       ],
       [
-        " Automatically share your Squarespace content to your social media platforms when you publish new content. "
-      ]
-    ]
+        "In practice it means you see work regularly rather than at a single reveal, and nothing is built from a brief we have not questioned.",
+      ],
+    ],
   },
   {
-    "question": "How can I optimize my site for SEO with Squarespace?",
-    "answer": [
+    id: "what-we-build",
+    question: "What can you build?",
+    answer: [
       [
-        " Squarespace features built-in, advanced ",
-        {
-          "label": "SEO tools",
-          "href": "/marketing/seo"
-        },
-        " designed to help every website and online store rank in search results. "
+        { label: "Websites", href: serviceHref("web-design") },
+        " — business sites, launches, redesigns, content platforms — ",
+        { label: "online stores", href: serviceHref("ecommerce") },
+        ", and ",
+        { label: "web applications", href: serviceHref("web-applications") },
+        ": portals, dashboards, booking systems, internal tools. The strategy and interface work that shape them are part of the job rather than a separate line on the invoice.",
       ],
       [
-        " For example, your website comes with default SEO page titles and descriptions, which you can modify without changing the page content visitors see. You can also hide pages if you need to, and control the image people see alongside your content whenever it's shared on social media. "
-      ]
-    ]
+        "If what you need is outside that, we will say so rather than take the work and learn on your budget.",
+      ],
+    ],
   },
   {
-    "question": "Does my Squarespace website come with hosting and security?",
-    "answer": [
+    id: "platform",
+    question: "Do you use WordPress, Shopify, or build from scratch?",
+    answer: [
       [
-        " All Squarespace websites come with both hosting and ",
-        {
-          "label": "security",
-          "href": "/security"
-        },
-        " . Squarespace provides web hosting for your site, so you don't need to find a separate hosting provider. Squarespace websites are also hosted on our own servers and infrastructure, built to support high levels of traffic with consistent uptime. "
-      ]
-    ]
-  }
+        "Whichever costs you least over the life of the thing. A content site that a small team updates weekly is well served by a platform they already understand; a product with its own logic is usually cheaper to build properly than to force into one.",
+      ],
+      [
+        "We will tell you which of the two you are looking at, and why, before you commit to either.",
+      ],
+    ],
+  },
+  {
+    id: "ownership",
+    question: "Who owns the site and the code?",
+    answer: [
+      [
+        "You do, on final payment — the code, the content, the domain and the accounts it runs on. They are registered in your name, not the studio's, so nothing about leaving us is difficult.",
+      ],
+    ],
+  },
+  {
+    id: "after-launch",
+    question: "What happens after launch?",
+    answer: [
+      [
+        "Launch is the fourth stage, not the last one. We measure what people actually do on the site and improve it from there, and we can stay on for updates, content and fixes if you want that.",
+      ],
+      [
+        "If you would rather run it yourselves, you get it handed over properly: how it is put together, how to change it, and who to call.",
+      ],
+    ],
+  },
+  {
+    id: "where",
+    question: "Where are you, and does it matter?",
+    answer: [
+      [
+        "The studio is in Calicut, Kerala. Most of the work happens over calls and shared documents either way, so where your business is has not decided anything so far.",
+      ],
+    ],
+  },
+  {
+    id: "start",
+    question: "How do we start?",
+    answer: [
+      [
+        "Tell us what you are building or trying to fix — a few lines is plenty. ",
+        { label: "The enquiry form", href: ROUTES.startProject },
+        " asks the handful of things that make a first reply useful, and you can call, message or email the studio directly instead if you would rather.",
+      ],
+      [
+        "The first conversation costs nothing and is not a pitch: if we are the wrong studio for it, we would rather say so early.",
+      ],
+    ],
+  },
 ];
+
+/** The handful the homepage asks, in the order it asks them. */
+export const HOMEPAGE_FAQ_IDS = [
+  "new-studio",
+  "cost",
+  "timeline",
+  "process",
+  "start",
+] as const;
+
+export const HOMEPAGE_FAQ = HOMEPAGE_FAQ_IDS.map(
+  (id) => FAQ_ENTRIES.find((entry) => entry.id === id)!,
+);

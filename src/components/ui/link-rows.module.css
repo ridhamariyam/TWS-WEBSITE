@@ -1,0 +1,110 @@
+/*
+ * Editorial link rows: a label, a large line and an arrow on a hairline, set
+ * on the page's 12 columns. Hovering one quiets the rest — the homepage's
+ * blog index uses the same move.
+ */
+.rows {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: clamp(1.5rem, 1.1rem + 1.4vw, 2.75rem);
+  border-top: 1px solid rgb(0 0 0 / 0.1);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (width >= 1020px) {
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: baseline;
+    gap: var(--grid-gutter-width);
+  }
+
+  .label {
+    grid-column: span 3;
+  }
+
+  .main {
+    grid-column: span 8;
+  }
+
+  .arrow {
+    grid-column: span 1;
+    justify-self: end;
+  }
+}
+
+@media (hover: hover) {
+  .rows:hover .row:not(:hover) {
+    opacity: 0.35;
+  }
+}
+
+.label {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  display: block;
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.note {
+  display: block;
+  max-width: 52ch;
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.arrow {
+  display: none;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 2rem);
+  line-height: 1;
+  transition:
+    transform 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.4s ease;
+}
+
+@media (width >= 1020px) {
+  .arrow {
+    display: block;
+  }
+}
+
+@media (hover: hover) {
+  .row:hover .title {
+    transform: translateX(0.35rem);
+  }
+
+  .row:hover .arrow {
+    color: var(--color-ink);
+    transform: translateX(0.35rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .title,
+  .arrow {
+    transition: none;
+  }
+}

@@ -1,0 +1,321 @@
+/*
+ * The FAQ and blog sections, and the header they share: a small badge, a
+ * display heading with a lit full stop, a hairline, and a line of context
+ * set to the right. Questions sit on hairlines and open in place; posts are an
+ * index of rows.
+ */
+
+.section {
+  --muted: var(--color-muted);
+  --rule: rgb(0 0 0 / 0.12);
+  --accent: var(--color-accent-ink);
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+
+  padding: clamp(4rem, 3rem + 4vw, 6.25rem) var(--grid-margin);
+  background-color: var(--color-primitive-white);
+  color: var(--color-ink);
+}
+
+.inner {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+/*
+ * Was the light variant, for the homepage's white run. The site is black
+ * white throughout now, so it matches the default: ink accent on white.
+ */
+.light {
+  --muted: var(--color-muted);
+  --rule: rgb(0 0 0 / 0.12);
+  --accent: var(--color-accent-ink);
+
+  background-color: var(--color-primitive-white);
+  color: var(--color-primitive-black);
+}
+
+.light .dot {
+  color: var(--accent);
+}
+
+
+/* --------------------------------------------------------------- header */
+
+.top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+@media (width >= 1020px) {
+  .top {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* The hairline under the heading. */
+.top::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--rule);
+  content: "";
+}
+
+.badge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding-top: 0.5em;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading {
+  width: 100%;
+  max-width: 900px;
+  margin: 0;
+  font-size: var(--display-size);
+  font-weight: 500;
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  text-wrap: balance;
+}
+
+.dot {
+  color: var(--accent);
+}
+
+.subtitle {
+  max-width: 900px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  line-height: 1.5;
+}
+
+@media (width >= 1020px) {
+  .subtitle {
+    margin-left: auto;
+    width: 100%;
+  }
+}
+
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: var(--color-ink);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.35em;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.footerLink:hover,
+.footerLink:focus-visible {
+  text-decoration-color: var(--accent);
+}
+
+/* ------------------------------------------------------------------ FAQ */
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--rule);
+  width: 100%;
+  max-width: 900px;
+  margin: clamp(2.5rem, 2rem + 2.5vw, 4.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 1020px) {
+  .faqList,
+  .faqFoot {
+    margin-left: auto;
+  }
+}
+
+.faqFoot {
+  max-width: 900px;
+}
+
+.faqItem {
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: calc(var(--global-nav-height) + 24px);
+}
+
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  padding-block: clamp(1.25rem, 1rem + 1vw, 2rem);
+  color: var(--color-ink);
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Plus to minus: the upright bar turns flat onto the other. */
+.icon {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.icon::before,
+.icon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s var(--ease);
+}
+
+.icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faqItem[data-open] .icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faqItem[data-open] .icon::before {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* 0fr to 1fr: the answer measures its own height, no script. */
+.faqAnswer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease);
+}
+
+.faqItem[data-open] .faqAnswer {
+  grid-template-rows: 1fr;
+}
+
+.faqAnswerInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.faqAnswerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 700px;
+  padding: 0 0 clamp(1.25rem, 1rem + 1vw, 2rem);
+  color: var(--muted);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.55;
+}
+
+.faqAnswerBody a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ----------------------------------------------------------------- blog */
+
+.posts {
+  margin: clamp(2.5rem, 2rem + 2.5vw, 4.5rem) 0 clamp(2rem, 1.5rem + 2vw, 3rem);
+  padding: 0;
+  border-bottom: 1px solid var(--rule);
+  list-style: none;
+}
+
+/*
+ * One row per post. Stacked on a phone; from 1020px the subject, title and
+ * reading time sit on the page's columns: 3, 7 and 2 of 12.
+ */
+.post {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);
+  border-top: 1px solid var(--rule);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: opacity 0.5s var(--ease);
+}
+
+@media (width >= 1020px) {
+  .post {
+    grid-template-columns: 3fr 7fr 2fr;
+    align-items: baseline;
+    gap: var(--grid-gutter-width, 24px);
+  }
+}
+
+/* Hovering one row quiets the others, so the eye lands on the one in hand. */
+@media (hover: hover) {
+  .posts:hover .post:not(:hover) {
+    opacity: 0.35;
+  }
+}
+
+.postSubject {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.postTitle {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.postMeta {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (width >= 1020px) {
+  .postMeta {
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon::before,
+  .icon::after,
+  .faqAnswer,
+  .post {
+    transition: none;
+  }
+}

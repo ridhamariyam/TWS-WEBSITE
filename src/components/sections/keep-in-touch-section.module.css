@@ -1,0 +1,193 @@
+/*
+ * "Keep in touch" — three charcoal shapes that merge into one capsule.
+ *
+ * The merge is geometry, not a crossfade: three pills of equal height slid
+ * until each overlaps its neighbour by more than that height, at which point
+ * one pill's flat body covers the next one's rounded cap and the union reads
+ * as one continuous capsule. Nothing is hidden and nothing is swapped.
+ *
+ * The words are separate from the shapes, so they travel and rotate on their
+ * own path. Everything scales from `--u`, so the composition shrinks intact
+ * and the merged capsule can never outgrow the viewport.
+ */
+
+/* No band of its own: the same black as the sections either side. */
+.section {
+  padding-block: 3rem;
+}
+
+.stage {
+  --u: 1;
+  --ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --move: 820ms;
+
+  --sw: calc(470px * var(--u));
+  --sh: calc(176px * var(--u));
+
+  position: relative;
+  display: block;
+  width: var(--sw);
+  height: var(--sh);
+  margin-inline: auto;
+  /* The whole composition answers to the pointer, not just the shapes. */
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------- the shapes */
+
+/*
+ * One aurora, three windows onto it: each pill paints the same gradient at
+ * stage size and offsets it by its own position, so every shape shows its
+ * slice of one continuous field. Three separate gradients would seam at every
+ * overlap however well the geometry lined up.
+ */
+.shape {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  border-radius: 999px;
+  background-color: #14161a;
+  background-image: var(--aurora-field);
+  background-repeat: no-repeat;
+  background-size: var(--sw) var(--sh);
+  background-position: calc(-1 * var(--x)) calc(-1 * var(--y));
+  transition:
+    left var(--move) var(--ease),
+    top var(--move) var(--ease),
+    width var(--move) var(--ease),
+    height var(--move) var(--ease),
+    background-position var(--move) var(--ease);
+}
+
+/* Resting: three independent pieces, the largest on the left. */
+.keep {
+  --x: calc(75px * var(--u));
+  --y: calc(32px * var(--u));
+  width: calc(160px * var(--u));
+  height: calc(96px * var(--u));
+}
+
+.in {
+  --x: calc(253px * var(--u));
+  --y: calc(52px * var(--u));
+  width: calc(66px * var(--u));
+  height: calc(60px * var(--u));
+}
+
+.touch {
+  --x: calc(337px * var(--u));
+  --y: 0px;
+  width: calc(62px * var(--u));
+  height: calc(176px * var(--u));
+}
+
+/* Merged: one height, one baseline, 100px overlaps against a 96px height —
+ * just past the point where the seams disappear. */
+.stage[data-merged="true"] .keep {
+  --x: 0px;
+  --y: calc(40px * var(--u));
+  width: calc(230px * var(--u));
+  height: calc(96px * var(--u));
+}
+
+.stage[data-merged="true"] .in {
+  --x: calc(130px * var(--u));
+  --y: calc(40px * var(--u));
+  width: calc(200px * var(--u));
+  height: calc(96px * var(--u));
+}
+
+.stage[data-merged="true"] .touch {
+  --x: calc(230px * var(--u));
+  --y: calc(40px * var(--u));
+  width: calc(240px * var(--u));
+  height: calc(96px * var(--u));
+}
+
+/* -------------------------------------------------------------- the words */
+
+.word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: calc(14px * var(--u));
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform var(--move) var(--ease);
+}
+
+/* Resting: centred in its own shape; TOUCH stood on its end. */
+.wKeep {
+  transform: translate(-50%, -50%) translate(calc(-80px * var(--u)), calc(-8px * var(--u)));
+}
+
+.wIn {
+  transform: translate(-50%, -50%) translate(calc(51px * var(--u)), calc(-6px * var(--u)));
+}
+
+.wTouch {
+  transform: translate(-50%, -50%) translate(calc(131px * var(--u)), 0) rotate(-90deg);
+}
+
+/* Merged: one line, spaced from the typeface's own metrics. */
+.stage[data-merged="true"] .wKeep {
+  transform: translate(-50%, -50%) translate(calc(-49px * var(--u)), 0);
+}
+
+.stage[data-merged="true"] .wIn {
+  transform: translate(-50%, -50%) translate(calc(-8px * var(--u)), 0);
+}
+
+.stage[data-merged="true"] .wTouch {
+  transform: translate(-50%, -50%) translate(calc(41px * var(--u)), 0) rotate(0deg);
+}
+
+/* The settle: a beat after the shapes arrive, deliberately almost
+ * imperceptible. The only thing here that is not structural. */
+.inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 420ms var(--ease) 380ms;
+}
+
+.stage[data-merged="true"] .inner {
+  transform: scale(1.015);
+}
+
+/* ------------------------------------------------------------ breakpoints */
+
+@media (width < 744px) {
+  .stage {
+    --u: 0.72;
+  }
+
+  .section {
+    padding-block: 2.5rem;
+  }
+}
+
+@media (width < 480px) {
+  .stage {
+    --u: 0.56;
+  }
+}
+
+/* Reduced motion: the shapes still merge, because that is the interaction,
+ * but nothing travels to get there. */
+@media (prefers-reduced-motion: reduce) {
+  .shape,
+  .word,
+  .inner {
+    transition: none;
+  }
+
+  .stage[data-merged="true"] .inner {
+    transform: none;
+  }
+}

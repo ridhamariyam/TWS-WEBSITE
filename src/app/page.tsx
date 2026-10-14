@@ -1,44 +1,57 @@
-import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { HeroSection } from "@/components/sections/hero-section";
-import { GrowYourBusinessSection } from "@/components/sections/grow-your-business-section";
-import { OnePlatformSection } from "@/components/sections/one-platform-section";
-import { GetStartedSection } from "@/components/sections/get-started-section";
-import { YourDomainSection } from "@/components/sections/your-domain-section";
-import { CustomersServedSection } from "@/components/sections/customers-served-section";
-import { MadeWithSqspSection } from "@/components/sections/made-with-sqsp-section";
-import { HomepageAccordions } from "@/components/sections/homepage-accordions";
-import { ConversionCtaSection } from "@/components/sections/conversion-cta-section";
-import { SocialIconsSprite } from "@/components/icons";
+import type { Metadata } from "next";
+import { FlowPage } from "@/components/flow/flow-page";
+import { FlowPreloader } from "@/components/flow/flow-preloader";
+import { HeroStage } from "@/components/flow/hero-stage";
+import { ParticleDive } from "@/components/flow/particle-dive";
+import { StudioScenes } from "@/components/flow/studio-scenes";
+import { Manifesto } from "@/components/flow/manifesto";
+import { INDUSTRY_ITEMS } from "@/components/flow/depth-gallery";
+import { FlowOutro } from "@/components/flow/flow-outro";
+import { organizationJsonLd, pageMetadata } from "@/lib/seo";
 
 /**
- * squarespace.com homepage clone.
+ * The homepage, told as the visitor's journey in pinned stages, each leading
+ * into the next:
  *
- * Section order matches the live page's `main#content`. The page runs black ->
- * white -> black: the hero is dark, the three product sections are light, and
- * `get-started` carries a gradient back down to black before the domain search.
+ *   job      the hero: the intro's film, full screen, shrinking straight
+ *            into the three kinds of job we build for (the service ring);
+ *   found    "Beyond ordinary" — people decide online now;
+ *   trusted  everything online evolved, most websites didn't, so we
+ *            rethought them: websites, web applications and e-commerce
+ *            (the manifesto);
+ *   how      four stages, no mystery (the bento run);
+ *   who      the industries fly past and gather into "beyond ordinary"
+ *            again, the refrain;
+ *   invite   thewebstudio. Start a project.
  *
- * There is no scroll container and no smooth-scroll library here, because the
- * original has neither — it is plain native scrolling with IntersectionObserver
- * reveals.
+ * Native scrolling throughout; each stage reads its own scroll progress.
  */
+export const metadata: Metadata = pageMetadata({
+  title: "Web Design, Development & Digital Experiences",
+  documentTitle: "TWS — Web Design, Development & Digital Experiences",
+  description:
+    "TWS is a digital studio in Calicut building websites, e-commerce stores and web applications for businesses that need their site to do a job.",
+  path: "/",
+});
+
 export default function Home() {
   return (
-    <div id="homepage-default" className="bg-primitive-black">
-      <SocialIconsSprite />
-      <SiteHeader />
-      <main id="content">
-        <HeroSection />
-        <GrowYourBusinessSection />
-        <OnePlatformSection />
-        <GetStartedSection />
-        <YourDomainSection />
-        <CustomersServedSection />
-        <MadeWithSqspSection />
-        <HomepageAccordions />
-        <ConversionCtaSection />
-      </main>
-      <SiteFooter />
-    </div>
+    <FlowPage>
+      {/* The studio and the site, for search engines. See organizationJsonLd. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+      />
+      <FlowPreloader line="Strategy, design and engineering under one roof." />
+      <HeroStage />
+      <ParticleDive />
+      <Manifesto />
+      <StudioScenes />
+      <FlowOutro
+        cards={INDUSTRY_ITEMS}
+        cardsTitle="Made for businesses like yours"
+        note="Tell us what your website needs to do. We'll take it from there."
+      />
+    </FlowPage>
   );
 }

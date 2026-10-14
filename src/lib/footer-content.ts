@@ -1,296 +1,54 @@
 import type { FooterColumn } from "@/types/content";
+import {
+  aboutHref,
+  CONTACT_EMAIL,
+  ROUTES,
+  serviceHref,
+} from "@/lib/site-links";
 
 /**
- * Footer link columns, generated from the live DOM
- * (docs/research/html/99-footer.html). Order and labels are verbatim.
+ * The studio's social profiles, shared by the footer, the question section and
+ * /contact. Add a profile only once its URL is confirmed — a wrong guess here
+ * links to another company. The Instagram URL is still unverified.
+ */
+export type SocialProfile = { name: "Instagram" | "LinkedIn"; href: string };
+
+export const SOCIAL_PROFILES: SocialProfile[] = [
+  { name: "Instagram", href: "https://www.instagram.com/thewebstudio.agency" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/thewebstudioagency" },
+];
+
+/**
+ * Footer link columns. Four groups fill exactly one row at >=1020px; below
+ * 744px each collapses into an accordion, in this order.
  */
 export const FOOTER_COLUMNS: FooterColumn[] = [
   {
-    "heading": "Products",
-    "links": [
-      {
-        "label": "Website Templates",
-        "href": "/templates"
-      },
-      {
-        "label": "Websites",
-        "href": "/website-design"
-      },
-      {
-        "label": "Domains",
-        "href": "https://domains.squarespace.com/"
-      },
-      {
-        "label": "AI Website Builder",
-        "href": "/websites/ai-website-builder"
-      },
-      {
-        "label": "Design Intelligence",
-        "href": "/design-intelligence"
-      },
-      {
-        "label": "Online Stores",
-        "href": "/online-stores"
-      },
-      {
-        "label": "Services",
-        "href": "/services"
-      },
-      {
-        "label": "Invoicing",
-        "href": "/invoicing"
-      },
-      {
-        "label": "Scheduling",
-        "href": "/scheduling"
-      },
-      {
-        "label": "Content & Memberships",
-        "href": "/content"
-      },
-      {
-        "label": "Donations",
-        "href": "/donations"
-      },
-      {
-        "label": "Payments",
-        "href": "/payments"
-      },
-      {
-        "label": "Marketing Tools",
-        "href": "/website-marketing"
-      },
-      {
-        "label": "Professional Email",
-        "href": "/professional-email"
-      },
-      {
-        "label": "Premium",
-        "href": "/premium"
-      },
-      {
-        "label": "Feature List",
-        "href": "/feature-index"
-      },
-      {
-        "label": "Product Updates",
-        "href": "/refresh"
-      },
-      {
-        "label": "Pricing",
-        "href": "/pricing"
-      }
-    ]
+    heading: "Services",
+    links: [
+      { label: "Web Design & Development", href: serviceHref("web-design") },
+      { label: "Web Applications", href: serviceHref("web-applications") },
+      { label: "E-Commerce", href: serviceHref("ecommerce") },
+    ],
   },
   {
-    "heading": "Solutions",
-    "links": [
-      {
-        "label": "Creative Services",
-        "href": "/solutions/creative-services"
-      },
-      {
-        "label": "Professional Services",
-        "href": "/solutions/professional-services"
-      },
-      {
-        "label": "Education & Training",
-        "href": "/solutions/education"
-      },
-      {
-        "label": "Beauty",
-        "href": "/solutions/beauty"
-      },
-      {
-        "label": "Sports & Fitness",
-        "href": "/solutions/sports"
-      },
-      {
-        "label": "Health & Wellness",
-        "href": "/solutions/health"
-      },
-      {
-        "label": "Home Services",
-        "href": "/solutions/home-services"
-      },
-      {
-        "label": "Events & Experiences",
-        "href": "/solutions/events"
-      },
-      {
-        "label": "Charities & Nonprofits",
-        "href": "/solutions/nonprofits"
-      },
-      {
-        "label": "Personal",
-        "href": "/solutions/personal"
-      }
-    ]
+    heading: "Studio",
+    links: [
+      { label: "The Studio", href: ROUTES.about },
+      { label: "How We Work", href: aboutHref("process") },
+      { label: "Our POV", href: aboutHref("pov") },
+    ],
   },
   {
-    "heading": "Resources",
-    "links": [
-      {
-        "label": "Customer Examples",
-        "href": "/showcase"
-      },
-      {
-        "label": "Squarespace Collection",
-        "href": "https://collection.squarespace.com/"
-      },
-      {
-        "label": "Extensions",
-        "href": "/extensions/home"
-      },
-      {
-        "label": "Squarespace Blog",
-        "href": "/blog"
-      },
-      {
-        "label": "Free Tools",
-        "href": "/tools"
-      },
-      {
-        "label": "Business Name Generator",
-        "href": "/tools/business-name-generator"
-      },
-      {
-        "label": "Logo Maker",
-        "href": "/logo"
-      }
-    ]
+    heading: "Reach out",
+    links: [
+      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+      { label: "Start a project", href: ROUTES.startProject },
+      { label: "Calicut · Kerala · India", href: ROUTES.contact },
+    ],
   },
   {
-    "heading": "From Squarespace",
-    "links": [
-      {
-        "label": "Acuity Scheduling",
-        "href": "https://www.acuityscheduling.com/"
-      },
-      {
-        "label": "Bio Sites",
-        "href": "https://www.biosites.com/"
-      },
-      {
-        "label": "Unfold",
-        "href": "https://www.unfold.com/"
-      },
-      {
-        "label": "Email Campaigns",
-        "href": "/email-marketing"
-      },
-      {
-        "label": "Squarespace for Pros",
-        "href": "/professionals"
-      }
-    ]
+    heading: "Follow",
+    links: SOCIAL_PROFILES.map(({ name, href }) => ({ label: name, href })),
   },
-  {
-    "heading": "Programs",
-    "links": [
-      {
-        "label": "Circle",
-        "href": "/circle"
-      },
-      {
-        "label": "Affiliates",
-        "href": "/affiliates"
-      },
-      {
-        "label": "Students",
-        "href": "/students"
-      }
-    ]
-  },
-  {
-    "heading": "Support",
-    "links": [
-      {
-        "label": "Help Center",
-        "href": "https://support.squarespace.com/"
-      },
-      {
-        "label": "Forum",
-        "href": "https://forum.squarespace.com/"
-      },
-      {
-        "label": "Webinars",
-        "href": "https://learning.squarespace.com"
-      },
-      {
-        "label": "Hire an Expert",
-        "href": "https://www.squarespace.com/designer/home?channel=sqsp_circle&subchannel=frontsite_footer&utm_medium=sqsp_circle&utm_source=frontsite_footer"
-      },
-      {
-        "label": "Developer Blog",
-        "href": "https://engineering.squarespace.com/"
-      },
-      {
-        "label": "Developer Platform",
-        "href": "https://developers.squarespace.com/"
-      },
-      {
-        "label": "System Status",
-        "href": "https://status.squarespace.com/"
-      }
-    ]
-  },
-  {
-    "heading": "Company",
-    "links": [
-      {
-        "label": "About",
-        "href": "/about/company"
-      },
-      {
-        "label": "Careers",
-        "href": "/about/careers"
-      },
-      {
-        "label": "Our Brand",
-        "href": "https://brand.squarespace.com/"
-      },
-      {
-        "label": "Accessibility",
-        "href": "/accessibility"
-      },
-      {
-        "label": "Newsroom",
-        "href": "https://newsroom.squarespace.com/"
-      },
-      {
-        "label": "Press & Media",
-        "href": "/press-coverage"
-      },
-      {
-        "label": "Contact Us",
-        "href": "/contact"
-      }
-    ]
-  },
-  {
-    "heading": "Follow",
-    "links": [
-      {
-        "label": "Instagram",
-        "href": "https://www.instagram.com/squarespace/"
-      },
-      {
-        "label": "YouTube",
-        "href": "https://www.youtube.com/squarespace"
-      },
-      {
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com/company/squarespace/"
-      },
-      {
-        "label": "Facebook",
-        "href": "https://www.facebook.com/squarespace"
-      },
-      {
-        "label": "X",
-        "href": "https://x.com/squarespace"
-      }
-    ]
-  }
 ];

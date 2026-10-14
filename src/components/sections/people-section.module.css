@@ -1,0 +1,129 @@
+/*
+ * The people, after the opened person rows on artistudyo.com/about: portrait
+ * 316x288, name/role/links in a 329px column from 317px in, bio filling the
+ * rest. Values from docs/research/artistudyo.com (BEHAVIORS.md).
+ */
+.persons {
+  display: grid;
+  gap: 57px;
+  margin-top: 120px;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 316px minmax(0, 329px) minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 316 / 288;
+  overflow: hidden;
+  background: #1c1c1c;
+}
+
+.photo {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgb(255 255 255 / 0.55);
+  font-size: 44px;
+  font-weight: 500;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  margin: 7px 0 12px;
+  color: var(--color-ink);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.role {
+  margin: 0;
+  color: var(--color-gray-500);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links a {
+  display: block;
+  color: var(--color-ink);
+  transition: opacity 0.2s linear;
+}
+
+.links a:hover {
+  opacity: 0.6;
+}
+
+.links svg {
+  width: 18px;
+  height: 18px;
+}
+
+.bio {
+  display: grid;
+  gap: 1.5em;
+  padding-top: 4px;
+  color: var(--color-gray-200);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.bio p {
+  margin: 0;
+}
+
+/* Below desktop: portrait beside name, bio underneath. */
+@media (width < 1020px) {
+  .person {
+    grid-template-columns: minmax(0, 316px) minmax(0, 1fr);
+    row-gap: 24px;
+  }
+
+  .bio {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width < 768px) {
+  .persons {
+    gap: 48px;
+    margin-top: 80px;
+  }
+
+  .person {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portrait {
+    max-width: 316px;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+}

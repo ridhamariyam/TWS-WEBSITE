@@ -1,0 +1,73 @@
+/* Source: .brand-intro on waverunmedia.com/about (docs/research/waverunmedia.com). */
+
+.heading,
+.subheading,
+.images {
+  margin-bottom: 48px;
+}
+
+.subheading {
+  max-width: 760px;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image {
+  flex: 1 1 0%;
+  height: 56vw;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image:first-child {
+  flex: 0 0 100%;
+}
+
+.image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (width >= 768px) {
+  .images {
+    flex-wrap: nowrap;
+  }
+
+  .image,
+  .image:first-child {
+    flex: 1 1 0%;
+    height: 33.3333vw;
+  }
+
+  .image:nth-child(2) {
+    flex-grow: 2;
+  }
+
+  .text {
+    width: 80%;
+    max-width: 1024px;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+@media (width >= 1024px) {
+  .heading,
+  .subheading {
+    margin-bottom: 64px;
+  }
+
+  .subheading {
+    width: 39.9vw;
+  }
+
+  .images {
+    margin-bottom: 96px;
+  }
+}

@@ -47,3 +47,21 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# Python
+__pycache__/
+*.pyc
+
+# Hero film build cache (model weights, timeline); see scripts/generate-hero-film.py
+assets/videos/.cache/
+
+# Third-party and unlicensed material: never committed (see AGENTS.md).
+assets/unlicensed/
+assets/placeholders/
+ref/
+public/videos/studio-film.mp4
+public/videos/studio-film-poster.webp
+public/videos/refernce.webm
+
+# Python caches from scripts/
+__pycache__/

@@ -1,38 +1,39 @@
 "use client";
 
+import Link from "next/link";
 import {
-  AccordionRow,
   AccordionSection,
   RichParagraph,
 } from "@/components/sections/accordion-section";
-import { FAQ_ENTRIES } from "@/lib/faq-content";
-import { HOW_TO_STEPS } from "@/lib/how-to-content";
+import { PROCESS_STEPS } from "@/lib/process-content";
+import { ROUTES } from "@/lib/site-links";
+import { STUDIO_PRINCIPLES } from "@/lib/studio-content";
 import styles from "./homepage-accordions.module.css";
 
 /*
- * The three stacked accordion blocks that sit between the showcase wall and the
- * final CTA. All three are collapsed on load and open independently.
+ * The stacked accordion blocks before the questions and the writing: the
+ * process and the studio's position. Both collapsed on load, independent.
+ * The questions and the writing have sections of their own — see
+ * FaqSection and BlogSection.
  */
 
-const SUPPORT_LINKS = [
-  {
-    title: "Help Center",
-    body: "Get help from our award-winning Customer Care team.",
-    href: "https://support.squarespace.com",
-  },
-  {
-    title: "Webinars",
-    body: "Free online sessions to learn the basics and refine your skills.",
-    href: "https://learning.squarespace.com/",
-  },
-];
+/* The first card leads to the studio's story, the second to a conversation. */
+const STUDIO_CARD_HREFS = {
+  brief: ROUTES.about,
+  answers: ROUTES.contact,
+} as const;
+
+const STUDIO_CARDS = STUDIO_PRINCIPLES.map((principle) => ({
+  ...principle,
+  href: STUDIO_CARD_HREFS[principle.id],
+}));
 
 export function HomepageAccordions() {
   return (
     <>
-      <AccordionSection id="homepage-how-to" title="How to build a website">
+      <AccordionSection id="homepage-process" title="No mystery. Just good work.">
         <ol className="flex flex-col gap-10 pt-4">
-          {HOW_TO_STEPS.map((step) => (
+          {PROCESS_STEPS.map((step) => (
             <li
               key={step.heading}
               className="grid gap-2 bp1020:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] bp1020:gap-10"
@@ -44,44 +45,27 @@ export function HomepageAccordions() {
         </ol>
       </AccordionSection>
 
-      <AccordionSection id="homepage-faq" title="Frequently asked questions">
-        <div className="pt-4">
-          {FAQ_ENTRIES.map((entry) => (
-            <AccordionRow
-              key={entry.question}
-              title={entry.question}
-              titleAs="h3"
-              titleClassName="type-subtitle3"
+      <AccordionSection
+        id="homepage-studio"
+        title="We start with the business. Not the brief."
+      >
+        <div className="grid gap-6 pt-4 bp744:grid-cols-2">
+          {STUDIO_CARDS.map((card) => (
+            <Link
+              key={card.id}
+              href={card.href}
+              className={`${styles.supportCard} cta cta--inline group rounded-lg bg-surface-card p-8`}
             >
-              <div className="flex flex-col gap-4">
-                {entry.answer.map((para, i) => (
-                  <RichParagraph key={i} runs={para} />
-                ))}
-              </div>
-            </AccordionRow>
+              <h3 className="type-subtitle2">{card.title}</h3>
+              <p className="type-body mt-2">{card.body}</p>
+              <p className="type-body mt-6" aria-hidden="true">
+                <span className={styles.supportArrow}>→</span>
+              </p>
+            </Link>
           ))}
         </div>
       </AccordionSection>
 
-      <AccordionSection id="homepage-support" title="24/7 Support">
-        <div className="grid gap-6 pt-4 bp744:grid-cols-2">
-          {SUPPORT_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.supportCard} cta cta--inline group rounded-lg bg-surface-card p-8`}
-            >
-              <h3 className="type-subtitle2">{link.title}</h3>
-              <p className="type-body mt-2">{link.body}</p>
-              <p className="type-body mt-6" aria-hidden="true">
-                <span className={styles.supportArrow}>→</span>
-              </p>
-            </a>
-          ))}
-        </div>
-      </AccordionSection>
     </>
   );
 }

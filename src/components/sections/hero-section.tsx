@@ -1,107 +1,86 @@
-"use client";
-
-import { cn } from "@/lib/utils";
 import { Cta } from "@/components/ui/cta";
-import { Reveal } from "@/components/ui/reveal";
-import {
-  HERO_SLIDES,
-  HeroBackground,
-  useHeroSlide,
-} from "@/components/sections/hero-background";
-import { HeroStats } from "@/components/sections/hero-stats";
+import { HeroTunnel } from "@/components/sections/hero-tunnel";
+import { HeroTunnelLoop } from "@/components/sections/hero-tunnel-loop";
+import { HeroIntro } from "@/components/sections/hero-intro";
+import { beat, EASE } from "@/components/sections/hero-beat";
+import styles from "./hero-section.module.css";
+import { ROUTES } from "@/lib/site-links";
 
 /*
- * Hero: a cycling video wall, the headline block, a fanned row of site previews
- * and the odometer stats.
+ * Hero: the tunnel, the headline, then the line that carries into the page.
  *
- * The preview row is the same `.angled-carousel` component the showcase section
- * uses; the five cards sit at fixed offsets around a centre card, and every card
- * except the active one carries a dimming overlay. The card order matches the
- * video order, so the fan rotates in step with the background.
+ * One viewport of black. `HeroTunnel` covers the page and opens, then
+ * `HeroTunnelLoop` carries the same tunnel on behind the type. The copy is not
+ * retimed for the intro — `--beat-offset` on `.copy` pushes every beat back by
+ * the same amount, so it arrives through the opening wall rather than behind
+ * it, and is zero on a visit that skips the intro.
+ *
+ * The whole sequence is over in two seconds. See hero-tunnel-data.ts.
  */
 
-// Verbatim from the source's inline styles on `.angled-carousel__card`.
-const CARD_TRANSFORMS = [
-  "translateX(-200%) translateY(10%) scale(0.8) rotate(-4deg)",
-  "translateX(calc(-100% - 20px)) translateY(5%) scale(0.88) rotate(-2deg)",
-  "none",
-  "translateX(calc(100% + 20px)) translateY(5%) scale(0.88) rotate(2deg)",
-  "translateX(200%) translateY(10%) scale(0.8) rotate(4deg)",
-];
-
 export function HeroSection() {
-  const activeIndex = useHeroSlide();
-
   return (
     <section
-      id="homepage-hero"
-      className="relative bg-primitive-black"
+      id="hero"
+      className="relative"
       translate="yes"
     >
-      <div className="animate-[homepageHeroReveal_0.4s_ease-in-out_forwards] opacity-0">
-        <HeroBackground activeIndex={activeIndex} />
-      </div>
+      <HeroTunnel />
+      <HeroIntro />
 
-      <div className="relative z-[1] mx-auto flex w-[calc((var(--grid-column-width)*11)+(var(--grid-gutter-width)*10))] flex-col items-center pt-40 pb-30 text-center bp744:w-full bp744:pb-18 bp1280:pb-20">
-        <Reveal className="w-full">
-          <h1 className="type-title3 text-primitive-white">
-            {/* .hero-text__static is a centred flex column, so each child is a line. */}
-            <span className="flex flex-col text-center bp744:text-nowrap">
-              <span>A website</span>
-              makes it real
+      <div className="relative grid min-h-[100svh] place-items-center overflow-hidden">
+        <HeroTunnelLoop />
+
+        <div
+          className={`${styles.copy} page-gutter mx-auto flex w-[min(100%,var(--span-11))] flex-col items-center text-center bp744:w-full`}
+        >
+          <h1 className="type-title3 w-full text-primitive-white">
+            <span
+              className={`tws-beat ${styles.line}`}
+              style={beat(0.3, 0.9, EASE.reveal)}
+            >
+              {/*
+                * The first span carries a trailing space: without it the two
+                * text nodes abut and the accessible name reads
+                * "presencehit different."
+                */}
+              <span className="flex flex-col text-center bp744:text-nowrap">
+                <span>Make your digital presence </span>
+                <span>hit different.</span>
+              </span>
             </span>
           </h1>
-        </Reveal>
-        <Reveal>
-          <Cta
-            variant="primary-subtle"
-            theme="light"
-            hasArrow
-            href="/templates/get-started"
-            className="my-6 mb-4"
+
+          <span
+            className={`tws-beat ${styles.line}`}
+            style={beat(0.44, 0.9, EASE.reveal)}
           >
-            Get Started
-          </Cta>
-        </Reveal>
-        <Reveal>
-          <p className="type-body text-primitive-white">
-            Start for free. No credit card required.
-          </p>
-        </Reveal>
-      </div>
-
-      <div
-        className="relative z-[1] flex h-(--card-height) w-full items-end justify-center overflow-hidden [--card-aspect-ratio:660/412] [--card-height:calc(var(--card-width)/(var(--card-aspect-ratio)))] [--card-width:calc((var(--grid-column-width)*8)+(var(--grid-gutter-width)*7))]"
-        aria-hidden="true"
-      >
-        {HERO_SLIDES.map((slide, i) => {
-          // Each card shows the slide that is `i - 2` steps from the active one,
-          // so the fan rotates with the background rather than sitting still.
-          const slideIndex =
-            (activeIndex + i - 2 + HERO_SLIDES.length) % HERO_SLIDES.length;
-          return (
-            <div
-              key={slide.id}
-              className="absolute flex h-(--card-height) w-(--card-width) shrink-0 items-center justify-center overflow-hidden text-primitive-black"
-              style={{ transform: CARD_TRANSFORMS[i] }}
+            <Cta
+              variant="primary-subtle"
+              theme="light"
+              hasArrow
+              href={ROUTES.startProject}
+              className="my-6 mb-4"
             >
-              <img
-                src={HERO_SLIDES[slideIndex].card}
-                alt=""
-                className="absolute inset-0 h-full w-full rounded-[2px] object-cover object-center"
-              />
-              <div
-                className={cn(
-                  "absolute h-full w-full rounded-[2px] bg-[linear-gradient(rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.4)_100%)] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                  i !== 2 && "opacity-100",
-                )}
-              />
-            </div>
-          );
-        })}
+              Start a project
+            </Cta>
+          </span>
+
+          <p
+            className={`tws-beat type-body ${styles.line} text-lime`}
+            style={beat(0.54, 0.9, EASE.reveal)}
+          >
+            Strategy &middot; Design &middot; Technology &middot; Experience
+          </p>
+        </div>
       </div>
 
-      <HeroStats />
+      <div className="page-gutter flex items-center justify-center pt-16 pb-16 bp744:pt-20 bp744:pb-20">
+        <p className="type-body measure w-[min(100%,var(--span-8))] text-center text-gray-200 bp744:w-[var(--span-8)] bp1280:w-[var(--span-10)]">
+          Your website is where most people meet your business. We make that
+          first impression count.
+        </p>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,13 @@
+# Kept out of every Vercel upload.
+#
+# assets/ holds masters, third-party layout placeholders and unlicensed
+# reference material; nothing in it is built or served.
+assets/
+docs/
+scripts/
+
+# Until launch only the holding page is live, and it plays no video. The
+# films are kept out so nothing unlicensed (studio-film.mp4, refernce.webm)
+# is publicly reachable. Before building with SITE_LAUNCHED=true, clear the
+# licence question in AGENTS.md, then remove this line.
+public/videos/

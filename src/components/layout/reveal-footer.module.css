@@ -1,0 +1,31 @@
+/*
+ * The inner pages' footer reveal, after noahlesage.com: the footer sits fixed
+ * at the bottom of the screen, under the page; the page scrolls up off it like
+ * a card, its bottom corners rounding as it lifts (to 52px when the whole
+ * footer shows). docs/research/noahlesage.com.
+ */
+.card {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
+  border-bottom-left-radius: var(--reveal-r, 0px);
+  border-bottom-right-radius: var(--reveal-r, 0px);
+  /* clip, not hidden: rounds the corners without becoming a scroll box, so
+   * sticky elements inside the page keep working. */
+  overflow: clip;
+}
+
+/* The section the footer is revealed from: navy, so the lifting edge reads
+ * against the footer's black. */
+.card > :last-child {
+  background-color: var(--color-brand-navy);
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}

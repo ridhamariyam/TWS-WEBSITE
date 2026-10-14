@@ -1,19 +1,22 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import { TogglePlusIcon } from "@/components/icons";
+import { useEffect, useId, useRef, useState } from "react";
+import { cn } from "@/lib/cn";
+import { TogglePlusIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
+import { SmartLink } from "@/components/ui/smart-link";
 import type { RichRun } from "@/types/content";
+import styles from "./accordion-section.module.css";
 
 /*
- * The homepage's three collapsible blocks (how-to / FAQ / support) and the
- * nested FAQ rows all share this shape.
+ * The homepage's collapsible blocks and the rows nested inside them.
  *
- * The live page animates an explicit pixel height on the content wrapper, set
- * by JS, with no transition declared in CSS — so the easing here is borrowed
- * from the same design system's nav accordion (.7s cubic-bezier(.165,.84,.44,1)),
- * which is the only declared timing for this interaction anywhere in the bundle.
+ * A panel is always exactly as tall as what is currently inside it, including
+ * another panel that has just opened within it — see the stylesheet.
+ *
+ * A closed panel is `inert`, so its links and nested triggers leave the tab
+ * order and the accessibility tree together. `aria-hidden` alone would hide
+ * them from a screen reader while leaving them reachable by keyboard.
  */
 
 export function AccordionRow({
@@ -24,7 +27,7 @@ export function AccordionRow({
   iconSize = 16,
 }: {
   title: string;
-  /** The source nests a real heading inside the trigger — h2 at top level, h3 in the FAQ. */
+  /** A real heading inside the trigger: h2 at top level, h3 when nested. */
   titleAs?: "h2" | "h3";
   titleClassName?: string;
   children: React.ReactNode;
@@ -32,15 +35,26 @@ export function AccordionRow({
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
-  const [height, setHeight] = useState(0);
+  const panelRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // The panel animates a real pixel height, so it is measured at the moment of
-  // the toggle rather than read off the ref during render.
-  function toggle() {
-    setHeight(open ? 0 : (contentRef.current?.scrollHeight ?? 0));
-    setOpen((o) => !o);
-  }
+  /* Written to the DOM rather than held in state: while a nested panel opens
+   * this fires every frame, and each one is a style write, not a render. */
+  useEffect(() => {
+    const panel = panelRef.current;
+    const content = contentRef.current;
+    if (!panel || !content) return;
+
+    const apply = () => {
+      panel.style.height = open ? `${content.offsetHeight}px` : "0px";
+    };
+    apply();
+    if (!open) return;
+
+    const observer = new ResizeObserver(apply);
+    observer.observe(content);
+    return () => observer.disconnect();
+  }, [open]);
 
   return (
     <div className="relative w-full p-0 before:absolute before:top-0 before:right-(--grid-gutter-width) before:left-(--grid-gutter-width) before:block before:h-px before:w-[calc(100%-calc(var(--grid-gutter-width)*2))] before:bg-gray-800 before:content-['']">
@@ -49,7 +63,7 @@ export function AccordionRow({
         id={`${id}-title`}
         aria-expanded={open}
         aria-controls={`${id}-content`}
-        onClick={toggle}
+        onClick={() => setOpen((o) => !o)}
         className="flex w-full cursor-pointer items-center justify-between bg-transparent px-(--grid-gutter-width) py-6 text-left text-inherit bp744:py-8"
       >
         <Title className={cn("type-subtitle1", titleClassName)}>{title}</Title>
@@ -58,19 +72,20 @@ export function AccordionRow({
             width={iconSize}
             height={iconSize}
             className={cn(
-              "transition-transform duration-700 ease-[cubic-bezier(0.165,0.84,0.44,1)] motion-reduce:transition-none",
-              open && "rotate-45",
+              "transition-[transform,color] duration-700 ease-[cubic-bezier(0.165,0.84,0.44,1)] motion-reduce:transition-none",
+              open && "rotate-45 text-accent-ink",
             )}
             style={undefined}
           />
         </span>
       </button>
       <section
+        ref={panelRef}
         id={`${id}-content`}
         aria-labelledby={`${id}-title`}
-        aria-hidden={!open}
-        style={{ height }}
-        className="overflow-hidden transition-[height] duration-700 ease-[cubic-bezier(0.165,0.84,0.44,1)] motion-reduce:transition-none"
+        inert={!open}
+        data-open={open}
+        className={styles.panel}
       >
         <div ref={contentRef} className="px-(--grid-gutter-width) pb-10">
           {children}
@@ -94,20 +109,20 @@ export function RichParagraph({
         typeof run === "string" ? (
           <span key={i}>{run}</span>
         ) : (
-          <a
+          <SmartLink
             key={i}
             href={run.href}
             className="cta cta--inline cta--has-inline-underline"
           >
             {run.label}
-          </a>
+          </SmartLink>
         ),
       )}
     </p>
   );
 }
 
-/** One of the three top-level blocks. */
+/** One top-level block. */
 export function AccordionSection({
   id,
   title,
@@ -118,7 +133,7 @@ export function AccordionSection({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="bg-primitive-black text-primitive-white">
+    <section id={id} className="text-ink">
       <Reveal>
         <AccordionRow title={title}>{children}</AccordionRow>
       </Reveal>

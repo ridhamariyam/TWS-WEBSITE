@@ -1,0 +1,46 @@
+/*
+ * The hero's copy: the same look and curve as `Reveal`, but a plain CSS
+ * animation. It has to land as the tunnel's wall opens, which an observer
+ * firing at mount cannot do — and the page's one h1 should not wait on script.
+ */
+
+.copy {
+  position: relative;
+  z-index: 10;
+
+  /*
+   * How long the copy waits for the wall to open — part of the intro budget in
+   * hero-tunnel-data.ts. Here rather than inline so the rule below can drop
+   * it; an inline custom property would outrank it.
+   */
+  --beat-offset: 0.55;
+}
+
+/* Nothing to wait for: the copy reveals on its own beats, from 0.3s. */
+:global(:root[data-intro="seen"]) .copy {
+  --beat-offset: 0;
+}
+
+.line {
+  display: block;
+  animation-name: copyIn;
+  will-change: transform, opacity;
+}
+
+@keyframes copyIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 25px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Reduced motion: the copy is simply there, as `.reveal` is elsewhere. */
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}

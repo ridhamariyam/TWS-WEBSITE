@@ -1,0 +1,322 @@
+/*
+ * The hero: headline, the film set into it, and the pin that lets the film
+ * grow to fill the screen. See hero-scroll-section.tsx for the sequence.
+ *
+ * Everything on load is a CSS animation on one curve, keyed off `--i`, the
+ * word's place in the headline. The scroll expansion is written inline by the
+ * component once `data-settled` is set; until then the load animations own
+ * the film's frame, and inline styles could not outrank them anyway.
+ */
+
+.section {
+  --ease-land: cubic-bezier(0.14, 1, 0.34, 1);
+  --gutter: var(--grid-margin);
+  --lean: -10deg;
+  --title-size: 10.5vw;
+
+  position: relative;
+  background-color: var(--color-primitive-white);
+  color: var(--color-primitive-black);
+}
+
+.sticky {
+  position: relative;
+}
+
+
+.content {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  row-gap: 24px;
+  min-height: 60svh;
+  padding: calc(var(--global-nav-height) + 24px) var(--gutter) 24px;
+}
+
+/* ------------------------------------------------------------- headline */
+
+.title {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  margin: 0;
+  font-size: var(--title-size);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.mask {
+  --pad: 0.12em;
+
+  display: inline-flex;
+  margin: calc(var(--pad) * -1);
+  padding: var(--pad);
+  overflow: clip;
+  opacity: var(--copy-opacity, 1);
+}
+
+/* The words carry no spaces of their own; the gap is set here. */
+.mask:not(:last-child) {
+  margin-right: calc(0.28em - var(--pad));
+}
+
+.lean {
+  transform: skewX(var(--lean));
+  transform-origin: 0 100%;
+}
+
+.lean:not(:last-child) {
+  margin-right: calc(0.28em + 0.1763 * 0.75em - var(--pad));
+}
+
+.word {
+  display: inline-block;
+}
+
+/* The film's slot: hidden on a phone, where the film sits below instead. */
+.slot {
+  display: none;
+}
+
+.film {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmFull {
+  display: flex;
+  aspect-ratio: 1;
+  width: 100%;
+  max-height: 100svh;
+  overflow: clip;
+}
+
+/* --------------------------------------------------------- description */
+
+/*
+ * The line under the headline, on a slim white band across the full width,
+ * one line high on wider screens. It fades with the copy as the film opens
+ * over it.
+ */
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 calc(var(--gutter) * -1);
+  padding: 14px var(--gutter);
+  background-color: var(--color-primitive-white);
+  color: var(--color-primitive-black);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  opacity: var(--copy-opacity, 1);
+}
+
+.description > span {
+  max-width: 34ch;
+}
+
+/* ------------------------------------------------------------ from 744px */
+
+@media (width >= 744px) {
+  .section {
+    --title-size: 8.2vw;
+    /* The film is 4:3 and a little shorter than the capitals it sits among. */
+    --frame-h: calc(var(--title-size) * 0.62);
+    --frame-w: calc(var(--frame-h) * 4 / 3);
+    --frame-lean: calc(0.1763 * var(--frame-h));
+  }
+
+  .sticky {
+    height: 100svh;
+    min-height: 560px;
+    overflow: clip;
+  }
+
+  /* The headline takes the screen; the white band is one slim line. */
+  .content {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+    min-height: unset;
+    padding: var(--global-nav-height) var(--gutter) 0;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.1em;
+    grid-column: 1 / -1;
+    line-height: 0.74;
+  }
+
+  .line {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  /* An offset composition: the top line leans left, the bottom one right. */
+  .line:first-child {
+    padding-right: 7vw;
+  }
+
+  .line:last-child {
+    padding-left: 5vw;
+  }
+
+  .slot {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    width: calc(var(--frame-w) + var(--frame-lean));
+    height: var(--frame-h);
+    margin-inline: 0.9vw;
+  }
+
+  /* After a leaning word the lean itself is the gap. */
+  .lean:has(+ .slot) {
+    margin-right: 0;
+  }
+
+  .frame {
+    --zoom: 1;
+
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: block;
+    overflow: clip;
+    clip-path: polygon(
+      var(--frame-lean) 0%,
+      100% 0%,
+      calc(100% - var(--frame-lean)) 100%,
+      0% 100%
+    );
+    transform-origin: 50% 50%;
+    will-change: transform, clip-path;
+  }
+
+  .frame .film {
+    transform: scale(var(--zoom));
+  }
+
+  .filmFull {
+    display: none;
+  }
+
+  .description {
+    justify-content: flex-start;
+    padding-block: 16px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .description > span {
+    max-width: none;
+  }
+}
+
+@media (width >= 1280px) {
+  .description {
+    padding-block: 18px;
+    font-size: 16px;
+  }
+}
+
+/* ------------------------------------------------------------------ motion */
+
+@keyframes land {
+  to {
+    transform: none;
+  }
+}
+
+@keyframes tip {
+  from {
+    transform: none;
+  }
+}
+
+@keyframes open {
+  from {
+    width: 0;
+    margin-inline: 0;
+  }
+}
+
+@keyframes openFrame {
+  from {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .word {
+    transform: translateY(calc(100% + var(--pad) + 2px));
+    animation: land 1s calc(200ms + var(--i) * 50ms) var(--ease-land) forwards;
+  }
+
+  .lean {
+    animation: tip 1s 300ms var(--ease-land) backwards;
+  }
+
+  .description {
+    transform: translateY(calc(100% + var(--gutter) + 1px));
+    animation: land 1s 500ms var(--ease-land) forwards;
+  }
+}
+
+@media (width >= 744px) and (prefers-reduced-motion: no-preference) {
+  /* Room to expand, hold at full width, then shrink before Services. */
+  .section {
+    height: 260svh;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  .line:first-child {
+    transform: translateX(3.5vw);
+    animation: land 1s 200ms var(--ease-land) forwards;
+  }
+
+  .line:last-child {
+    transform: translateX(-2.5vw);
+    animation: land 1s 200ms var(--ease-land) forwards;
+  }
+
+  .slot {
+    animation: open 1s 300ms var(--ease-land) backwards;
+  }
+
+  .frame {
+    animation: openFrame 1s 300ms var(--ease-land) backwards;
+  }
+
+  /* Landed: from here the component writes the frame from the scroll. */
+  .section[data-settled] .slot,
+  .section[data-settled] .frame {
+    animation: none;
+  }
+}
+
+/* Held while the preloader is up, so the entrance plays as it lifts. */
+:global(html:has([data-preloader])) .section * {
+  animation-play-state: paused;
+}

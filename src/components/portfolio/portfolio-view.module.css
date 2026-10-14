@@ -1,0 +1,464 @@
+/*
+ * The portfolio stage. One screen of scroll per project with the stage
+ * pinned, pictures stacked full bleed, and the overlay set in plain white
+ * over a wash at the top and bottom of the picture, so it reads over light
+ * screenshots and dark ones alike.
+ *
+ * A picture's state is `past`, `current` or `next`. The next ones wait
+ * clipped away below; the current one wipes up over the past, and going back
+ * simply runs that in reverse.
+ */
+
+.section {
+  --ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --line: 1.4em;
+
+  position: relative;
+  background-color: var(--color-primitive-black);
+  color: var(--color-primitive-white);
+}
+
+.track {
+  position: relative;
+}
+
+.section[data-view="stage"] .track {
+  height: calc(var(--count) * 100svh);
+}
+
+.section[data-view="stage"] .stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------- pictures */
+
+.pictures {
+  position: absolute;
+  inset: 0;
+}
+
+.picture {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1s var(--ease);
+}
+
+.picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  transition: transform 1.4s var(--ease);
+}
+
+.picture[data-state="past"] {
+  z-index: 1;
+  clip-path: inset(0);
+}
+
+.picture[data-state="current"] {
+  z-index: 2;
+  clip-path: inset(0);
+}
+
+.picture[data-state="current"] img,
+.picture[data-state="past"] img {
+  transform: scale(1);
+}
+
+/* A wash at top and bottom, so the overlay never sits on a hot spot. */
+.pictures::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.6) 0%,
+    rgb(0 0 0 / 0) 30%,
+    rgb(0 0 0 / 0) 55%,
+    rgb(0 0 0 / 0.75) 100%
+  );
+  content: "";
+}
+
+.badge {
+  position: absolute;
+  top: calc(var(--global-nav-height) + 1rem);
+  right: var(--grid-margin);
+  z-index: 4;
+  padding: 0.375rem 0.625rem;
+  border-radius: 9999px;
+  background-color: var(--color-lime);
+  color: var(--color-primitive-black);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------- overlay */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: 1fr auto;
+  column-gap: 0.625rem;
+  padding: calc(var(--global-nav-height) + 1.5rem) var(--grid-margin) 2rem;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+
+/* On a phone the toggle sits under the details rather than beside them. */
+@media (width < 744px) {
+  .overlay {
+    padding-bottom: 5.5rem;
+  }
+}
+
+.overlay a,
+.overlay button {
+  pointer-events: auto;
+}
+
+.dim {
+  opacity: 0.45;
+}
+
+/* A one-line window over a column of values; `--at` picks the line. */
+.roll {
+  display: block;
+  height: var(--line);
+  overflow: hidden;
+}
+
+.rollList {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--at) * var(--line) * -1));
+  transition: transform 0.8s var(--ease);
+}
+
+.rollList > span {
+  display: block;
+  height: var(--line);
+  line-height: var(--line);
+  white-space: nowrap;
+}
+
+.counter {
+  grid-column: 1 / span 6;
+  align-self: start;
+  display: flex;
+  white-space: nowrap;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  --line: 1.1em;
+}
+
+.details {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 0.625rem;
+  align-items: end;
+  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.5rem);
+  letter-spacing: -0.01em;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  grid-column: span 12;
+}
+
+@media (width >= 1020px) {
+  .column:nth-child(1) {
+    grid-column: 1 / span 5;
+  }
+
+  .column:nth-child(2) {
+    grid-column: 6 / span 4;
+  }
+}
+
+@media (width < 1020px) {
+  .column {
+    min-width: 0;
+  }
+
+  .rollList > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  opacity: 0.45;
+  text-transform: uppercase;
+}
+
+.open {
+  grid-column: 7 / -1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: end;
+  display: inline-flex;
+  gap: 0.5rem;
+  color: inherit;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-transform: uppercase;
+}
+
+.dots {
+  position: absolute;
+  top: 50%;
+  right: var(--grid-margin);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: translateY(-50%);
+}
+
+.dots button {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dots button[aria-current] {
+  background-color: currentColor;
+}
+
+@media (width < 744px) {
+  .details {
+    row-gap: 1rem;
+  }
+
+  .dots {
+    right: 0;
+    gap: 0;
+  }
+
+  .dots button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+  }
+
+  .dots button::before {
+    width: 8px;
+    height: 8px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    content: "";
+  }
+
+  .dots button[aria-current] {
+    background: transparent;
+  }
+
+  .dots button[aria-current]::before {
+    background: currentColor;
+  }
+}
+
+.clock {
+  position: absolute;
+  right: var(--grid-margin);
+  bottom: calc(2rem + 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: rgb(0 0 0 / 0.45);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-align: right;
+  text-shadow: none;
+}
+
+/* Nothing to back before the first tick. */
+.clock:empty {
+  display: none;
+}
+
+@media (width < 744px) {
+  .clock {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------- toggle */
+
+.toggle {
+  position: absolute;
+  right: var(--grid-margin);
+  bottom: 2rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 9999px;
+  background-color: rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(8px);
+  color: var(--color-primitive-white);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  border-color: var(--color-lime);
+  background-color: var(--color-lime);
+  color: var(--color-primitive-black);
+}
+
+.section[data-view="index"] .toggle {
+  position: fixed;
+}
+
+/* Four bars: spread for the stage, bunched into a grid mark for the index. */
+.toggleIcon {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 2px);
+  gap: 3px;
+  height: 10px;
+}
+
+.toggleIcon i {
+  display: block;
+  width: 2px;
+  height: 10px;
+  background-color: currentColor;
+  transition: transform 0.4s var(--ease);
+}
+
+.toggleIcon[data-view="index"] i:nth-child(odd) {
+  transform: scaleY(0.5) translateY(-50%);
+}
+
+.toggleIcon[data-view="index"] i:nth-child(even) {
+  transform: scaleY(0.5) translateY(50%);
+}
+
+/* ---------------------------------------------------------------- index */
+
+.index {
+  display: grid;
+  gap: 2.5rem 0.625rem;
+  margin: 0;
+  padding: calc(var(--global-nav-height) + 3rem) var(--grid-margin) 7rem;
+  list-style: none;
+}
+
+@media (width >= 600px) {
+  .index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1020px) {
+  .index {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.indexCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.indexMedia {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.indexMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+
+.indexMedia .badge {
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.indexCard:hover .indexMedia img {
+    transform: scale(1.04);
+  }
+}
+
+.indexMeta {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 0.9375rem;
+}
+
+.indexMeta > span:first-child {
+  font-size: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .picture,
+  .picture img,
+  .rollList,
+  .toggleIcon i,
+  .indexMedia img {
+    transition: none;
+  }
+}

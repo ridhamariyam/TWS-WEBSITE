@@ -1,0 +1,7 @@
+/*
+ * Solid black, so the footer carries straight on from the closing section
+ * above it, which fades to black at its foot.
+ */
+.footer {
+  background-color: var(--color-brand-black);
+}

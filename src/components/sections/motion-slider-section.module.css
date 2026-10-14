@@ -1,0 +1,142 @@
+/* Source: .slider-block on waverunmedia.com (docs/research/waverunmedia.com). */
+
+.heading {
+  margin-bottom: 64px;
+}
+
+.slider {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 10px var(--grid-margin);
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--grid-margin);
+  scrollbar-width: none;
+}
+
+.slide {
+  --media-h: 98.8vw;
+
+  flex: 0 0 78vw;
+  scroll-snap-align: start;
+  /* With the reveal's own (a module rule outranks the utilities layer). */
+  transition:
+    flex-grow 0.3s,
+    opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+  padding: var(--media-h) 0 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  color: inherit;
+}
+
+/* A dark wash from the bottom, then a lime glow in soft light. */
+.link::before,
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+}
+
+.link::before {
+  background-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.59));
+}
+
+.link::after {
+  background-image: linear-gradient(35deg, rgb(0 0 0 / 0), var(--color-lime));
+  mix-blend-mode: soft-light;
+}
+
+.media {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: var(--media-h) !important;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: height 0.25s ease-out;
+}
+
+.title,
+.text {
+  position: relative;
+  z-index: 2;
+  max-width: 330px;
+  transition: transform 0.25s ease-out, color 0.25s ease-out;
+}
+
+.title {
+  margin-top: 32px;
+  margin-bottom: 8px;
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.3;
+}
+
+.text {
+  color: #7f7f7f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (width >= 640px) {
+  .slide {
+    --media-h: 53.3vw;
+
+    flex-basis: 45vw;
+  }
+}
+
+@media (width >= 1024px) {
+  .slider {
+    padding-inline: 1.7vw;
+  }
+}
+
+@media (width >= 1080px) {
+  .slider {
+    overflow: visible;
+  }
+
+  .slide {
+    --media-h: 33.2vw;
+
+    flex: 1 1 0%;
+  }
+}
+
+@media (width >= 1080px) and (hover: hover) and (pointer: fine) {
+  .slide:hover {
+    flex-grow: 2;
+  }
+
+  .slide:hover .media {
+    height: 100% !important;
+  }
+
+  .slide:hover .link::before,
+  .slide:hover .link::after {
+    opacity: 1;
+  }
+
+  .slide:hover .title,
+  .slide:hover .text {
+    transform: translate(20px, -20px);
+    color: #fff;
+  }
+}

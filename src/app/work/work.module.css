@@ -1,0 +1,379 @@
+/*
+ * The work pages: the list at /work and each project at /work/[slug].
+ *
+ * Big quiet type on black, grey body copy, small mono labels and tag pills
+ * set at a slight tilt. The project page sits on a twelve-column grid with
+ * its text in the inner ten, so headings, copy and pictures share edges.
+ * Sizes track the viewport between a floor and a ceiling, so the layout
+ * holds its proportions without the type getting silly at either end.
+ */
+
+.page {
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --tag: #5c5c5c;
+  --rule: #d4d4d4;
+  /* The header's own margin, so every left edge on the page lines up with the logo. */
+  --gutter: var(--grid-margin);
+  --ease-rise: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------- shared */
+
+.title {
+  margin: 0;
+  font-size: var(--display-size);
+  font-weight: 500;
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+}
+
+.body {
+  color: var(--muted);
+  font-size: clamp(0.9375rem, 0.85rem + 0.35vw, 1.3125rem);
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The tilt is the point: a row of stamps rather than a row of buttons. */
+.tag {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  color: var(--tag);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: rotate(-1.5deg);
+}
+
+.mono {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ hero */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 8.8vh, 6rem);
+}
+
+.heroHead {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: calc(var(--global-nav-height) + clamp(3rem, 12vh, 10rem)) var(--gutter) 0;
+}
+
+@media (width >= 1020px) {
+  .heroHead {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 2.8vh, 1.5rem);
+  max-width: 46rem;
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 92svh;
+  object-fit: cover;
+}
+
+@media (width < 744px) {
+  .heroImageWrap {
+    padding-inline: var(--gutter);
+  }
+}
+
+/* The entrance: words and lines rise out of their own masks, then the
+ * tags drop into their tilt. Plain CSS, so the h1 never waits on script. */
+.mask {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word,
+.line {
+  display: inline-block;
+  animation: rise 1s var(--ease-rise) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 100ms);
+}
+
+.line {
+  display: block;
+  animation-delay: calc(var(--i, 0) * 90ms + 350ms);
+}
+
+.heroHead .tag {
+  animation: settle 0.8s var(--ease-rise) both;
+  animation-delay: calc(var(--i, 0) * 60ms + 600ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0.1;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem) rotate(-1.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word,
+  .line,
+  .heroHead .tag {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------ chapters */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(12px, 1.67vw, 32px);
+  padding: clamp(3rem, 8.8vh, 7rem) var(--gutter) 0;
+}
+
+.chapter {
+  grid-column: 1 / -1;
+  margin-top: clamp(2.5rem, 7vh, 6rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(0 0 0 / 0.1);
+}
+
+.chapter:first-child {
+  margin-top: 0;
+}
+
+.chapterTitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 0.9rem + 2vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.chapterBody p {
+  margin: 0;
+}
+
+.chapterBody p + p,
+.chapterBody .list {
+  margin-top: 1.25rem;
+}
+
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+@media (width >= 1020px) {
+  /* The opener: heading over copy, in the left half. */
+  .lead {
+    grid-column: 1 / span 7;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* An aside, set in the right half. Ragged right like everything else:
+   * a right-aligned paragraph is hard to read. */
+  .aside {
+    grid-column: 7 / -1;
+  }
+
+  .aside .chapterTitle {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Heading on the left, copy on the right. */
+  .split {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: inherit;
+  }
+
+  .split .chapterTitle {
+    grid-column: 1 / span 5;
+    font-size: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);
+  }
+
+  .split .chapterBody {
+    grid-column: 7 / -1;
+  }
+}
+
+@media (width < 1020px) {
+  .chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------- gallery */
+
+.gallery {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(12px, 1.67vw, 32px);
+  margin-top: clamp(2.5rem, 7.4vh, 6rem);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery img:nth-child(odd) {
+  grid-column: span 6;
+}
+
+.gallery img:nth-child(even) {
+  grid-column: span 4;
+}
+
+.gallery img:only-child {
+  grid-column: 1 / -1;
+}
+
+@media (width < 744px) {
+  .gallery img:nth-child(n) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --------------------------------------------------------- more projects */
+
+.more {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(12px, 1.67vw, 32px);
+  padding: clamp(5rem, 13vh, 10rem) var(--gutter);
+}
+
+.moreHead {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.note {
+  grid-column: 1 / -1;
+  margin: 0 0 clamp(3rem, 8vh, 6rem);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------------------------------------- the list */
+
+.listHead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: calc(var(--global-nav-height) + clamp(3rem, 12vh, 10rem)) var(--gutter)
+    clamp(3rem, 8.8vh, 6rem);
+}
+
+@media (width >= 1020px) {
+  .listHead {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .listHead .body {
+    max-width: 34rem;
+  }
+}
+
+.count {
+  color: var(--muted);
+}
+
+.listIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (width >= 1020px) {
+  .listIntro {
+    max-width: 34rem;
+  }
+}
+
+/* The studio's promise, lit in its own colour above the plain account. */
+.promise {
+  margin: 0;
+  color: var(--color-accent-ink);
+  font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.cards {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: clamp(2.5rem, 5.5vh, 4rem) clamp(12px, 1.66vw, 32px);
+  margin: clamp(2rem, 5.5vh, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 744px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.listCards {
+  margin: 0;
+  padding: 0 var(--gutter) clamp(5rem, 13vh, 10rem);
+}

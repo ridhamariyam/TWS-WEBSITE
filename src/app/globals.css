@@ -1,18 +1,38 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 /*
- * Design tokens transcribed from squarespace.com's own stylesheets
- * (defaults.3400d60b.css + pages/homepage/default/index.f8bc1cc0.css),
- * read back through getComputedStyle at 1440px to confirm resolved values.
+ * PROVENANCE
  *
- * The site is mobile-first with breakpoints at 375 / 600 / 744 / 1020 / 1280 /
- * 1440 / 1920. Those are not Tailwind's defaults, so they are registered below
- * and components use them by name (e.g. `bp1020:grid-cols-2`).
+ * The project was scaffolded from a website-cloning template, and this file
+ * once carried a type scale, `.cta` classes and grid spacing transcribed from
+ * squarespace.com. Those have been replaced with TWS's own: a fluid type
+ * scale, pill buttons and the studio's grid spacing. The easing curves are
+ * the standard public ones (Penner's equations, as published on
+ * easings.net), not anyone's design.
+ *
+ * Everything else — the aurora, the lime accent, the beat clock, the
+ * particle and tunnel systems — is this project's own.
+ *
+ * Breakpoints are 375 / 600 / 744 / 1020 / 1280 / 1440 / 1920, not Tailwind's
+ * defaults, and components use them by name (`bp1020:grid-cols-2`).
  */
 
+/*
+ * The brand palette, and the only colours the homepage uses: violet, blue,
+ * dark blue, black and white.
+ * Static, so every token is emitted even when no utility uses it: the
+ * homepage flow's CSS module reads them with var(), which Tailwind can't see.
+ */
+@theme static {
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-violet: #7c3aed;
+  --color-brand-blue: #2f5bff;
+  --color-brand-navy: #0b1440;
+}
+
 @theme {
-  /* Breakpoints — squarespace.com's own set, mobile-first. */
+  /* Breakpoints, mobile-first. Inherited from the scaffold; see above. */
   --breakpoint-bp375: 375px;
   --breakpoint-bp600: 600px;
   --breakpoint-bp744: 744px;
@@ -21,34 +41,77 @@
   --breakpoint-bp1440: 1440px;
   --breakpoint-bp1920: 1920px;
 
-  /* Primitives + greys, verbatim from :root. */
-  --color-primitive-black: #000;
+  /*
+   * Primitives, from the brand kit: black is the brand's #111111, not pure
+   * black, and charcoal is the surface one step up from it. Lime is below.
+   */
+  --color-primitive-black: #111111;
   --color-primitive-white: #fff;
-  --color-gray-200: #ddd;
-  --color-gray-500: #898989;
-  --color-gray-800: #5a5a5a;
+  --color-charcoal: #242424;
+
+  /*
+   * The light palette the site runs on: near-black ink on white, a mid grey
+   * for secondary copy, a light grey for hairlines and an off-white for
+   * cards. The grey steps below are tuned for that white page: gray-200 is the
+   * body copy colour and gray-500 the secondary one.
+   */
+  --color-ink: #111111;
+  --color-muted: #5c5c5c;
+  --color-line: #e5e5e5;
+  --color-card: #f5f5f5;
+  --color-gray-200: #2b2b2b;
+  --color-gray-500: #5c5c5c;
+  --color-gray-800: #6b6b6b;
   --color-gray-900: #1a1a1a;
   --color-blue: #0072f0;
-  --color-focus: #087bb5;
+
+  /*
+   * The studio's accent, and the only colour in a black-and-white palette.
+   * ~17:1 on black and ~1.3:1 on white, so it is a dark-surface colour only —
+   * on light sections it is for non-text marks or nothing.
+   */
+  --color-lime: #c7ff2f;
+
+  /*
+   * Lime washed almost to white, for a whole section's ground. Bright lime is
+   * for small things — a full stop, a button, a line — never a background.
+   */
+  --color-lime-soft: #f1f6e2;
+  /* The accent as text. Lime fails on the white page, so text takes ink. */
+  --color-accent-ink: var(--color-ink);
+  --color-focus: var(--color-brand-blue);
   --color-red: #db3642;
   --color-red-vibrant: red;
   --color-pink: #ff9898;
 
-  /* Translucent shades used for hairline borders and card washes. */
+  /* Translucent shades for hairline borders and card washes. */
   --color-shade-t-black-50: #00000008;
   --color-shade-t-black-100: #0000000d;
   --color-shade-t-white-50: #ffffff14;
   --color-shade-t-white-100: #ffffff1f;
 
-  /* Surfaces observed in section backgrounds. */
-  --color-surface-card: #222;
-  --color-surface-raised: #2f2f2f;
-  --color-surface-hairline: #e7e7e7;
+  /* Section background surfaces. */
+  --color-surface-card: #f5f5f5;
+  --color-surface-raised: #ebebeb;
+  --color-surface-hairline: #e5e5e5;
 
-  --font-clarkson: "Clarkson", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-clarkson-serif: "Clarkson Serif", Georgia, "Times New Roman", serif;
+  /*
+   * Inter (SIL OFL), self-hosted by next/font. `--font-inter` is set on <html>
+   * by the loader in layout.tsx; the chain after it renders until it arrives.
+   */
+  --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* One family for everything: anything that asks for mono gets Inter. */
+  --font-mono: var(--font-sans);
 
-  /* Easings lifted from the site's transition declarations. */
+  /*
+   * The display step: every section headline on the site is set at this one
+   * size, weight, leading and tracking, so the large type reads as a system.
+   */
+  --display-size: clamp(3rem, 1.6rem + 5.6vw, 8.25rem);
+  --display-leading: 0.98;
+  --display-tracking: -0.055em;
+
+  /* Easings: the standard public curves (easings.net), named as there. */
   --ease-out-quint: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -56,71 +119,107 @@
 }
 
 /*
- * Self-hosted Clarkson / Clarkson Serif, downloaded from media-www.sqspcdn.com.
- * These are Squarespace's licensed typefaces and ship here only so the clone
- * renders at true fidelity — they are not licensed for redistribution.
+ * The studio's aurora: charcoal with olive and amber to one side, teal and
+ * blue to the other, and a cyan bloom at the centre. It fills the "keep in
+ * touch" capsule, gives the particle field its colours, and stands in wherever
+ * a section needs a surface rather than a picture.
  */
-@font-face {
-  font-family: "Clarkson";
-  src: url("/fonts/clarkson-300.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson";
-  src: url("/fonts/clarkson-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson";
-  src: url("/fonts/clarkson-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson Serif";
-  src: url("/fonts/clarkson-serif-300.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson Serif";
-  src: url("/fonts/clarkson-serif-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson Serif";
-  src: url("/fonts/clarkson-serif-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clarkson Serif";
-  src: url("/fonts/clarkson-serif-400-italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
+:root {
+  --aurora-charcoal: #14161a;
+  --aurora-field:
+    radial-gradient(
+      26% 78% at 50% 50%,
+      rgb(104 196 214 / 0.3) 0%,
+      rgb(104 196 214 / 0.1) 45%,
+      rgb(104 196 214 / 0) 75%
+    ),
+    radial-gradient(
+      44% 120% at 84% 38%,
+      rgb(48 92 176 / 0.3) 0%,
+      rgb(48 92 176 / 0) 70%
+    ),
+    radial-gradient(
+      46% 130% at 52% 84%,
+      rgb(26 86 92 / 0.4) 0%,
+      rgb(26 86 92 / 0) 72%
+    ),
+    radial-gradient(
+      34% 100% at 28% 22%,
+      rgb(158 108 54 / 0.26) 0%,
+      rgb(158 108 54 / 0) 68%
+    ),
+    radial-gradient(
+      42% 120% at 14% 72%,
+      rgb(126 118 64 / 0.34) 0%,
+      rgb(126 118 64 / 0) 70%
+    );
+
+  /* ------------------------------------------------------------ the grid */
+
+  /*
+   * Twelve columns from 744px up, four below.
+   *
+   * Twelve do not fit a phone: eleven gutters and two margins are 208px of a
+   * 320px screen, leaving 9.3px a column, so a headline asking for a span of
+   * five came out 110px wide. Below 744px the layout is a single column in
+   * practice, and the span tokens say so — anything from four columns up is
+   * the full measure, and sections keep asking for the spans they always did.
+   */
+  --grid-margin: 20px;
+  --grid-gutter-width: 16px;
+  --grid-columns: 4;
+
+  /* Everything between the page margins. */
+  --grid-content: calc(100vw - (2 * var(--grid-margin)));
+  --grid-column-width: calc(
+    (
+        var(--grid-content) -
+          ((var(--grid-columns) - 1) * var(--grid-gutter-width))
+      ) / var(--grid-columns)
+  );
+
+  /*
+   * Line length cap, in force below 744px only — where a span is the full
+   * screen and a large phone would otherwise run to 90-odd characters. Above
+   * that the spans are proportions again and do the job.
+   */
+  --measure: min(100%, 34rem);
+
+  --global-nav-height: 64px;
+  --promo-banner-height: 48px;
 }
 
 /*
- * The 12-column grid. `--grid-column-width` is deliberately a calc() of 100vw
- * rather than a fixed value: the site sizes headline max-widths as spans of N
- * columns plus N-1 gutters, so the formula has to stay live. Page margin is
- * (208 - 11*16)/2 = 16px, then 24px, then 40px.
+ * `--span-N` is N columns and the N-1 gutters between them. Sections use these
+ * rather than writing the calc out, so the grid changes shape in one place.
  */
 :root {
-  --grid-gutter-width: 16px;
-  --grid-column-width: calc((100vw - 208px) / 12);
-  --global-nav-height: 64px;
-  --promo-banner-height: 48px;
+  --span-1: var(--grid-column-width);
+  --span-2: calc((var(--grid-column-width) * 2) + var(--grid-gutter-width));
+  --span-3: calc((var(--grid-column-width) * 3) + (var(--grid-gutter-width) * 2));
+  --span-4: calc((var(--grid-column-width) * 4) + (var(--grid-gutter-width) * 3));
+  --span-5: calc((var(--grid-column-width) * 5) + (var(--grid-gutter-width) * 4));
+  --span-6: calc((var(--grid-column-width) * 6) + (var(--grid-gutter-width) * 5));
+  --span-7: calc((var(--grid-column-width) * 7) + (var(--grid-gutter-width) * 6));
+  --span-8: calc((var(--grid-column-width) * 8) + (var(--grid-gutter-width) * 7));
+  --span-9: calc((var(--grid-column-width) * 9) + (var(--grid-gutter-width) * 8));
+  --span-10: calc((var(--grid-column-width) * 10) + (var(--grid-gutter-width) * 9));
+  --span-11: calc((var(--grid-column-width) * 11) + (var(--grid-gutter-width) * 10));
+  --span-12: var(--grid-content);
+}
+
+/* The phone: every span of four or more is the full measure. */
+@media (width < 744px) {
+  :root {
+    --span-4: var(--grid-content);
+    --span-5: var(--grid-content);
+    --span-6: var(--grid-content);
+    --span-7: var(--grid-content);
+    --span-8: var(--grid-content);
+    --span-9: var(--grid-content);
+    --span-10: var(--grid-content);
+    --span-11: var(--grid-content);
+  }
 }
 
 @media (width >= 375px) {
@@ -137,15 +236,18 @@
 
 @media (width >= 744px) {
   :root {
+    --grid-margin: 32px;
     --grid-gutter-width: 24px;
-    --grid-column-width: calc((100vw - 312px) / 12);
+    --grid-columns: 12;
+    /* Spans are proportions of the page again; nothing needs capping. */
+    --measure: 100%;
   }
 }
 
 @media (width >= 1280px) {
   :root {
-    --grid-gutter-width: 40px;
-    --grid-column-width: calc((100vw - 520px) / 12);
+    --grid-margin: 48px;
+    --grid-gutter-width: 32px;
     --global-nav-height: 80px;
   }
 }
@@ -159,21 +261,29 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Two weights site-wide: 400 for text, 500 for headlines and labels. */
+  strong,
+  b {
+    font-weight: 500;
+  }
+
   body {
-    background-color: var(--color-primitive-black);
-    color: var(--color-primitive-white);
-    font-family: var(--font-clarkson);
+    background-color: var(--color-primitive-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     font-weight: 400;
     margin: 0;
   }
 
-  :focus {
+  /*
+   * A lime ring with a black one inside it. Two colours because the page runs
+   * black to white and back: lime carries the dark sections at 17:1, black the
+   * light ones at 21:1, so the pair clears 3:1 on anything (WCAG 1.4.11).
+   */
+  :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 2px;
-  }
-
-  :focus:not(:focus-visible) {
-    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primitive-black);
   }
 
   button {
@@ -197,300 +307,130 @@
 }
 
 @utility page-gutter {
-  /* Matches the grid's page margin at every breakpoint. */
-  padding-inline: 16px;
-  @media (width >= 744px) {
-    padding-inline: 24px;
-  }
-  @media (width >= 1280px) {
-    padding-inline: 40px;
-  }
+  /* The grid's page margin, whatever the breakpoint has made it. */
+  padding-inline: var(--grid-margin);
+}
+
+/* Caps a line of body copy. A no-op from 744px up; see `--measure`. */
+@utility measure {
+  max-width: var(--measure);
 }
 
 /*
- * Type scale, transcribed clamp-for-clamp from the site's `.text--*` classes.
- * Sizes are fluid between breakpoints; line-height and letter-spacing are fixed
- * per step. Weight 300 on the display/title steps, 400-500 lower down.
+ * The type scale: TWS's own. Each step is one fluid size, growing in a
+ * straight line from a 360px phone to a 1440px desktop and held at both ends,
+ * with fixed leading and tracking. The class names are the API; components
+ * only ever ask for a step by name.
  */
 @layer components {
-  .type-display {
-    font-size: clamp(48px, 29.0909vw - 2.81818rem, 64px);
-    font-weight: 300;
-    line-height: 1.04;
-    letter-spacing: -0.06em;
-  }
-  @media (width >= 375px) {
-    .type-display {
-      font-size: clamp(64px, 2.98374rem + 4.33604vw, 80px);
-    }
-  }
-  @media (width >= 744px) {
-    .type-display {
-      font-size: clamp(80px, 10.8696vw - 0.0543478rem, 110px);
-    }
-  }
-  @media (width >= 1020px) {
-    .type-display {
-      font-size: clamp(110px, 11.5385vw - 0.480769rem, 140px);
-    }
-  }
-  @media (width >= 1280px) {
-    .type-display {
-      font-size: clamp(140px, 12.5vw - 1.25rem, 160px);
-    }
-  }
-  @media (width >= 1440px) {
-    .type-display {
-      font-size: clamp(160px, 0.625rem + 10.4167vw, 210px);
-    }
-  }
-
-  .type-title1 {
-    font-size: clamp(48px, 2.27273rem + 3.63636vw, 50px);
-    font-weight: 300;
-    line-height: 1.04;
-    letter-spacing: -0.05em;
-  }
-  @media (width >= 375px) {
-    .type-title1 {
-      font-size: clamp(50px, 2.23577rem + 3.79404vw, 64px);
-    }
-  }
-  @media (width >= 744px) {
-    .type-title1 {
-      font-size: clamp(64px, 9.42029vw - 0.380435rem, 90px);
-    }
-  }
-  @media (width >= 1020px) {
-    .type-title1 {
-      font-size: clamp(90px, 3.17308rem + 3.84615vw, 100px);
-    }
-  }
-  @media (width >= 1280px) {
-    .type-title1 {
-      font-size: 100px;
-    }
-  }
-  @media (width >= 1440px) {
-    .type-title1 {
-      font-size: clamp(100px, 2.5rem + 4.16667vw, 120px);
-    }
-  }
-
-  .type-title2 {
-    font-size: clamp(44px, 2.02273rem + 3.63636vw, 46px);
-    font-weight: 300;
-    line-height: 1.04;
-    letter-spacing: -0.05em;
-  }
-  @media (width >= 375px) {
-    .type-title2 {
-      font-size: clamp(46px, 2.4939rem + 1.62602vw, 52px);
-    }
-  }
-  @media (width >= 744px) {
-    .type-title2 {
-      font-size: clamp(52px, 2.57609rem + 1.44928vw, 56px);
-    }
-  }
-  @media (width >= 1020px) {
-    .type-title2 {
-      font-size: clamp(56px, 0.0673077rem + 5.38462vw, 70px);
-    }
-  }
-  @media (width >= 1280px) {
-    .type-title2 {
-      font-size: clamp(70px, 3.375rem + 1.25vw, 72px);
-    }
-  }
-  @media (width >= 1440px) {
-    .type-title2 {
-      font-size: clamp(72px, 7.08333vw - 1.875rem, 106px);
-    }
-  }
-
   .type-title3 {
-    font-size: clamp(38px, 0.920455rem + 7.27273vw, 42px);
-    font-weight: 300;
-    line-height: 1.04;
-    letter-spacing: -0.06em;
-  }
-  @media (width >= 375px) {
-    .type-title3 {
-      font-size: clamp(42px, 1.98984rem + 2.71003vw, 52px);
-    }
-  }
-  @media (width >= 744px) {
-    .type-title3 {
-      font-size: clamp(52px, 2.57609rem + 1.44928vw, 56px);
-    }
-  }
-  @media (width >= 1020px) {
-    .type-title3 {
-      font-size: clamp(56px, 2.51923rem + 1.53846vw, 60px);
-    }
-  }
-  @media (width >= 1280px) {
-    .type-title3 {
-      font-size: clamp(60px, 1.75rem + 2.5vw, 64px);
-    }
-  }
-  @media (width >= 1440px) {
-    .type-title3 {
-      font-size: clamp(64px, 2.5rem + 1.66667vw, 72px);
-    }
+    font-size: clamp(2.5rem, 1.7500rem + 3.3333vw, 4.75rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .type-title4 {
-    font-size: clamp(34px, 10.9091vw - 0.0568182rem, 40px);
-    line-height: 1.08;
+    font-size: clamp(2.125rem, 1.5417rem + 2.5926vw, 3.875rem);
+    font-weight: 500;
+    line-height: 1.06;
     letter-spacing: -0.04em;
-  }
-  @media (width >= 375px) {
-    .type-title4 {
-      font-size: 40px;
-    }
-  }
-  @media (width >= 1020px) {
-    .type-title4 {
-      font-size: clamp(40px, 0.0480769rem + 3.84615vw, 50px);
-    }
-  }
-  @media (width >= 1280px) {
-    .type-title4 {
-      font-size: clamp(50px, 0.125rem + 3.75vw, 56px);
-      font-weight: 300;
-    }
-  }
-  @media (width >= 1440px) {
-    .type-title4 {
-      font-size: clamp(56px, 0.125rem + 3.75vw, 74px);
-    }
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .type-subtitle1 {
-    font-size: 22px;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-  }
-  @media (width >= 375px) {
-    .type-subtitle1 {
-      font-size: 26px;
-    }
-  }
-  @media (width >= 1020px) {
-    .type-subtitle1 {
-      font-size: 32px;
-    }
-  }
-  @media (width >= 1280px) {
-    .type-subtitle1 {
-      font-size: 36px;
-    }
-  }
-  @media (width >= 1440px) {
-    .type-subtitle1 {
-      font-size: 40px;
-    }
-  }
-  @media (width >= 1920px) {
-    .type-subtitle1 {
-      font-size: 50px;
-    }
+    font-size: clamp(1.5rem, 1.0833rem + 1.8519vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .type-subtitle2 {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-  }
-  @media (width >= 744px) {
-    .type-subtitle2 {
-      font-size: 24px;
-    }
-  }
-  @media (width >= 1020px) {
-    .type-subtitle2 {
-      font-size: 26px;
-    }
-  }
-  @media (width >= 1920px) {
-    .type-subtitle2 {
-      font-size: 34px;
-    }
+    font-size: clamp(1.25rem, 1.0417rem + 0.9259vw, 1.875rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .type-subtitle3 {
-    font-size: 18px;
+    font-size: clamp(1.125rem, 1.0417rem + 0.3704vw, 1.375rem);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.25;
     letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  @media (width >= 744px) {
-    .type-subtitle3 {
-      font-size: 20px;
-    }
-  }
-  @media (width >= 1920px) {
-    .type-subtitle3 {
-      font-size: 24px;
-    }
-  }
 
   .type-body {
-    font-size: 15px;
-    line-height: 1.4;
-    letter-spacing: -0.001em;
+    font-size: clamp(0.9375rem, 0.8958rem + 0.1852vw, 1.0625rem);
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Same metrics as .type-body but weight 500 — the site's `.text--body-medium`. */
+  /* Same metrics as .type-body, at weight 500. */
   .type-body-medium {
-    font-size: 15px;
+    font-size: clamp(0.9375rem, 0.8958rem + 0.1852vw, 1.0625rem);
     font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: -0.001em;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   .type-footnote {
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    line-height: 1.45;
   }
 
+  /* The display step as a class, for headlines set outside a module. */
+  .type-display {
+    font-size: var(--display-size);
+    font-weight: 500;
+    line-height: var(--display-leading);
+    letter-spacing: var(--display-tracking);
+    text-wrap: balance;
+  }
+
+  /* The one label style: small, spaced capitals. Every section label uses it. */
   .type-eyebrow {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/*
- * Scroll reveal. The live site server-renders `style="opacity:0;transform:
- * translateY(25px)"` on headlines, body copy and avatars, then clears both once
- * the element intersects the viewport. There is no transition on the element
- * itself, so the easing is owned here — matched to the 1.2s cubic-bezier(.23,1,
- * .32,1) the stats cards use for their own fadeIn.
- */
+/* The scroll reveal's transition. See `useReveal` for the state it animates. */
 @layer utilities {
+  /*
+   * A state, not a default: `useReveal` sets `data-reveal-pending` only on what
+   * starts below the fold. Content already on screen, and every reader without
+   * JavaScript, simply has the page.
+   */
   .reveal {
-    opacity: 0;
-    transform: translateY(25px);
     transition:
       opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
       transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
+  .reveal[data-reveal-pending] {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .reveal,
+    .reveal[data-reveal-pending] {
       opacity: 1 !important;
       transform: none !important;
       transition: none;
@@ -499,16 +439,28 @@
 }
 
 /*
- * The `.cta` system, transcribed from docs/research/css/cta.css.
+ * The `.cta` system: TWS's own. Buttons are pills in normal case, the same
+ * family as the launch page's capsules; the arrow sits after the label and
+ * nudges forward on hover. Inline CTAs are links in running copy, with an
+ * underline that turns lime on hover.
  *
- * The arrow mechanic is the fiddly part and is worth keeping in CSS rather than
- * utilities: the icon parks at translateX(-100%) inside a 1em-wide clipped slot,
- * the label sits shifted right by half the gap, and on hover the icon slides to
- * 0 while the label slides left — so the arrow appears to push the text over.
+ * Variants: primary (solid), primary-subtle (solid, quieter hover), secondary
+ * (outline), inline (a link); `--light` sets any of them for a dark surface,
+ * `--lime` makes a solid one the page's loudest action.
  */
 @layer components {
+  ::selection {
+    background-color: var(--color-brand-violet);
+    color: var(--color-primitive-white);
+  }
+
   .cta {
     color: var(--color-primitive-black);
+  }
+
+  /* Before `.cta--light` on purpose: an inline link takes the colour around it. */
+  .cta--inline {
+    color: inherit;
   }
 
   .cta--light {
@@ -518,118 +470,87 @@
   .cta:focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--color-primitive-black);
   }
 
   .cta--primary,
   .cta--primary-subtle,
   .cta--secondary {
-    --cta-arrow-gap: 8px;
-    --cta-arrow-margin-right: -4px;
-    --cta-hover-offset: 2px;
     appearance: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    border: none;
-    border-radius: 4px;
-    padding: 23px 28px;
-    font-family: var(--font-clarkson);
-    font-size: 14px;
+    gap: 0.6em;
+    min-height: 48px;
+    padding: 0 1.4em;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 15px;
     font-weight: 500;
-    font-style: normal;
-    line-height: 1em;
-    text-transform: uppercase;
+    line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 0.3s var(--ease-out-quint),
+      border-color 0.3s var(--ease-out-quint),
+      color 0.3s var(--ease-out-quint),
+      transform 0.3s var(--ease-out-quint);
   }
 
-  .cta--primary {
-    background-color: var(--color-primitive-black);
-    color: var(--color-primitive-white);
+  @media (width >= 744px) {
+    .cta--primary,
+    .cta--primary-subtle,
+    .cta--secondary {
+      min-height: 52px;
+      font-size: 16px;
+    }
   }
 
-  .cta--primary.cta--light {
-    background-color: var(--color-primitive-white);
-    color: var(--color-primitive-black);
-  }
-
+  .cta--primary,
   .cta--primary-subtle {
     background-color: var(--color-primitive-black);
     color: var(--color-primitive-white);
   }
 
-  .cta--secondary {
-    --cta-arrow-gap: 17px;
-    background-color: transparent;
+  /* On a dark surface a solid button is white, with black type. */
+  .cta--primary.cta--light,
+  .cta--primary-subtle.cta--light {
+    background-color: var(--color-primitive-white);
     color: var(--color-primitive-black);
-    box-shadow: inset 0 0 0 2px
-      color-mix(in srgb, var(--color-primitive-black) 20%, transparent);
   }
 
-  .cta--secondary.cta--light {
-    color: var(--color-primitive-white);
-    box-shadow: inset 0 0 0 2px
-      color-mix(in srgb, var(--color-primitive-white) 20%, transparent);
+  /* The loudest action on a page, starting a project: lime, black type. */
+  .cta.cta--primary.cta--lime,
+  .cta.cta--primary-subtle.cta--lime {
+    background-color: var(--color-lime);
+    color: var(--color-primitive-black);
   }
 
-  .cta--tertiary {
-    appearance: none;
-    cursor: pointer;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
+  .cta--secondary {
     background-color: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 4px 0;
-    font-family: var(--font-clarkson);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1em;
-    text-transform: uppercase;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    border-color: color-mix(in srgb, currentColor 30%, transparent);
   }
 
   .cta--inline {
     appearance: none;
     cursor: pointer;
     display: inline;
-    align-items: stretch;
-    justify-content: flex-start;
     background-color: transparent;
     padding: 0;
     font-size: inherit;
     line-height: inherit;
-    text-transform: inherit;
   }
 
-  /* Two half-width underlines that sweep in from opposite edges on hover. */
-  .cta--tertiary.cta--underline-hover,
+  /* A hairline underline that thickens and turns lime on hover. */
   .cta--has-inline-underline {
-    background-image:
-      linear-gradient(currentColor, currentColor),
-      linear-gradient(currentColor, currentColor);
-    background-position:
-      0 100%,
-      100% 100%;
-    background-repeat: no-repeat;
-  }
-
-  .cta--tertiary.cta--underline-hover {
-    background-size:
-      51% 2px,
-      50% 2px;
-  }
-
-  .cta--has-inline-underline {
-    background-size:
-      51% 1px,
-      50% 1px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition:
+      text-decoration-color 0.3s var(--ease-out-quint),
+      text-decoration-thickness 0.3s var(--ease-out-quint);
   }
 
   .cta__label {
@@ -641,119 +562,60 @@
   .cta--has-arrow span[data-arrow="true"] {
     display: inline-flex;
     align-items: center;
-    margin-left: 8px;
-  }
-
-  .cta--primary span[data-arrow="true"],
-  .cta--primary-subtle span[data-arrow="true"],
-  .cta--secondary span[data-arrow="true"] {
-    display: inline-flex;
-    align-items: center;
     flex-shrink: 0;
-    overflow: hidden;
-    width: 1em;
-    margin-left: var(--cta-arrow-gap);
-    margin-right: var(--cta-arrow-margin-right);
   }
 
-  .cta--primary .cta__arrow-icon,
-  .cta--primary-subtle .cta__arrow-icon,
-  .cta--secondary .cta__arrow-icon {
+  .cta--inline.cta--has-arrow span[data-arrow="true"] {
+    margin-left: 0.4em;
+  }
+
+  .cta__arrow-icon {
     display: block;
-    line-height: 1;
-    transform: translateX(-100%);
-  }
-
-  .cta--primary.cta--has-arrow .cta__label,
-  .cta--primary-subtle.cta--has-arrow .cta__label,
-  .cta--secondary.cta--has-arrow .cta__label {
-    transform: translateX(
-      calc(var(--cta-arrow-gap) / 2 + 0.5em + var(--cta-arrow-margin-right) / 2)
-    );
+    transition: transform 0.3s var(--ease-out-quint);
   }
 
   @media (hover: hover) {
+    .cta--primary:hover,
+    .cta--primary-subtle:hover,
+    .cta--secondary:hover {
+      transform: translateY(-2px);
+    }
+
     .cta--primary:hover {
-      background-color: var(--color-gray-200);
+      background-color: var(--color-charcoal);
+    }
+
+    .cta--primary.cta--light:hover {
+      background-color: var(--color-lime);
       color: var(--color-primitive-black);
     }
-    .cta--primary.cta--light:hover {
-      background-color: var(--color-gray-900);
-      color: var(--color-primitive-white);
-    }
+
     .cta--primary-subtle:hover {
       background-color: var(--color-gray-800);
     }
+
     .cta--primary-subtle.cta--light:hover {
-      background-color: var(--color-gray-200);
+      background-color: color-mix(in srgb, var(--color-primitive-white) 85%, transparent);
     }
-    .cta--secondary:hover {
-      background-color: transparent;
-      color: var(--color-primitive-black);
-      box-shadow: inset 0 0 0 2px var(--color-primitive-black);
-    }
-    .cta--secondary.cta--light:hover {
+
+    .cta.cta--primary.cta--lime:hover,
+    .cta.cta--primary-subtle.cta--lime:hover {
       background-color: var(--color-primitive-white);
       color: var(--color-primitive-black);
-      box-shadow: inset 0 0 0 2px var(--color-primitive-white);
     }
-  }
 
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .cta--primary:hover.cta--has-arrow .cta__label,
-    .cta--primary-subtle:hover.cta--has-arrow .cta__label,
-    .cta--secondary:hover.cta--has-arrow .cta__label {
-      transform: translateX(calc(-6px + var(--cta-hover-offset)));
+    .cta--secondary:hover {
+      border-color: currentColor;
     }
-    .cta--primary:hover span[data-arrow="true"],
-    .cta--primary-subtle:hover span[data-arrow="true"],
-    .cta--secondary:hover span[data-arrow="true"] {
-      transform: translateX(var(--cta-hover-offset));
-    }
-    .cta--primary:hover .cta__arrow-icon,
-    .cta--primary-subtle:hover .cta__arrow-icon,
-    .cta--secondary:hover .cta__arrow-icon {
-      transform: translateX(0);
-      transition: transform 0.35s var(--ease-in-out-cubic);
-    }
-    .cta--tertiary:hover {
-      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideIn;
-    }
-    .cta--tertiary {
-      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideOut;
-    }
-    .cta--has-inline-underline.cta--underline-hover {
-      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideIn;
-    }
-    .cta--has-inline-underline.cta--underline-hover:hover {
-      animation: 0.35s var(--ease-in-out-cubic) forwards ctaUnderlineSlideOut;
-    }
-  }
-}
 
-@keyframes ctaUnderlineSlideIn {
-  0% {
-    background-position:
-      -200% 100%,
-      -100% 100%;
-  }
-  to {
-    background-position:
-      0 100%,
-      100% 100%;
-  }
-}
+    .cta--has-arrow:hover .cta__arrow-icon {
+      transform: translateX(3px);
+    }
 
-@keyframes ctaUnderlineSlideOut {
-  0% {
-    background-position:
-      0 100%,
-      100% 100%;
-  }
-  to {
-    background-position:
-      210% 100%,
-      300% 100%;
+    .cta--has-inline-underline:hover {
+      text-decoration-color: var(--color-lime);
+      text-decoration-thickness: 2px;
+    }
   }
 }
 
@@ -773,4 +635,32 @@
   to {
     opacity: 1;
   }
+}
+
+/*
+ * The hero's clock. An element on it declares only `animation-name`; start,
+ * duration and curve come from three inline custom properties. The plumbing is
+ * here rather than in the module so one value, `--beat-rate`, retimes the
+ * whole entrance for reduced motion.
+ *
+ * `--beat-offset` shifts every beat in a subtree by the same amount, which is
+ * how the hero waits for its tunnel without any of its own timings changing.
+ */
+:root {
+  --beat-rate: 1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --beat-rate: 0.34s;
+  }
+}
+
+.tws-beat {
+  animation-duration: calc(var(--beat-d, 0) * var(--beat-rate, 1s));
+  animation-delay: calc(
+    (var(--beat-t, 0) + var(--beat-offset, 0)) * var(--beat-rate, 1s)
+  );
+  animation-timing-function: var(--beat-e, ease);
+  animation-fill-mode: both;
 }

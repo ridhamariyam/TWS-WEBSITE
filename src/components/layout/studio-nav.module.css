@@ -1,0 +1,363 @@
+/*
+ * The navigation bar and its full-screen menu.
+ *
+ * The bar is transparent over the top of the page and takes a dark backing
+ * once the page moves. The menu is a screen of black that wipes down from the
+ * top; its links rise in one after another, and each label rolls up to a
+ * second copy on hover.
+ */
+
+.header {
+  --ease: cubic-bezier(0.76, 0, 0.24, 1);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 900;
+  color: var(--color-primitive-white);
+}
+
+.bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  height: var(--global-nav-height);
+  padding-inline: var(--grid-margin);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/*
+ * At the top of a page the bar sits straight on the page's own background,
+ * which is white throughout: it inverts against
+ * whatever is behind it, so it reads on both. Once there is a backing, or
+ * the menu is open, it is drawn normally.
+ */
+.header:not([data-scrolled])[data-menu="closed"] {
+  mix-blend-mode: difference;
+}
+
+/* Scrolled: a white bar with dark type and the mark inverted, like the page. */
+.header[data-scrolled] .bar {
+  border-bottom: 1px solid var(--color-line);
+  background-color: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--color-ink);
+}
+
+/* The mark is white art, so the white bar inverts it. */
+.header[data-scrolled] .logo img {
+  filter: invert(1);
+}
+
+/* Over the open menu the bar is white on black, with no backing of its own. */
+.header[data-menu="open"] .bar,
+.header[data-menu="closing"] .bar {
+  background-color: transparent;
+  backdrop-filter: none;
+  color: var(--color-primitive-white);
+}
+
+.header[data-menu="open"] .logo img,
+.header[data-menu="closing"] .logo img {
+  filter: none;
+}
+
+.logo {
+  display: inline-flex;
+  flex: none;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 24px;
+  transition: filter 0.4s ease;
+}
+
+@media (width >= 1280px) {
+  .logo img {
+    height: 28px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 0.5rem + 1.5vw, 1.75rem);
+}
+
+/* The bar's text links; see BAR_LINKS for which show at which width. */
+.barNav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 0.75rem + 1.5vw, 2.25rem);
+}
+
+.barLink {
+  color: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.barLink:hover,
+.barLink:focus-visible,
+.barLink[aria-current="page"] {
+  opacity: 1;
+}
+
+@media (width < 1020px) {
+  .wide {
+    display: none;
+  }
+}
+
+@media (width < 600px) {
+  .barNav {
+    display: none;
+  }
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+/* Two lines; open, they cross into an X. */
+.lines {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.lines i {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transition:
+    top 0.4s var(--ease),
+    transform 0.4s var(--ease);
+}
+
+.lines i:first-child {
+  top: 8.5px;
+}
+
+.lines i:last-child {
+  top: 14px;
+}
+
+.header[data-menu="open"] .lines i {
+  top: 11.25px;
+}
+
+.header[data-menu="open"] .lines i:first-child {
+  transform: rotate(45deg);
+}
+
+.header[data-menu="open"] .lines i:last-child {
+  transform: rotate(-45deg);
+}
+
+/* ---------------------------------------------------------------- panel */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  height: 100dvh;
+  overflow-y: auto;
+  background-color: var(--color-primitive-black);
+  color: var(--color-primitive-white);
+  animation: panelIn 0.6s var(--ease) both;
+}
+
+.panel[data-state="closing"] {
+  animation: panelOut 0.45s var(--ease) both;
+}
+
+@keyframes panelIn {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes panelOut {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+.panelInner {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1015px;
+  min-height: 100%;
+  margin-inline: auto;
+  padding: calc(var(--global-nav-height) + 3.75rem) var(--grid-margin) clamp(2.5rem, 2rem + 3vw, 5rem);
+}
+
+@media (width < 1020px) {
+  .panelInner {
+    padding-top: calc(var(--global-nav-height) + 2.5rem);
+  }
+}
+
+.feature {
+  width: 100%;
+  max-width: 348px;
+  align-self: center;
+}
+
+@media (width < 1020px) {
+  .feature {
+    display: none;
+  }
+}
+
+.featureText {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+@media (width < 1020px) {
+  .menu {
+    max-width: none;
+  }
+}
+
+.primary,
+.secondary ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.secondary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* The links rise in after the panel, one beat apart. */
+.primary li,
+.secondary li {
+  animation: linkIn 0.7s var(--ease) both;
+  animation-delay: calc(0.25s + var(--i, 0) * 0.05s);
+}
+
+@keyframes linkIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+/* ------------------------------------------------------------ roll link */
+
+.roll {
+  --h: 2.75rem;
+
+  display: block;
+  height: var(--h);
+  overflow: hidden;
+  color: inherit;
+  font-size: clamp(2rem, 1.6rem + 1.4vw, 2.75rem);
+  font-weight: 500;
+  line-height: var(--h);
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.roll.small {
+  --h: 1.5rem;
+
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.rollStack {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.45s var(--ease);
+}
+
+.rollStack > span {
+  display: block;
+  height: var(--h);
+}
+
+.roll:hover .rollStack,
+.roll:focus-visible .rollStack {
+  transform: translateY(calc(var(--h) * -1));
+}
+
+.roll[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
+}
+
+.roll:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .panel[data-state="closing"],
+  .primary li,
+  .secondary li {
+    animation: none;
+  }
+
+  .lines i,
+  .rollStack {
+    transition: none;
+  }
+
+  .roll:hover .rollStack,
+  .roll:focus-visible .rollStack {
+    transform: none;
+  }
+}

@@ -1,0 +1,2249 @@
+/*
+ * The homepage flow: one stylesheet for the six stages, in page order.
+ * Scroll-driven values arrive as CSS variables set by each stage's script;
+ * every one has a resting default here, so the page reads before it runs.
+ */
+
+/*
+ * The brand faces: Anek for running text, Poppins for UI and subheadings,
+ * Anton, in capitals, for the big headings.
+ */
+.page {
+  background: var(--color-brand-black);
+  font-family: var(--font-anek), var(--font-sans);
+}
+
+.nav,
+.btnSolid,
+.btnGhost,
+.ringCta,
+.marquee,
+.faceTop,
+.facePill,
+.faceTitle,
+.railMeta,
+.depthCaption {
+  font-family: var(--font-poppins), var(--font-sans);
+}
+
+.diveTitle,
+.railName {
+  font-family: var(--font-anton), var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* ---------- Floating nav ---------- */
+
+.nav {
+  position: fixed;
+  inset: 14px 0 auto;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding-inline: 12px;
+  pointer-events: none;
+}
+
+.navPill {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.82);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  font-size: 13px;
+  pointer-events: auto;
+}
+
+.navMark {
+  display: flex;
+  padding: 6px 12px;
+}
+
+.navLink {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: rgb(255 255 255 / 0.72);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navLink:hover {
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.navLinkWide {
+  display: none;
+}
+
+@media (width >= 600px) {
+  .navLinkWide {
+    display: inline-flex;
+  }
+}
+
+.navCta {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--color-brand-blue);
+  color: var(--color-brand-white);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ---------- Shared buttons and type ---------- */
+
+.btnSolid,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding-inline: 20px;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out-quint), background-color 0.2s;
+}
+
+.btnSolid {
+  background: var(--color-brand-white);
+  color: var(--color-brand-black);
+  font-weight: 600;
+}
+
+.btnGhost {
+  border: 1px solid rgb(255 255 255 / 0.22);
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  font-weight: 400;
+}
+
+.btnSolid:hover,
+.btnGhost:hover {
+  transform: translateY(-2px);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heroTitleMuted {
+  display: block;
+  color: rgb(255 255 255 / 0.45);
+}
+
+/* A solid block of purple or navy where a photograph would be (Swatch). */
+.swatch {
+  display: block;
+  background: var(--color-brand-navy);
+}
+
+.swatch[data-tone="violet"] {
+  background: var(--color-brand-violet);
+}
+
+/* ---------- 1. Hero card into the service ring ---------- */
+
+.heroSection {
+  position: relative;
+  height: 420svh;
+  background: var(--color-brand-white);
+}
+
+.heroStage {
+  /*
+   * The ring's cards stand as tall as the space between the floating nav and
+   * the "Explore services" button allows: the button's offset and height plus
+   * a gap, kept clear above and below.
+   */
+  --cta-clear: calc(max(28px, 7svh) + 58px);
+  --ch: max(320px, calc(100svh - 2 * var(--cta-clear)));
+  --cw: min(80vw, calc(var(--ch) * 0.72));
+  --morph: 0;
+  --tilt: 0deg;
+  --hero-copy: 1;
+  --hero-panel: 1;
+  --hero-face: 0;
+  --hero-card: 1;
+  --ring-in: 0;
+  --ring: 0deg;
+  --marquee-x: 0px;
+  --cta-out: 1;
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.marquee {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(56px, 9vw, 150px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translate3d(var(--marquee-x), -50%, 0);
+  will-change: transform;
+}
+
+/*
+ * There from the first frame, behind the opening card, and always running:
+ * the words drift on their own (the run is two copies, so half its width
+ * loops cleanly), and scrolling pushes them further.
+ */
+.marquee > span {
+  display: inline-block;
+  animation: marqueeRun 40s linear infinite;
+}
+
+@keyframes marqueeRun {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee > span {
+    animation: none;
+  }
+}
+
+.marqueeItem {
+  display: inline-block;
+  margin-right: 0.6em;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+  opacity: var(--ring-in);
+}
+
+.ringTrack {
+  position: relative;
+  width: var(--cw);
+  height: var(--ch);
+  transform-style: preserve-3d;
+  /* A hexagon's apothem, so neighbouring cards meet edge to edge. */
+  transform: translateZ(calc(var(--cw) * -0.87)) rotateY(var(--ring));
+}
+
+.ringCard {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.45);
+  transform: rotateY(calc(var(--i) * 60deg)) translateZ(calc(var(--cw) * 0.87));
+}
+
+/*
+ * The hero panel: a full-bleed rounded black panel with a soft light coming
+ * up from under its bottom edge. It holds the copy, and falls back and fades
+ * as the card in its middle leaves for the ring.
+ */
+.heroPanel {
+  position: absolute;
+  inset: clamp(10px, 2.75vw, 34px);
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(55% 65% at 0% 0%, rgb(124 58 237 / 0.42), transparent 70%),
+    radial-gradient(50% 60% at 100% 100%, rgb(47 91 255 / 0.32), transparent 70%),
+    radial-gradient(40% 45% at 100% 0%, rgb(11 20 64 / 0.9), transparent 70%),
+    var(--color-brand-black);
+  color: #fff;
+  opacity: var(--hero-panel);
+  transform: scale(calc(0.94 + 0.06 * var(--hero-panel)));
+}
+
+/* The light under the card goes with the copy, well before the ring's button shows. */
+.heroPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(24% 30% at 51% 108%, rgb(255 255 255 / 0.5), rgb(196 181 253 / 0.28) 32%, rgb(47 91 255 / 0.14) 60%, transparent 82%);
+  opacity: var(--hero-copy);
+  pointer-events: none;
+}
+
+.heroFace {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template:
+    "title" auto
+    "." 1fr
+    "copy" auto
+    "foot" auto / 1fr;
+  row-gap: clamp(20px, 3.2svh, 28px);
+  padding: 38px clamp(20px, 2.9vw, 34px) clamp(18px, 3.8svh, 32px);
+}
+
+/* On a phone the floating nav spans the width, so the copy starts below it. */
+@media (width < 744px) {
+  .heroFace {
+    padding-top: 76px;
+  }
+}
+
+.heroHead {
+  grid-area: title;
+}
+
+.heroEyebrow {
+  margin: 0 0 18px;
+  color: rgb(255 255 255 / 0.6);
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.heroTitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #ecebf3;
+  font-size: clamp(44px, 5.9vw, 106px);
+  font-weight: 450;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+/* On wider screens the title stays left of the card standing in the middle. */
+@media (width >= 744px) {
+  .heroTitle {
+    max-width: calc(31vw - 2 * clamp(20px, 2.9vw, 34px));
+  }
+}
+
+.heroCopy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  /* Stops short of the card, so the buttons are never under it. */
+  max-width: min(340px, calc(31vw - 44px));
+}
+
+@media (width < 744px) {
+  .heroCopy {
+    max-width: none;
+  }
+}
+
+.heroLead {
+  margin: 0;
+  color: rgb(255 255 255 / 0.85);
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.6;
+}
+
+.heroFoot {
+  grid-area: foot;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: clamp(18px, 3.6svh, 30px);
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+  color: rgb(255 255 255 / 0.85);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 20px 5px 6px;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.heroBadgeThumbs {
+  display: flex;
+}
+
+.heroBadgeThumbs .swatch {
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid rgb(255 255 255 / 0.35);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.heroBadgeThumbs .swatch + .swatch {
+  margin-left: -8px;
+}
+
+.heroFootRight {
+  display: none;
+  max-width: 54ch;
+  text-align: right;
+}
+
+@media (width >= 744px) {
+  .heroFootRight {
+    display: inline;
+  }
+}
+
+/*
+ * The portrait card standing in the middle of the panel, turned a little
+ * away from the viewer. Scrolling squares it up, shrinks it to the ring's
+ * card size (turning once clockwise, --tilt, on the way) and fades the first service
+ * in over the film.
+ */
+.heroCard {
+  /* On a phone, small enough to sit between the title and the lead. */
+  --pw: min(56vw, 300px);
+  --ph: min(36svh, 420px);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: calc(var(--pw) + (var(--cw) - var(--pw)) * var(--morph));
+  height: calc(var(--ph) + (var(--ch) - var(--ph)) * var(--morph));
+  overflow: hidden;
+  border-radius: calc(14px + 8px * var(--morph));
+  background: var(--color-brand-navy);
+  box-shadow: 0 30px 60px -30px rgb(4 3 16 / 0.55);
+  opacity: var(--hero-card);
+  transform: translate(-50%, -50%) perspective(1400px)
+    rotateY(calc(11deg * (1 - var(--morph)))) rotateX(calc(-2deg * (1 - var(--morph))))
+    rotate(var(--tilt));
+}
+
+@media (width >= 744px) {
+  .heroCard {
+    --pw: min(38vw, 580px);
+    --ph: min(72svh, 760px);
+  }
+}
+
+/*
+ * The homepage's card starts as the whole screen: the film the intro zooms
+ * into is the hero, and scrolling shrinks it straight, square to the viewer
+ * and without the turn, into the ring's front card.
+ */
+.heroCardFull {
+  --pw: 100vw;
+  --ph: 100svh;
+
+  border-radius: calc(22px * var(--morph));
+  box-shadow: 0 30px 60px -30px rgb(4 3 16 / calc(0.55 * var(--morph)));
+  transform: translate(-50%, -50%);
+}
+
+/* As the card starts to turn, the film slides up and out of it... */
+.heroFilm {
+  position: absolute;
+  inset: 0;
+  opacity: calc(1 - var(--hero-face, 0));
+  transform: translateY(calc(-100% * var(--hero-face, 0)));
+}
+
+/* A shade at the top of the card, falling away, as in the reference. */
+.heroFilm::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 40%);
+}
+
+.heroFilm video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroServiceFace {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--cw);
+  height: var(--ch);
+  opacity: var(--hero-face);
+  /* ...and the first service slides up into its place. */
+  transform: translate(-50%, calc(-50% + 100% * (1 - var(--hero-face))));
+}
+
+/* On the full-screen card the service fills it as it shrinks, so no frame shows. */
+.heroCardFull .heroServiceFace {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * The other pages' hero: the card opens out to the full screen instead of
+ * folding into the ring, so the size it grows to is the viewport.
+ */
+.pageHeroSection {
+  position: relative;
+  height: 140svh;
+  background: var(--color-brand-white);
+}
+
+.pageHeroStage {
+  --cw: 100vw;
+  --ch: 100svh;
+  --dim: 0;
+}
+
+.pageHeroStage .heroCard {
+  border-radius: calc(14px * (1 - var(--morph)));
+  box-shadow: none;
+}
+
+/*
+ * On a phone an inner page's longer title and lead leave less room, so the
+ * card starts smaller, a little above centre, in the gap between them. On a
+ * short phone there is no gap, so it stays out of sight until it opens out.
+ */
+@media (width < 744px) {
+  .pageHeroStage .heroCard {
+    --ph: min(26svh, 240px);
+    --pw: calc(var(--ph) * 0.74);
+
+    top: calc(47% + 3% * var(--morph));
+  }
+}
+
+@media (width < 744px) and (height < 800px) {
+  .pageHeroStage .heroCard {
+    opacity: min(1, calc(var(--morph) * 6));
+  }
+}
+
+/*
+ * Inner pages carry longer titles, so on wider screens the card starts
+ * smaller and right of centre, clear of the title, and drifts to the centre
+ * as it opens out.
+ */
+@media (width >= 744px) {
+  .pageHeroStage .heroCard {
+    --pw: min(30vw, 440px);
+    --ph: min(64svh, 640px);
+
+    left: calc(50% + 19vw * (1 - var(--morph)));
+  }
+
+  .pageHeroStage .heroTitle {
+    max-width: calc(54vw - 3 * clamp(20px, 2.9vw, 34px));
+    font-size: clamp(40px, 4.9vw, 92px);
+  }
+
+  .pageHeroStage .heroCopy {
+    max-width: min(400px, calc(48vw - 40px));
+  }
+}
+
+.pageHeroStage .heroFilm .swatch {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pageHeroDim {
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand-black);
+  opacity: var(--dim);
+}
+
+.ringCta {
+  position: absolute;
+  bottom: max(28px, 7svh);
+  left: 50%;
+  z-index: 4;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--color-brand-black);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: calc(var(--ring-in) * var(--cta-out));
+  transform: translateX(-50%);
+}
+
+/*
+ * The black panel that opens out of the front card and covers the stage. The
+ * stage's script sets its opacity and an inset() clip-path from scroll.
+ */
+.stageCover {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--color-brand-black);
+  opacity: 0;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+
+.heroStage[data-phase="hero"] .ring,
+.heroStage[data-phase="hero"] .ringCta,
+.heroStage[data-phase="out"] .ring,
+.heroStage[data-phase="out"] .ringCta,
+.heroStage[data-phase="ring"] .heroCard,
+.heroStage[data-phase="out"] .heroCard,
+.heroStage[data-phase="ring"] .heroPanel,
+.heroStage[data-phase="out"] .heroPanel {
+  visibility: hidden;
+}
+
+.heroStage[data-phase="swap"] .heroCard {
+  pointer-events: none;
+}
+
+/* A service, as it appears on a ring card. */
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+.face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 0) 35%, rgb(0 0 0 / 0.85) 100%);
+}
+
+.faceImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faceTop,
+.facePill,
+.faceTitle {
+  position: absolute;
+  z-index: 1;
+  left: 16px;
+  right: 16px;
+}
+
+.faceTop {
+  top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.facePill {
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 14px;
+  background: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(12px);
+  font-size: 14px;
+}
+
+.facePillLabel {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.faceTitle {
+  bottom: 22px;
+  font-size: clamp(22px, 2vw, 30px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.faceTitle strong {
+  display: block;
+  color: rgb(255 255 255 / 0.6);
+  font-weight: 600;
+}
+
+/* ---------- 2. Particle dive ---------- */
+
+/*
+ * The dive overlaps the hero's last screen, so it pins the moment the black
+ * panel has covered the hero. Until then it is see-through: no background, the
+ * canvas faded out, and nothing on it to catch the pointer.
+ */
+.diveSection {
+  position: relative;
+  z-index: 1;
+  height: 340svh;
+  margin-top: -100svh;
+  pointer-events: none;
+}
+
+.diveStage {
+  --enter: 0;
+  --glow: 0;
+  --copy-top: 0;
+  --copy-bottom: 0;
+  --copy-text: 0;
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.diveStage[data-entered] {
+  background: var(--color-brand-black);
+}
+
+.diveCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: var(--enter);
+}
+
+/* A wash of violet and blue in the top corner that comes up with the type. */
+.diveStage::after {
+  content: "";
+  position: absolute;
+  top: -30svh;
+  left: -20vw;
+  width: 70vw;
+  height: 60svh;
+  background: radial-gradient(closest-side, rgb(124 58 237 / 0.35), rgb(47 91 255 / 0.18) 55%, transparent);
+  opacity: var(--glow);
+  pointer-events: none;
+}
+
+.diveCopy {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: #fff;
+}
+
+.diveTitle {
+  margin: 0;
+  font-size: clamp(64px, 13vw, 220px);
+  line-height: 0.9;
+}
+
+/* Each line comes into focus as it rises into place. */
+.diveTitleTop,
+.diveTitleBottom {
+  --in: 0;
+
+  position: absolute;
+  filter: blur(calc((1 - var(--in)) * 18px));
+  opacity: var(--in);
+  transform: translateY(calc((1 - var(--in)) * 40px));
+}
+
+.diveTitleTop {
+  --in: var(--copy-top);
+}
+
+.diveTitleBottom {
+  --in: var(--copy-bottom);
+}
+
+.diveTitleTop {
+  top: 84px;
+  left: var(--grid-margin);
+}
+
+.diveTitleBottom {
+  right: var(--grid-margin);
+  bottom: 28px;
+}
+
+.diveText {
+  position: absolute;
+  top: calc(100px + clamp(64px, 13vw, 220px));
+  left: var(--grid-margin);
+  display: grid;
+  gap: 12px;
+  max-width: 34ch;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 14px;
+  line-height: 1.5;
+  filter: blur(calc((1 - var(--copy-text)) * 8px));
+  opacity: var(--copy-text);
+}
+
+.diveText p {
+  margin: 0;
+}
+
+@media (width >= 744px) {
+  .diveText {
+    top: auto;
+    bottom: 40px;
+  }
+}
+
+/* ---------- 2b. How we work: bento scenes ---------- */
+
+.scenesSection {
+  position: relative;
+  /* Set from the number of layouts; see StudioScenes. */
+  height: 520svh;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+.scenesStage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.scenesProgress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 3px;
+}
+
+.scenesProgress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-brand-violet), var(--color-brand-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.scenesArea {
+  position: absolute;
+  top: 74px;
+  right: var(--grid-margin);
+  bottom: 76px;
+  left: var(--grid-margin);
+  /* Tiles pass out of sight at its edges, clear of the nav and the bar. */
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.sceneA {
+  grid-template:
+    "a c d" 1.1fr
+    "b c e" 1fr / 1fr 1.5fr 1fr;
+}
+
+.sceneB {
+  grid-template:
+    "a" 0.42fr
+    "b" 1fr / 1fr;
+}
+
+.sceneC {
+  grid-template: "a" 1fr / 1fr;
+}
+
+.sceneD {
+  grid-template:
+    "a c" 0.8fr
+    "b c" 1.2fr / 1.4fr 1fr;
+}
+
+.sceneE {
+  grid-template: "a b c" 1fr / 1fr 1fr 1fr;
+}
+
+.sceneF {
+  grid-template:
+    "a b" 1fr
+    "c c" 0.9fr / 1fr minmax(150px, 24%);
+}
+
+@media (width < 744px) {
+  .sceneA {
+    grid-template:
+      "a c" 1fr
+      "b c" 1fr / 1fr 1fr;
+  }
+
+  .sceneA > :nth-child(n + 4) {
+    display: none;
+  }
+
+  .sceneE {
+    grid-template:
+      "b b" 1fr
+      "a c" 1fr / 1fr 1fr;
+  }
+}
+
+.tile {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  will-change: transform;
+}
+
+.tileMedia {
+  background: var(--color-brand-navy);
+}
+
+.tileFill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tileText {
+  position: relative;
+  display: block;
+}
+
+.tileTextRest {
+  opacity: 0;
+}
+
+.tileViolet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(16px, 1.8vw, 26px);
+  background: linear-gradient(150deg, var(--color-brand-violet) 0%, #5a4af5 55%, var(--color-brand-blue) 100%);
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 2.6vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.tileBody {
+  position: relative;
+  max-width: 48ch;
+  margin-top: 14px;
+  color: rgb(255 255 255 / 0.86);
+  font-size: clamp(14px, 1.15vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+.tileMore {
+  position: relative;
+  margin-top: 18px;
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.tileLink {
+  display: flex;
+  transition: filter 0.3s;
+}
+
+.tileLink:hover {
+  filter: brightness(1.12);
+}
+
+.tileStat strong {
+  font-size: clamp(56px, 7vw, 120px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.tileStat .tileText {
+  max-width: 18ch;
+  font-size: clamp(18px, 1.9vw, 30px);
+}
+
+/* Big type over a film, centred, with a wash so it reads on any frame. */
+.tileStatement::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.35);
+}
+
+.tileStatement .tileText {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 4.4vw, 76px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.tilePlain {
+  padding: 8px 0;
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 2.8vw, 46px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.tilePlain .tileText {
+  max-width: 26ch;
+}
+
+.scenesBar {
+  position: absolute;
+  right: var(--grid-margin);
+  bottom: 0;
+  left: var(--grid-margin);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  height: 76px;
+}
+
+.scenesLabel {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 600;
+}
+
+.scenesText {
+  display: none;
+  flex: 1;
+  max-width: 72ch;
+  margin: 0;
+  color: rgb(255 255 255 / 0.75);
+  font-size: clamp(13px, 1.05vw, 16px);
+  line-height: 1.5;
+}
+
+@media (width >= 744px) {
+  .scenesText {
+    display: block;
+  }
+}
+
+.scenesButton {
+  flex: none;
+  margin-left: auto;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--color-brand-white);
+  color: var(--color-brand-black);
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- 3. Work rail ---------- */
+
+.railSection {
+  position: relative;
+  height: 300svh;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+.railStage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  height: 100svh;
+  padding-bottom: 6svh;
+  overflow: hidden;
+}
+
+/* A low band of violet and blue along the bottom edge, under the cards. */
+.railStage::after {
+  content: "";
+  position: absolute;
+  right: -10vw;
+  bottom: -18svh;
+  left: -10vw;
+  z-index: -1;
+  height: 32svh;
+  background: radial-gradient(closest-side, rgb(124 58 237 / 0.3), rgb(47 91 255 / 0.16) 55%, transparent);
+  pointer-events: none;
+}
+
+.railTrack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding-inline: var(--grid-margin);
+  will-change: transform, opacity;
+}
+
+.railCard {
+  position: relative;
+  display: block;
+  flex: none;
+  width: min(86vw, max(62vw, 300px), 1100px);
+  height: calc(94svh - 84px);
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--color-brand-navy);
+  color: #fff;
+}
+
+.railCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.45) 0%, rgb(0 0 0 / 0) 30%, rgb(0 0 0 / 0.85) 100%);
+}
+
+.railMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out-quint);
+}
+
+.railCard:hover .railMedia {
+  transform: scale(1.03);
+}
+
+.railMeta {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: rgb(255 255 255 / 0.8);
+  font-size: 12px;
+}
+
+.railFoot {
+  position: absolute;
+  left: clamp(20px, 2.4vw, 32px);
+  right: 20px;
+  bottom: clamp(18px, 2.2vw, 30px);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.railName {
+  font-size: clamp(36px, 4.4vw, 76px);
+  line-height: 1;
+}
+
+.railSummary {
+  max-width: 58ch;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.railEnd {
+  width: min(64vw, 440px);
+  background: var(--color-brand-blue);
+  color: var(--color-brand-white);
+}
+
+.railEnd::after {
+  content: none;
+}
+
+.railEnd .railSummary {
+  color: rgb(255 255 255 / 0.78);
+}
+
+.railArrow {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  font-size: 44px;
+  line-height: 1;
+}
+
+/* ---------- 3b. Manifesto ---------- */
+
+.mSection {
+  position: relative;
+  height: 560svh;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+.mStage {
+  --m-mark: 0;
+  --m-white: 0;
+  --m-glow: 0;
+  --m-flash: 0;
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  pointer-events: none;
+}
+
+.mWhite {
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand-white);
+  opacity: var(--m-white);
+}
+
+/* White at the centre of the bottom edge, through violet to blue at the sides. */
+.mGlow {
+  position: absolute;
+  right: -10vw;
+  bottom: -30svh;
+  left: -10vw;
+  height: 70svh;
+  background:
+    radial-gradient(40% 45% at 50% 70%, rgb(255 255 255 / 0.75), rgb(196 181 253 / 0.45) 35%, transparent 70%),
+    radial-gradient(35% 55% at 82% 70%, rgb(47 91 255 / 0.75), transparent 70%),
+    radial-gradient(35% 55% at 18% 70%, rgb(124 58 237 / 0.6), transparent 70%);
+  filter: blur(30px);
+  opacity: var(--m-glow);
+}
+
+.mLine {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.28em;
+  margin: 0;
+  padding-inline: var(--grid-margin);
+  font-size: clamp(34px, 5.4vw, 92px);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.mWord {
+  display: inline-block;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity, filter;
+}
+
+.mSerif {
+  font-family: var(--font-serif-accent), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Anton, the brand's impact face, for "So we rethought them." */
+.mAnton {
+  font-family: var(--font-anton), var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.mDim {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.mBlueText {
+  color: var(--color-brand-blue);
+}
+
+/* The bar that sweeps in behind a word. */
+.mMarked {
+  position: relative;
+  padding-inline: 0.12em;
+}
+
+.mMark {
+  position: absolute;
+  inset: 0.08em 0;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--color-brand-violet), var(--color-brand-blue));
+  transform: scaleX(var(--m-mark));
+  transform-origin: left;
+}
+
+.mMarked .mSerif,
+.mMarkText {
+  position: relative;
+}
+
+/* A rounded panel lit at its rim, rushing at the viewer. */
+.mPanel {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: min(60vw, 520px);
+  aspect-ratio: 1.3;
+  border: 4px solid rgb(120 150 255 / 0.9);
+  border-radius: 64px;
+  box-shadow:
+    0 0 40px 6px rgb(47 91 255 / 0.8),
+    inset 0 0 40px 6px rgb(124 58 237 / 0.6);
+  filter: blur(4px);
+  opacity: 0;
+}
+
+.mFlash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 50% 40%, rgb(0 0 0 / 0.85), transparent 75%),
+    linear-gradient(180deg, var(--color-brand-violet), var(--color-brand-blue));
+  opacity: var(--m-flash);
+}
+
+.mGridWrap {
+  position: absolute;
+  inset: 0;
+}
+
+/* Five columns by four rows, each cell 40% of the screen, ruled in hairlines. */
+.mGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 40vw);
+  grid-template-rows: repeat(4, 50svh);
+  gap: 1px;
+  width: max-content;
+  background: rgb(255 255 255 / 0.14);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.mCell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(20px, 3vw, 48px);
+  overflow: hidden;
+  background: var(--color-brand-black);
+}
+
+.mCell .swatch {
+  position: absolute;
+  top: 18%;
+  right: 12%;
+  width: 46%;
+  height: 58%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.mCell span {
+  font-size: clamp(34px, 4.4vw, 72px);
+}
+
+.mHuge {
+  color: var(--color-brand-blue);
+  font-size: clamp(80px, 19vw, 340px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+
+.mChip .swatch {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mChip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(64px, 8vw, 120px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 14px;
+  opacity: 0;
+}
+
+.mPhrase {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.28em;
+  max-width: 18ch;
+}
+
+.mPhraseWord {
+  display: inline-flex;
+}
+
+.mPhraseWord > span {
+  display: inline-block;
+  opacity: 0;
+}
+
+
+
+/* ---------- 3b. The mark as a window ---------- */
+
+.revealSection {
+  position: relative;
+  height: 320svh;
+  background: var(--color-brand-white);
+}
+
+.revealStage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* The film, seen through the traced logo; BrandReveal sizes and places it. */
+.revealWindow {
+  position: absolute;
+  inset: 0;
+  mask-image: url("/icons/tws-mask.svg");
+  mask-repeat: no-repeat;
+  mask-size: 72vw auto;
+  mask-position: center;
+  will-change: mask-size, mask-position;
+}
+
+.revealFilm {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.revealFilm video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Under the mark once it has pulled back: half its height plus a gap below centre. */
+.revealLine {
+  position: absolute;
+  top: calc(50% + min(72vw, 900px) * 0.1129 + clamp(24px, 3vw, 40px));
+  left: 50%;
+  width: min(40ch, calc(100vw - 32px));
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+/* ---------- The homepage's opening (FlowPreloader) ---------- */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  /* Over everything, the cookie banner (950) included, until it lifts. */
+  z-index: 1000;
+  overflow: hidden;
+  background: var(--color-brand-white);
+  will-change: transform;
+}
+
+.preloaderWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  mask-image: url("/icons/tws-mask.svg");
+  mask-repeat: no-repeat;
+  mask-size: min(72vw, 900px) auto;
+  mask-position: center;
+}
+
+/* The hero card's shade along its top, coming up as the film lands in the card. */
+.preloaderShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 40%);
+  opacity: 0;
+}
+
+/* The tagline, under the mark before it swells: half its height plus a gap below centre. */
+.preloaderLine {
+  position: absolute;
+  top: calc(50% + min(72vw, 900px) * 0.1129 + clamp(24px, 3vw, 40px));
+  left: 50%;
+  width: min(40ch, calc(100vw - 32px));
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(16px, 1.7vw, 24px);
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+/* ---------- 4. Depth fly-through ---------- */
+
+.depthSection {
+  position: relative;
+  z-index: 1;
+  height: 340svh;
+  color: #fff;
+  pointer-events: none;
+}
+
+.depthStage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  perspective: 900px;
+}
+
+.depthStage[data-entered] {
+  background: var(--color-brand-black);
+}
+
+.depthItem {
+  pointer-events: auto;
+}
+
+.depthSpace {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.depthItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: min(var(--w), 46vw);
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--color-brand-navy);
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -50%)
+    translate3d(calc(var(--x) * 100vw), calc(var(--y) * 100svh), var(--z, -4000px));
+  will-change: transform, opacity;
+}
+
+.depthItem .swatch {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.depthCaption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.depthCaption strong {
+  font-size: 14px;
+}
+
+/* ---------- 5. Sign-off ---------- */
+
+.outroSection {
+  position: relative;
+  height: 220svh;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+
+/* The fly-through's frames, when FlowOutro plays them first. */
+.outroDepth {
+  perspective: 900px;
+}
+
+.outroGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(120vw, 120svh);
+  aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgb(124 58 237 / 0.55), rgb(47 91 255 / 0.18) 55%, transparent);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* ---------- 5b. Call to action ---------- */
+
+.ctaSection {
+  position: relative;
+  height: 240svh;
+  background: var(--color-brand-black);
+  color: #fff;
+}
+
+.ctaStage {
+  --cta-in: 0;
+  --cta: 0;
+  --cta-note: 0;
+  /* How far the button drops to make room for the mark. */
+  --cta-drop: clamp(80px, 12vw, 200px);
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/*
+ * The light behind "beyond ordinary" (.outroGlow), carried on into the call
+ * to action and set moving: the violet pool breathes in the middle while a
+ * blue light and a second violet one drift slowly across it. Faded in as the
+ * section arrives.
+ */
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: calc(0.35 + var(--cta-in) * 0.65);
+  /*
+   * Dark along the top and the foot, so the section meets the sign-off above
+   * and runs on into the black footer below without a seam.
+   */
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 62%, transparent 100%);
+}
+
+.ctaGlow span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: -50% -50%;
+  mix-blend-mode: screen;
+  animation: ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* The pool itself, as .outroGlow leaves it. */
+.ctaGlow span:nth-child(1) {
+  width: min(120vw, 120svh);
+  background: radial-gradient(closest-side, rgb(124 58 237 / 0.55), rgb(47 91 255 / 0.18) 55%, transparent);
+  animation-name: ctaPool;
+  animation-duration: 9s;
+}
+
+.ctaGlow span:nth-child(2) {
+  width: min(85vw, 85svh);
+  background: radial-gradient(closest-side, rgb(47 91 255 / 0.42), rgb(47 91 255 / 0.12) 55%, transparent);
+  animation-name: ctaDriftBlue;
+  animation-duration: 14s;
+}
+
+.ctaGlow span:nth-child(3) {
+  width: min(70vw, 70svh);
+  background: radial-gradient(closest-side, rgb(124 58 237 / 0.4), rgb(124 58 237 / 0.1) 55%, transparent);
+  animation-name: ctaDriftViolet;
+  animation-duration: 17s;
+}
+
+@keyframes ctaPool {
+  from {
+    transform: scale(0.92);
+  }
+  to {
+    transform: translate(3%, -4%) scale(1.15);
+  }
+}
+
+@keyframes ctaDriftBlue {
+  from {
+    transform: translate(-32vw, -14svh) scale(0.9);
+  }
+  to {
+    transform: translate(26vw, 12svh) scale(1.1);
+  }
+}
+
+@keyframes ctaDriftViolet {
+  from {
+    transform: translate(30vw, 16svh) scale(1.05);
+  }
+  to {
+    transform: translate(-24vw, -18svh) scale(0.9);
+  }
+}
+
+.ctaMark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: clamp(46px, 15.5vw, 300px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: var(--cta);
+  filter: blur(calc((1 - var(--cta)) * 18px));
+  transform: translate(-50%, -50%) translateY(calc(var(--cta-drop) * -0.35 + (1 - var(--cta)) * 24px))
+    scale(calc(1.08 - var(--cta) * 0.08));
+}
+
+.ctaButtonWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(calc(var(--cta) * var(--cta-drop)))
+    scale(calc((0.86 + var(--cta-in) * 0.14) * (1 - var(--cta) * 0.5)));
+  opacity: var(--cta-in);
+  filter: blur(calc((1 - var(--cta-in)) * 12px));
+}
+
+/*
+ * After the reference: a saturated electric indigo pill — between the brand
+ * violet and blue — with a pale sheen across its top half, thin italic
+ * lettering, and a soft halo of its own colour around it.
+ */
+.ctaButton {
+  position: relative;
+  display: block;
+  padding: 0.5em 1.05em 0.56em;
+  border-radius: 0.36em;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.32) 0%, rgb(255 255 255 / 0.08) 46%, rgb(255 255 255 / 0) 52%),
+    linear-gradient(180deg, #8b74ff 0%, #5a2df5 48%, #4318e6 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    inset 0 -0.12em 0.3em rgb(11 20 64 / 0.3),
+    0 0 0 1px rgb(139 116 255 / 0.5),
+    0 0 0.5em rgb(90 45 245 / 0.55),
+    0 0 1.6em rgb(90 45 245 / 0.45);
+  color: #fff;
+  font-size: clamp(30px, 4.2vw, 64px);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 0 0.35em rgb(255 255 255 / 0.35);
+  transition:
+    box-shadow 0.4s var(--ease-out-quint),
+    filter 0.4s var(--ease-out-quint);
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  filter: brightness(1.1);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.65),
+    inset 0 -0.12em 0.3em rgb(11 20 64 / 0.3),
+    0 0 0 1px rgb(139 116 255 / 0.7),
+    0 0 0.6em rgb(90 45 245 / 0.7),
+    0 0 2.2em rgb(90 45 245 / 0.6);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Soft rounded frames that swell out from behind the button and fade. */
+.ctaRings {
+  position: absolute;
+  inset: 0;
+  opacity: calc(1 - var(--cta) * 1.6);
+  pointer-events: none;
+}
+
+.ctaRings span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(90 45 245 / 0.4);
+  border-radius: 0.5em;
+  background: rgb(90 45 245 / 0.12);
+  font-size: clamp(30px, 4.2vw, 64px);
+  animation: ctaRing 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ctaRings span:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.ctaRings span:nth-child(3) {
+  animation-delay: 2.4s;
+}
+
+@keyframes ctaRing {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7, 2.6);
+  }
+}
+
+.ctaNote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(44ch, calc(100vw - 32px));
+  margin: 0;
+  color: rgb(255 255 255 / 0.6);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: var(--cta-note);
+  transform: translate(-50%, calc(var(--cta-drop) + clamp(40px, 4vw, 60px)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaRings span,
+  .ctaGlow span {
+    animation: none;
+  }
+}
+
+/* ---------- 6. Reading: chapters, link rows, questions ---------- */
+
+/*
+ * A piece of reading comes up out of a blur the first time it scrolls into
+ * view; FlowReveal sets data-reveal. Before script runs it is just there.
+ */
+.reveal[data-reveal] {
+  transition:
+    opacity 0.9s var(--ease-out-quint),
+    transform 0.9s var(--ease-out-quint),
+    filter 0.9s var(--ease-out-quint);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.reveal[data-reveal="waiting"] {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal[data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+.chapter {
+  display: grid;
+  gap: 24px;
+  padding: clamp(96px, 16svh, 180px) var(--grid-margin);
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--color-brand-black);
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+@media (width >= 1020px) {
+  .chapter {
+    grid-template-columns: 3fr 9fr;
+    gap: var(--grid-gutter-width, 24px);
+  }
+}
+
+.chapterEyebrow {
+  margin: 0;
+  padding-top: 0.6em;
+  color: rgb(255 255 255 / 0.55);
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chapterMain {
+  min-width: 0;
+}
+
+.chapterTitle {
+  max-width: 20ch;
+  margin: 0 0 clamp(28px, 4svh, 44px);
+  font-size: clamp(34px, 4.4vw, 76px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.chapterTitle .mSerif {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.chapterText {
+  max-width: 60ch;
+  margin: 0 0 18px;
+  color: rgb(255 255 255 / 0.72);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.6;
+}
+
+.chapterItems {
+  display: grid;
+  gap: 0 var(--grid-gutter-width, 24px);
+  margin: clamp(40px, 6svh, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 744px) {
+  .chapter_grid,
+  .chapter_steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chapterItem {
+  padding: 26px 0 30px;
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.chapter_rows .chapterItem {
+  display: grid;
+  gap: 8px;
+}
+
+@media (width >= 744px) {
+  .chapter_rows .chapterItem {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--grid-gutter-width, 24px);
+  }
+}
+
+.chapterNumber {
+  display: block;
+  margin-bottom: 14px;
+  background: linear-gradient(90deg, var(--color-brand-violet), var(--color-brand-blue));
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chapterItemTitle {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 1.7vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.chapterItemBody {
+  max-width: 52ch;
+  margin: 0;
+  color: rgb(255 255 255 / 0.66);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.chapterNote {
+  max-width: 60ch;
+  margin: 32px 0 0;
+  color: rgb(255 255 255 / 0.55);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.chapterNote a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* A service page's selected work: project cards under the chapter. */
+.workCards {
+  display: grid;
+  gap: var(--grid-gutter-width, 24px);
+  margin: clamp(40px, 6svh, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 744px) {
+  .workCards[data-count="2"] {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.workLink {
+  display: grid;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 22px;
+  background: rgb(255 255 255 / 0.03);
+  color: #fff;
+  text-decoration: none;
+  transition: border-color 0.4s var(--ease-out-quint), background-color 0.4s var(--ease-out-quint);
+}
+
+.workLink:hover,
+.workLink:focus-visible {
+  border-color: rgb(255 255 255 / 0.32);
+  background: rgb(255 255 255 / 0.06);
+}
+
+@media (width >= 1020px) {
+  .workCards[data-count="1"] .workLink {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.workMedia {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-brand-navy);
+}
+
+.workCards[data-count="1"] .workMedia {
+  height: 100%;
+}
+
+.workImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out-quint);
+}
+
+.workLink:hover .workImage {
+  transform: scale(1.04);
+}
+
+.workBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(22px, 2.4vw, 34px);
+}
+
+.workTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  color: rgb(255 255 255 / 0.6);
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.workStatus {
+  padding: 3px 10px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: 999px;
+  color: #fff;
+}
+
+.workName {
+  margin: 0;
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.workSummary {
+  max-width: 48ch;
+  color: rgb(255 255 255 / 0.66);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.workMore {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workImage {
+    transition: none;
+  }
+
+  .workLink:hover .workImage {
+    transform: none;
+  }
+}
+
+/* Contact lines as large rows. */
+.linkRows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linkRow {
+  display: grid;
+  gap: 6px;
+  padding: clamp(22px, 3.4svh, 34px) 0;
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.linkRows li:last-child .linkRow {
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.linkRowLabel {
+  color: rgb(255 255 255 / 0.5);
+  font-family: var(--font-poppins), var(--font-sans);
+  font-size: 13px;
+}
+
+.linkRowTitle {
+  overflow-wrap: anywhere;
+  font-size: clamp(26px, 3.6vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  transition: color 0.3s;
+}
+
+.linkRow:hover .linkRowTitle,
+.linkRow:focus-visible .linkRowTitle {
+  background: linear-gradient(90deg, var(--color-brand-violet), var(--color-brand-blue));
+  background-clip: text;
+  color: transparent;
+}
+
+.linkRowNote {
+  max-width: 52ch;
+  color: rgb(255 255 255 / 0.6);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Questions. */
+.faqList {
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+  interpolate-size: allow-keywords;
+}
+
+.faqItem {
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.faqItem::details-content {
+  height: 0;
+  overflow: clip;
+  transition:
+    height 0.45s var(--ease-out-quint),
+    content-visibility 0.45s allow-discrete;
+}
+
+.faqItem[open]::details-content {
+  height: auto;
+}
+
+.faqQuestion {
+  padding: 26px 0;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  list-style: none;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.faqQuestion::-webkit-details-marker {
+  display: none;
+}
+
+.faqQuestion:hover,
+.faqItem[open] .faqQuestion {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.faqAnswer {
+  max-width: 64ch;
+  margin: 0;
+  padding-bottom: 28px;
+  color: rgb(255 255 255 / 0.68);
+  font-size: 16px;
+  line-height: 1.65;
+}
