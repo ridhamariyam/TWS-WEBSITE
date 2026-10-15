@@ -150,16 +150,3 @@ export const FAQ_ENTRIES: FaqEntry[] = [
     ],
   },
 ];
-
-/** The handful the homepage asks, in the order it asks them. */
-export const HOMEPAGE_FAQ_IDS = [
-  "new-studio",
-  "cost",
-  "timeline",
-  "process",
-  "start",
-] as const;
-
-export const HOMEPAGE_FAQ = HOMEPAGE_FAQ_IDS.map(
-  (id) => FAQ_ENTRIES.find((entry) => entry.id === id)!,
-);

@@ -8,8 +8,8 @@ export type Tile = {
   area: string;
   /** How far behind the scene's first column this tile moves, 0–0.3. */
   delay: number;
-  /** image: a brand swatch named for the slot; photo: real artwork from the image manifest. */
-  media?: { image: string } | { photo: string } | { video: string; poster: string };
+  /** A stable name that determines the slot's brand swatch colour. */
+  media?: { image: string };
   /**
    * violet: a card in the brand gradient; statement: big type centred over
    * the media; stat: a large figure over the typed line; plain: type on the
@@ -30,8 +30,8 @@ export type Scene = { layout: "A" | "B" | "C" | "D" | "E" | "F"; tiles: Tile[] }
 
 /**
  * Scenes for a list of titled items: one layout per item, alternating a wide
- * violet card over a photograph beside a tall one, and a violet column
- * between two photographs. Images are used in order and repeat.
+ * violet card beside brand swatches, then a violet column between two
+ * swatches. Slot names are used in order and repeat.
  */
 export function scenesFromItems(
   items: Array<{ title: string; body: string; link?: Tile["link"] }>,

@@ -8,7 +8,7 @@ import styles from "./flow.module.css";
  * line itself in large type, and an optional note. The whole row is the link.
  */
 
-export type FlowLinkRow = { label: string; title: string; href: string; note?: string; external?: boolean };
+type FlowLinkRow = { label: string; title: string; href: string; note?: string; external?: boolean };
 
 export function FlowLinks({ eyebrow, title, rows }: { eyebrow: string; title?: string; rows: FlowLinkRow[] }) {
   return (

@@ -3,7 +3,7 @@
 Derives every brand asset from one source mark.
 
 Input:
-  public/icons/tws-logo-source.png        white "TWS." on transparent, padded
+  assets/brand/tws-logo-source.png        white "TWS." on transparent, padded
 
 Outputs:
   public/icons/tws-logo.png               tight crop, 160px tall, grayscale+alpha
@@ -25,7 +25,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "public/icons/tws-logo-source.png"
+SOURCE = ROOT / "assets/brand/tws-logo-source.png"
 TAGLINE = "Strategy, design and technology, under one studio."
 LOCATION = "CALICUT · KERALA · INDIA"
 

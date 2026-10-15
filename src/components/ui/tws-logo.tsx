@@ -1,6 +1,6 @@
 /**
  * The TWS mark: white "TWS." on transparent. There is no dark variant, so it
- * is for dark surfaces only. Generated from `public/icons/tws-logo-source.png`
+ * is for dark surfaces only. Generated from `assets/brand/tws-logo-source.png`
  * by scripts/generate-brand-assets.py.
  *
  * Callers set a height; the width follows the mark's ratio.

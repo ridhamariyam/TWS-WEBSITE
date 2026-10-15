@@ -176,7 +176,7 @@ function ServiceFace({ service, index }: { service: Service; index: number }) {
       </span>
       <span className={styles.facePill}>
         <span className={styles.facePillLabel}>{service.name}</span>
-        {service.offerings[0].label}
+        {service.offering}
       </span>
       <span className={styles.faceTitle}>
         {lead} <strong>{rest.join(" ")}</strong>

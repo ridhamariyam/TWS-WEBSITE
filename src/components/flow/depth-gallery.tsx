@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useRef } from "react";
 import { INDUSTRIES } from "@/lib/services-content";
 import { industryHref } from "@/lib/site-links";
-import { clamp, range, useScrollStage } from "./use-scroll-stage";
+import { clamp } from "./use-scroll-stage";
 import { Swatch, toneAt } from "./swatch";
 import styles from "./flow.module.css";
 
@@ -100,45 +99,5 @@ export function DepthCards({
         );
       })}
     </div>
-  );
-}
-
-export function DepthGallery({
-  items = INDUSTRY_ITEMS,
-  title = "Made for businesses like yours",
-  id,
-}: {
-  items?: DepthItem[];
-  /** The section's heading, for screen readers. */
-  title?: string;
-  id?: string;
-} = {}) {
-  const titleId = useId();
-  const sectionRef = useRef<HTMLElement>(null);
-  const itemRefs = useRef<Array<HTMLElement | null>>([]);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const travel = depthTravel(items.length);
-
-  useScrollStage(sectionRef, (p) => {
-    stageRef.current?.toggleAttribute("data-entered", p > 0);
-    placeDepthCards(itemRefs.current, p, travel, range(p, 0, 0.04));
-  });
-
-  return (
-    <section
-      ref={sectionRef}
-      id={id}
-      className={styles.depthSection}
-      // About half a screen of scrolling per frame.
-      style={{ height: `${Math.max(220, 40 + items.length * 50)}svh` }}
-      aria-labelledby={titleId}
-    >
-      <div ref={stageRef} className={styles.depthStage}>
-        <DepthCards items={items} cardRefs={itemRefs} />
-        <h2 id={titleId} className="sr-only">
-          {title}
-        </h2>
-      </div>
-    </section>
   );
 }

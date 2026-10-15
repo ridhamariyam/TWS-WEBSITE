@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FAQ_ENTRIES } from "@/lib/faq-content";
 import { PROJECTS } from "@/lib/work-content";
-import { SOCIAL_PROFILES } from "@/lib/footer-content";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
 import { CONTACT_EMAIL, CONTACT_PHONE, ROUTES } from "@/lib/site-links";
 import { STUDIO_LOCATION } from "@/lib/studio-content";
 
@@ -14,10 +14,10 @@ import { STUDIO_LOCATION } from "@/lib/studio-content";
  */
 
 export const SITE_URL = "https://thewebstudio.agency";
-export const SITE_NAME = "TWS — The Web Studio";
+const SITE_NAME = "TWS — The Web Studio";
 
 /** 1200x630, the size both Open Graph and X read as a large card. */
-export const OG_IMAGE = {
+const OG_IMAGE = {
   url: "/seo/og-image.png",
   width: 1200,
   height: 630,

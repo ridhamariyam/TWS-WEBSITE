@@ -26,12 +26,12 @@ export const ROUTES = {
 export const workHref = (slug: string) => `${ROUTES.work}/${slug}`;
 
 /** The sections of /about that the navigation points into. */
-export type AboutAnchor = "process" | "pov";
+type AboutAnchor = "process" | "pov";
 
 export const aboutHref = (anchor: AboutAnchor) => `${ROUTES.about}#${anchor}`;
 
 /** Each capability's own page, under /services. */
-export const SERVICE_SLUGS: Record<ServiceId, string> = {
+const SERVICE_SLUGS: Record<ServiceId, string> = {
   "web-design": "web-development",
   ecommerce: "ecommerce",
   "web-applications": "web-applications",
@@ -57,7 +57,7 @@ export const CONTACT_PHONE = "+91 73567 58078";
 const CONTACT_PHONE_DIGITS = CONTACT_PHONE.replace(/\D/g, "");
 
 export const CONTACT_TEL = `tel:+${CONTACT_PHONE_DIGITS}`;
-export const WHATSAPP_ENQUIRY_MESSAGE = [
+const WHATSAPP_ENQUIRY_MESSAGE = [
   "Hi TWS! I'd like to enquire about a project.",
   "",
   "Name:",

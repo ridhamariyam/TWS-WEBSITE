@@ -6,7 +6,7 @@ import styles from "./flow.module.css";
  * name, so the same slot keeps the same colour.
  */
 
-export type Tone = "violet" | "navy";
+type Tone = "violet" | "navy";
 
 export const toneAt = (index: number): Tone => (index % 2 === 0 ? "violet" : "navy");
 

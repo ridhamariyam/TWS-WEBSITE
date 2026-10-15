@@ -4,7 +4,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { SectionHeader } from "@/components/sections/section-header";
 import { insightSlug, readingMinutes } from "@/lib/insight-slug";
 import styles from "@/components/sections/studio-sections.module.css";
-import { RichParagraph } from "@/components/sections/accordion-section";
+import { RichParagraph } from "@/components/ui/rich-paragraph";
 import { Reveal } from "@/components/ui/reveal";
 import { INSIGHT_ENTRIES } from "@/lib/insights-content";
 

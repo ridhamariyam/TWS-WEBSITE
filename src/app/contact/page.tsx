@@ -4,7 +4,7 @@ import { FlowOutro } from "@/components/flow/flow-outro";
 import { FlowPage } from "@/components/flow/flow-page";
 import { PageHero } from "@/components/flow/page-hero";
 import { Statements } from "@/components/flow/statements";
-import { SOCIAL_PROFILES } from "@/lib/footer-content";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
 import { pageMetadata } from "@/lib/seo";
 import {
   CONTACT_EMAIL,
@@ -16,7 +16,7 @@ import {
   PARTNER_MAILTO,
   ROUTES,
 } from "@/lib/site-links";
-import { STUDIO_PLACE } from "@/lib/studio-map";
+import { STUDIO_PLACE } from "@/lib/studio-location";
 
 export const metadata: Metadata = pageMetadata({
   title: "Let's talk",

@@ -13,11 +13,11 @@ import styles from "./flow.module.css";
  * Every line gets an equal share of the section's scroll.
  */
 
-export type StatementPart =
+type StatementPart =
   | string
   | { text: string; serif?: boolean; blue?: boolean; dim?: boolean; mark?: boolean };
 
-export type StatementLine = { parts: StatementPart[]; white?: boolean };
+type StatementLine = { parts: StatementPart[]; white?: boolean };
 
 type Word = { text: string; serif?: boolean; blue?: boolean; dim?: boolean; mark?: boolean };
 

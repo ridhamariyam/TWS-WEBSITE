@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Builds the homepage hero film from its master, in the two cuts the hero plays.
+Builds the landscape film used by the homepage hero and its intro.
 
 The master (`assets/videos/hero-film-master.mov`) is a portrait phone export of
 a montage: six stills, each held for five frames, cycling, with a black beat
@@ -15,10 +15,9 @@ playing the portrait file there shows a thin strip of it blown up 2-3x. Instead:
 3. Each clean still is upscaled 4x with Real-ESRGAN (realesr-general-x4v3),
    blended 70/30 with a plain Lanczos upscale: on its own the model leaves a
    light halo along hard edges and a painted look on skin.
-4. The wide cut reframes each still to 16:9 on its own subject (CROP_Y), at
-   2560x1440. The tall cut is the whole still at 1080x1920, for the square
-   frame on a phone.
-5. Both are rebuilt on the original timeline and encoded to H.264.
+4. The cut reframes each still to 16:9 on its own subject (CROP_Y), at
+   2560x1440.
+5. The film is rebuilt on the original timeline and encoded to H.264.
 
 Run with: python3 scripts/generate-hero-film.py
 Requires: ffmpeg, numpy, pillow, torch and spandrel (`pip install --no-deps
@@ -54,7 +53,6 @@ CUT = 20
 # Vertical centre, in master pixels (of 1920), of each still's 16:9 crop.
 CROP_Y = {0: 920, 1: 1050, 2: 900, 3: 700, 4: 940, 5: 1340}
 WIDE = (2560, 1440)
-TALL = (1080, 1920)
 CRF = 15
 TILE, PAD, SCALE = 192, 16, 4
 # Share of the Real-ESRGAN output in the blend with a Lanczos upscale.
@@ -177,16 +175,13 @@ def main() -> int:
         frames = timeline(paths)
         print(f"{len(paths)} frames, {len(set(frames))} stills")
         (CACHE / "timeline.json").write_text(json.dumps(frames))
-        tall, wide_ = {}, {}
+        wide_ = {}
         for still, centre in CROP_Y.items():
             big = upscale(model, torch, average(paths, frames, still))
-            tall[still] = tmp / f"tall{still}.png"
-            big.resize(TALL, Image.LANCZOS).save(tall[still])
             wide_[still] = tmp / f"wide{still}.png"
             wide(big, centre).save(wide_[still])
             print(f"  still {still} done")
         encode(wide_, frames, "hero-film-wide", tmp)
-        encode(tall, frames, "hero-film", tmp)
     return 0
 
 

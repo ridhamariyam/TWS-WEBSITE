@@ -2,8 +2,9 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 import { cn } from "@/lib/cn";
-import { INTRO_SEEN } from "@/components/sections/hero-intro-flag";
 import styles from "./coming-soon-intro.module.css";
+
+const INTRO_SEEN = "seen";
 
 /*
  * The holding page's opening: the launch announcement told as kinetic type

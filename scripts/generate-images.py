@@ -36,13 +36,7 @@ QUALITY = 90
 LADDER = [480, 720, 1000, 1280, 1536, 1920]
 
 # Where each group's masters live. The extension is whatever is on disk.
-GROUPS = ["capabilities", "industries", "studio", "work"]
-
-# E-commerce is both a capability and a sector, and the capability poster
-# carries a headline down its left. The sector card prints its own headline, so
-# it gets a crop that takes the picture and leaves the type behind.
-CROP_ASPECT = 366 / 270
-CROPS = {"ecommerce": 0.55}
+GROUPS = ["capabilities", "work"]
 
 # basename -> the widths actually written, for src/lib/images.ts to read.
 MANIFEST: dict[str, list[int]] = {}
@@ -86,18 +80,6 @@ def main() -> int:
     print("stills:")
     for name, path in found.items():
         emit(Image.open(path).convert("RGB"), name)
-
-    print("crops:")
-    for name, x0 in CROPS.items():
-        if name not in found:
-            print(f"  no master for {name}", file=sys.stderr)
-            continue
-        image = Image.open(found[name]).convert("RGB")
-        left = int(image.width * x0)
-        w = image.width - left
-        h = round(w / CROP_ASPECT)
-        top = max(0, (image.height - h) // 2)
-        emit(image.crop((left, top, image.width, top + h)), f"{name}-crop")
 
     manifest = ROOT / "src/lib/image-manifest.json"
     manifest.write_text(json.dumps(dict(sorted(MANIFEST.items())), indent=2) + "\n")

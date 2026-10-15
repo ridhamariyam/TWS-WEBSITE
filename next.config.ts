@@ -7,8 +7,8 @@ const projectRoot = path.resolve(__dirname);
 
 /*
  * Until launch, `/` serves the holding page at /coming-soon and every other
- * page redirects to it. Build with SITE_LAUNCHED=true to put the full site
- * live; nothing else needs to change.
+ * page redirects to it. SITE_LAUNCHED=true enables the main site's routes;
+ * see README.md for the deployment steps.
  */
 const SITE_LAUNCHED = process.env.SITE_LAUNCHED === "true";
 
@@ -21,11 +21,6 @@ const PRE_LAUNCH_PAGES = ["/about", "/services/:path*", "/contact/:path*"];
 const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: projectRoot,
-  // The dev-only placeholders route reads from assets/placeholders; keep that
-  // third-party material out of the deployed server bundle entirely.
-  outputFileTracingExcludes: {
-    "/dev-placeholders/*": ["./assets/placeholders/**/*"],
-  },
   turbopack: {
     root: projectRoot,
   },
@@ -60,10 +55,6 @@ const nextConfig: NextConfig = {
       afterFiles: [],
       fallback: [],
     };
-  },
-  images: {
-    // Assets are downloaded originals served straight from public/.
-    unoptimized: true,
   },
   experimental: {
     serverActions: {

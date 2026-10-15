@@ -1,7 +1,0 @@
-
-===== zz-magic-cursor-wrapper top=0 h=30 =====
-div.magic-cursor-wrapper.magic-cursor-icon [0, 0, 30, 30] pos:absolute right:738px bottom:994px z:10000 fs:17px lh:32px color:rgb(111, 112, 113) tr:opacity 0.2s ease-in-out 0.2s
-  div [349, 477, 70, 70] pos:fixed right:698px bottom:954px ta:center bg:rgb(255, 255, 255) br:100% sh:rgba(0, 0, 0, 0.25) 0px 0px 50px 0px overflow:hidden op:0 tf:matrix(1, 0, 0, 1, 349, 477) tr:opacity 0.3s ease-in-out 0.1s
-    ::before pos:absolute top:35px right:39.5px bottom:3px left:10.5px ff:feather fs:20px fw:500 lh:32px color:rgb(28, 29, 31) ta:center tf:matrix(1, 0, 0, 1, 0, -16) content
-    ::after pos:absolute top:35px right:10.5px bottom:3px left:39.5px ff:feather fs:20px fw:500 lh:32px color:rgb(28, 29, 31) ta:center tf:matrix(1, 0, 0, 1, 0, -16) content
-    div [349, 477, 70, 0] ta:center

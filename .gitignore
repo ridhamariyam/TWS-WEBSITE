@@ -1,7 +1,5 @@
 # Dependencies
 node_modules/
-.pnp
-.pnp.js
 
 # Build
 .next/
@@ -18,8 +16,6 @@ dist/
 
 # Debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # IDE
 .idea/
@@ -38,12 +34,8 @@ next-env.d.ts
 # Vercel
 .vercel
 
-# Local settings (not project config)
-.claude/settings.local.json
-
-# User-specific skills (not part of the template)
-.claude/skills/customize/
-.claude/skills/release/
+# Local assistant settings
+.claude/
 
 # Local temp files
 temp/
@@ -62,6 +54,3 @@ ref/
 public/videos/studio-film.mp4
 public/videos/studio-film-poster.webp
 public/videos/refernce.webm
-
-# Python caches from scripts/
-__pycache__/

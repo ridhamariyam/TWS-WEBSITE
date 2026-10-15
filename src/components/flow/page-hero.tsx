@@ -33,7 +33,7 @@ export function PageHero({
   lead: string;
   actions: HeroAction[];
   footRight: string;
-  /** A name from the image manifest, for the card. */
+  /** A stable name that determines the card's brand swatch colour. */
   image: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);

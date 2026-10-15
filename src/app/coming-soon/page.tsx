@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ComingSoonIntro } from "@/components/coming-soon/coming-soon-intro";
 import { TwsLogo } from "@/components/ui/tws-logo";
 import { ArrowRightIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
-import { SOCIAL_PROFILES } from "@/lib/footer-content";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
 import { CONTACT_EMAIL, CONTACT_MAILTO, CONTACT_WHATSAPP } from "@/lib/site-links";
 import { STUDIO_LOCATION } from "@/lib/studio-content";
 import { organizationJsonLd, pageMetadata } from "@/lib/seo";

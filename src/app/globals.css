@@ -1,23 +1,6 @@
 @import "tailwindcss";
 
 /*
- * PROVENANCE
- *
- * The project was scaffolded from a website-cloning template, and this file
- * once carried a type scale, `.cta` classes and grid spacing transcribed from
- * squarespace.com. Those have been replaced with TWS's own: a fluid type
- * scale, pill buttons and the studio's grid spacing. The easing curves are
- * the standard public ones (Penner's equations, as published on
- * easings.net), not anyone's design.
- *
- * Everything else — the aurora, the lime accent, the beat clock, the
- * particle and tunnel systems — is this project's own.
- *
- * Breakpoints are 375 / 600 / 744 / 1020 / 1280 / 1440 / 1920, not Tailwind's
- * defaults, and components use them by name (`bp1020:grid-cols-2`).
- */
-
-/*
  * The brand palette, and the only colours the homepage uses: violet, blue,
  * dark blue, black and white.
  * Static, so every token is emitted even when no utility uses it: the
@@ -32,7 +15,7 @@
 }
 
 @theme {
-  /* Breakpoints, mobile-first. Inherited from the scaffold; see above. */
+  /* Project breakpoints, mobile-first. */
   --breakpoint-bp375: 375px;
   --breakpoint-bp600: 600px;
   --breakpoint-bp744: 744px;
@@ -62,7 +45,6 @@
   --color-gray-200: #2b2b2b;
   --color-gray-500: #5c5c5c;
   --color-gray-800: #6b6b6b;
-  --color-gray-900: #1a1a1a;
   --color-blue: #0072f0;
 
   /*
@@ -72,36 +54,16 @@
    */
   --color-lime: #c7ff2f;
 
-  /*
-   * Lime washed almost to white, for a whole section's ground. Bright lime is
-   * for small things — a full stop, a button, a line — never a background.
-   */
-  --color-lime-soft: #f1f6e2;
   /* The accent as text. Lime fails on the white page, so text takes ink. */
   --color-accent-ink: var(--color-ink);
   --color-focus: var(--color-brand-blue);
-  --color-red: #db3642;
-  --color-red-vibrant: red;
   --color-pink: #ff9898;
-
-  /* Translucent shades for hairline borders and card washes. */
-  --color-shade-t-black-50: #00000008;
-  --color-shade-t-black-100: #0000000d;
-  --color-shade-t-white-50: #ffffff14;
-  --color-shade-t-white-100: #ffffff1f;
-
-  /* Section background surfaces. */
-  --color-surface-card: #f5f5f5;
-  --color-surface-raised: #ebebeb;
-  --color-surface-hairline: #e5e5e5;
 
   /*
    * Inter (SIL OFL), self-hosted by next/font. `--font-inter` is set on <html>
    * by the loader in layout.tsx; the chain after it renders until it arrives.
    */
   --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* One family for everything: anything that asks for mono gets Inter. */
-  --font-mono: var(--font-sans);
 
   /*
    * The display step: every section headline on the site is set at this one
@@ -113,113 +75,14 @@
 
   /* Easings: the standard public curves (easings.net), named as there. */
   --ease-out-quint: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
 
-/*
- * The studio's aurora: charcoal with olive and amber to one side, teal and
- * blue to the other, and a cyan bloom at the centre. It fills the "keep in
- * touch" capsule, gives the particle field its colours, and stands in wherever
- * a section needs a surface rather than a picture.
- */
+/* Shared page margins, gutters and navigation height. */
 :root {
-  --aurora-charcoal: #14161a;
-  --aurora-field:
-    radial-gradient(
-      26% 78% at 50% 50%,
-      rgb(104 196 214 / 0.3) 0%,
-      rgb(104 196 214 / 0.1) 45%,
-      rgb(104 196 214 / 0) 75%
-    ),
-    radial-gradient(
-      44% 120% at 84% 38%,
-      rgb(48 92 176 / 0.3) 0%,
-      rgb(48 92 176 / 0) 70%
-    ),
-    radial-gradient(
-      46% 130% at 52% 84%,
-      rgb(26 86 92 / 0.4) 0%,
-      rgb(26 86 92 / 0) 72%
-    ),
-    radial-gradient(
-      34% 100% at 28% 22%,
-      rgb(158 108 54 / 0.26) 0%,
-      rgb(158 108 54 / 0) 68%
-    ),
-    radial-gradient(
-      42% 120% at 14% 72%,
-      rgb(126 118 64 / 0.34) 0%,
-      rgb(126 118 64 / 0) 70%
-    );
-
-  /* ------------------------------------------------------------ the grid */
-
-  /*
-   * Twelve columns from 744px up, four below.
-   *
-   * Twelve do not fit a phone: eleven gutters and two margins are 208px of a
-   * 320px screen, leaving 9.3px a column, so a headline asking for a span of
-   * five came out 110px wide. Below 744px the layout is a single column in
-   * practice, and the span tokens say so — anything from four columns up is
-   * the full measure, and sections keep asking for the spans they always did.
-   */
   --grid-margin: 20px;
   --grid-gutter-width: 16px;
-  --grid-columns: 4;
-
-  /* Everything between the page margins. */
-  --grid-content: calc(100vw - (2 * var(--grid-margin)));
-  --grid-column-width: calc(
-    (
-        var(--grid-content) -
-          ((var(--grid-columns) - 1) * var(--grid-gutter-width))
-      ) / var(--grid-columns)
-  );
-
-  /*
-   * Line length cap, in force below 744px only — where a span is the full
-   * screen and a large phone would otherwise run to 90-odd characters. Above
-   * that the spans are proportions again and do the job.
-   */
-  --measure: min(100%, 34rem);
 
   --global-nav-height: 64px;
-  --promo-banner-height: 48px;
-}
-
-/*
- * `--span-N` is N columns and the N-1 gutters between them. Sections use these
- * rather than writing the calc out, so the grid changes shape in one place.
- */
-:root {
-  --span-1: var(--grid-column-width);
-  --span-2: calc((var(--grid-column-width) * 2) + var(--grid-gutter-width));
-  --span-3: calc((var(--grid-column-width) * 3) + (var(--grid-gutter-width) * 2));
-  --span-4: calc((var(--grid-column-width) * 4) + (var(--grid-gutter-width) * 3));
-  --span-5: calc((var(--grid-column-width) * 5) + (var(--grid-gutter-width) * 4));
-  --span-6: calc((var(--grid-column-width) * 6) + (var(--grid-gutter-width) * 5));
-  --span-7: calc((var(--grid-column-width) * 7) + (var(--grid-gutter-width) * 6));
-  --span-8: calc((var(--grid-column-width) * 8) + (var(--grid-gutter-width) * 7));
-  --span-9: calc((var(--grid-column-width) * 9) + (var(--grid-gutter-width) * 8));
-  --span-10: calc((var(--grid-column-width) * 10) + (var(--grid-gutter-width) * 9));
-  --span-11: calc((var(--grid-column-width) * 11) + (var(--grid-gutter-width) * 10));
-  --span-12: var(--grid-content);
-}
-
-/* The phone: every span of four or more is the full measure. */
-@media (width < 744px) {
-  :root {
-    --span-4: var(--grid-content);
-    --span-5: var(--grid-content);
-    --span-6: var(--grid-content);
-    --span-7: var(--grid-content);
-    --span-8: var(--grid-content);
-    --span-9: var(--grid-content);
-    --span-10: var(--grid-content);
-    --span-11: var(--grid-content);
-  }
 }
 
 @media (width >= 375px) {
@@ -238,9 +101,6 @@
   :root {
     --grid-margin: 32px;
     --grid-gutter-width: 24px;
-    --grid-columns: 12;
-    /* Spans are proportions of the page again; nothing needs capping. */
-    --measure: 100%;
   }
 }
 
@@ -275,11 +135,7 @@
     margin: 0;
   }
 
-  /*
-   * A lime ring with a black one inside it. Two colours because the page runs
-   * black to white and back: lime carries the dark sections at 17:1, black the
-   * light ones at 21:1, so the pair clears 3:1 on anything (WCAG 1.4.11).
-   */
+  /* A brand-blue focus ring with an inset black outline. */
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 2px;
@@ -311,11 +167,6 @@
   padding-inline: var(--grid-margin);
 }
 
-/* Caps a line of body copy. A no-op from 744px up; see `--measure`. */
-@utility measure {
-  max-width: var(--measure);
-}
-
 /*
  * The type scale: TWS's own. Each step is one fluid size, growing in a
  * straight line from a 360px phone to a 1440px desktop and held at both ends,
@@ -323,24 +174,6 @@
  * only ever ask for a step by name.
  */
 @layer components {
-  .type-title3 {
-    font-size: clamp(2.5rem, 1.7500rem + 3.3333vw, 4.75rem);
-    font-weight: 500;
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .type-title4 {
-    font-size: clamp(2.125rem, 1.5417rem + 2.5926vw, 3.875rem);
-    font-weight: 500;
-    line-height: 1.06;
-    letter-spacing: -0.04em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
   .type-subtitle1 {
     font-size: clamp(1.5rem, 1.0833rem + 1.8519vw, 2.75rem);
     font-weight: 500;
@@ -355,15 +188,6 @@
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.025em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .type-subtitle3 {
-    font-size: clamp(1.125rem, 1.0417rem + 0.3704vw, 1.375rem);
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -617,50 +441,4 @@
       text-decoration-thickness: 2px;
     }
   }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes homepageHeroReveal {
-  0% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/*
- * The hero's clock. An element on it declares only `animation-name`; start,
- * duration and curve come from three inline custom properties. The plumbing is
- * here rather than in the module so one value, `--beat-rate`, retimes the
- * whole entrance for reduced motion.
- *
- * `--beat-offset` shifts every beat in a subtree by the same amount, which is
- * how the hero waits for its tunnel without any of its own timings changing.
- */
-:root {
-  --beat-rate: 1s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --beat-rate: 0.34s;
-  }
-}
-
-.tws-beat {
-  animation-duration: calc(var(--beat-d, 0) * var(--beat-rate, 1s));
-  animation-delay: calc(
-    (var(--beat-t, 0) + var(--beat-offset, 0)) * var(--beat-rate, 1s)
-  );
-  animation-timing-function: var(--beat-e, ease);
-  animation-fill-mode: both;
 }

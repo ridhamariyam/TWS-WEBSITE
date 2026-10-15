@@ -15,7 +15,7 @@ import type { ServiceId } from "@/lib/services-content";
  *   work-content.ts says, with its status, and no result line.
  */
 
-export type ServiceItem = { title: string; body: string };
+type ServiceItem = { title: string; body: string };
 
 export type ServicePage = {
   id: ServiceId;

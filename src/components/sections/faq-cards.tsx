@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { RichParagraph } from "@/components/sections/accordion-section";
+import { RichParagraph } from "@/components/ui/rich-paragraph";
 import type { FaqEntry } from "@/lib/faq-content";
 import styles from "./studio-sections.module.css";
 

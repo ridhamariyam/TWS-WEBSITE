@@ -27,8 +27,6 @@ export type PortfolioItem = {
   src: string;
   srcSet?: string;
   alt: string;
-  /** A dev-only layout placeholder, badged as one on the page. */
-  placeholder?: boolean;
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -106,9 +104,6 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
                       loading={i < 2 ? "eager" : "lazy"}
                       draggable={false}
                     />
-                    {item.placeholder ? (
-                      <span className={styles.badge}></span>
-                    ) : null}
                   </figure>
                 ))}
               </div>
@@ -178,9 +173,6 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
                         alt={item.alt}
                         loading="lazy"
                       />
-                      {item.placeholder ? (
-                        <span className={styles.badge}>Placeholder · dev only</span>
-                      ) : null}
                     </span>
                     <span className={styles.indexMeta}>
                       <span className={styles.dim}>{pad(i + 1)}</span>

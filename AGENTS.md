@@ -41,41 +41,45 @@ TWS opened in 2026 and is a new studio. The site must never imply otherwise.
   derivatives the site loads are generated into `public/images/` by
   `scripts/generate-images.py`. Nothing goes in `public/` unless a page
   requests it by URL: it is all uploaded on every deploy.
-- Image basenames are the service, industry or project id they belong to, so
-  a component's `image:` field is the id of the thing it shows.
-- Brand marks are generated from `public/icons/` by
+- Image basenames are the capability or project id they belong to.
+  Flow colour swatches use stable names and do not load image files.
+- Brand marks are generated from `assets/brand/tws-logo-source.png` by
   `scripts/generate-brand-assets.py`.
-
-## Known debt
-`public/videos/studio-film.mp4` is the footage behind the scroll takeover on
-the homepage. It came into the repo as a motion reference, not as licensed
-material, and its provenance has not been established. It needs a licence on
-file or replacing with the studio's own film. Until then it stays out of git
-and out of every deploy (`.gitignore`, `.vercelignore`), as does
-`public/videos/refernce.webm`.
 
 ## Launch
 Until launch `/` serves the holding page (`src/app/coming-soon/`) and every
-other page redirects to it. To launch: settle the film above, remove the
+other page redirects to it. All videos remain excluded from deployment.
+To launch: verify usage rights for the remaining films, remove the
 `public/videos/` line from `.vercelignore`, set `SITE_LAUNCHED=true` in the
-Vercel project's environment, and redeploy.
+Vercel project's environment, and redeploy. Work, portfolio, blog and FAQ
+routes stay hidden until removed from `HIDDEN_PAGES` in `next.config.ts`.
+
+The old unlicensed reference films, third-party layout placeholders and
+template research have been removed. Do not reintroduce them.
 
 ## Project Structure
 ```
 src/
   app/              Routes, including /work/[slug] project pages
   components/
-    layout/         Header, footer, page shell, dust run
-    sections/       Homepage sections, each with its own CSS Module
-    ui/             Shared primitives (cta, reveal, logo, icons, particles)
-  lib/              Content data and site-wide links
+    coming-soon/    Holding page intro
+    flow/           Scroll stages and shared flow page components
+    layout/         Navigation, footer, page shells and site controls
+    portfolio/      Full-screen portfolio viewer
+    sections/       Work grid and shared FAQ/blog sections
+    ui/             Shared primitives (cta, reveal, rich text, logo, icons)
+    work/           Project cards and case-study controls
+  lib/              Content, links, metadata and email logic
   types/            Shared content shapes
   hooks/            Custom hooks
 public/
   images/           Web-sized artwork the pages load
   icons/ seo/       Brand marks and OG image
-  videos/           The takeover film, the card film, and their posters
-assets/images/      Masters, by group: capabilities, industries, work
-docs/               Content map and archived research
-scripts/            Image and brand asset generation
+  videos/           Hero and project films with their posters
+assets/
+  brand/            Source logo
+  images/           Capability and project image masters
+  videos/           Source films and project recordings
+docs/               Content map, email setup and brand kit
+scripts/            Image, brand and film generation
 ```

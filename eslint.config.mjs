@@ -7,13 +7,9 @@ const eslintConfig = defineConfig([
   ...nextTs,
   {
     /*
-     * The studio's artwork is sized ahead of time by
-     * scripts/generate-home-page-media.py, which writes a ladder of widths
-     * per source and a manifest the pages build `srcset` from. `next/image`
-     * would put a second, paid optimiser in front of files that are already
-     * exactly the widths asked for, so these stay plain `<img>` with real
-     * `srcset` and `sizes`. Nothing here is the LCP element; the hero is
-     * type on a canvas.
+     * scripts/generate-images.py sizes artwork ahead of time and records its
+     * widths in a manifest. Components use plain <img> with srcSet and sizes
+     * to serve those derivatives directly.
      */
     files: ["src/**/*.tsx"],
     rules: { "@next/next/no-img-element": "off" },

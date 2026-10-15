@@ -103,7 +103,7 @@ const PHONE_SHAPE = /^[+()\-.\s\d]+$/;
 /** E.164 allows 15 digits; nothing real is shorter than 7. */
 const PHONE_DIGITS = { min: 7, max: 15 };
 
-export const digitsOf = (value: string) => value.replace(/\D/g, "");
+const digitsOf = (value: string) => value.replace(/\D/g, "");
 
 /*
  * What the file field accepts, in the two forms the page needs: extensions
@@ -122,7 +122,7 @@ export const FILE_EXTENSIONS = [
 export const FILE_ACCEPT = FILE_EXTENSIONS.map((ext) => `.${ext}`).join(",");
 
 /** Kept under `serverActions.bodySizeLimit` in `next.config.ts`. */
-export const MAX_FILE_BYTES = 10 * 1024 * 1024;
+const MAX_FILE_BYTES = 10 * 1024 * 1024;
 export const MAX_FILE_LABEL = "10 MB";
 
 /**

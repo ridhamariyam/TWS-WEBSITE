@@ -1,10 +1,4 @@
 /*
- * The homepage flow: one stylesheet for the six stages, in page order.
- * Scroll-driven values arrive as CSS variables set by each stage's script;
- * every one has a resting default here, so the page reads before it runs.
- */
-
-/*
  * The brand faces: Anek for running text, Poppins for UI and subheadings,
  * Anton, in capitals, for the big headings.
  */
@@ -21,13 +15,11 @@
 .faceTop,
 .facePill,
 .faceTitle,
-.railMeta,
 .depthCaption {
   font-family: var(--font-poppins), var(--font-sans);
 }
 
-.diveTitle,
-.railName {
+.diveTitle {
   font-family: var(--font-anton), var(--font-sans);
   font-weight: 400;
   letter-spacing: 0;
@@ -701,8 +693,6 @@
   font-weight: 600;
 }
 
-/* ---------- 2. Particle dive ---------- */
-
 /*
  * The dive overlaps the hero's last screen, so it pins the moment the black
  * panel has covered the hero. Until then it is see-through: no background, the
@@ -1089,138 +1079,6 @@
   font-weight: 500;
 }
 
-/* ---------- 3. Work rail ---------- */
-
-.railSection {
-  position: relative;
-  height: 300svh;
-  background: var(--color-brand-black);
-  color: #fff;
-}
-
-.railStage {
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items: flex-end;
-  height: 100svh;
-  padding-bottom: 6svh;
-  overflow: hidden;
-}
-
-/* A low band of violet and blue along the bottom edge, under the cards. */
-.railStage::after {
-  content: "";
-  position: absolute;
-  right: -10vw;
-  bottom: -18svh;
-  left: -10vw;
-  z-index: -1;
-  height: 32svh;
-  background: radial-gradient(closest-side, rgb(124 58 237 / 0.3), rgb(47 91 255 / 0.16) 55%, transparent);
-  pointer-events: none;
-}
-
-.railTrack {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  padding-inline: var(--grid-margin);
-  will-change: transform, opacity;
-}
-
-.railCard {
-  position: relative;
-  display: block;
-  flex: none;
-  width: min(86vw, max(62vw, 300px), 1100px);
-  height: calc(94svh - 84px);
-  overflow: hidden;
-  border-radius: 22px;
-  background: var(--color-brand-navy);
-  color: #fff;
-}
-
-.railCard::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.45) 0%, rgb(0 0 0 / 0) 30%, rgb(0 0 0 / 0.85) 100%);
-}
-
-.railMedia {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out-quint);
-}
-
-.railCard:hover .railMedia {
-  transform: scale(1.03);
-}
-
-.railMeta {
-  position: absolute;
-  top: 18px;
-  left: 20px;
-  right: 20px;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  color: rgb(255 255 255 / 0.8);
-  font-size: 12px;
-}
-
-.railFoot {
-  position: absolute;
-  left: clamp(20px, 2.4vw, 32px);
-  right: 20px;
-  bottom: clamp(18px, 2.2vw, 30px);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.railName {
-  font-size: clamp(36px, 4.4vw, 76px);
-  line-height: 1;
-}
-
-.railSummary {
-  max-width: 58ch;
-  color: rgb(255 255 255 / 0.72);
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.railEnd {
-  width: min(64vw, 440px);
-  background: var(--color-brand-blue);
-  color: var(--color-brand-white);
-}
-
-.railEnd::after {
-  content: none;
-}
-
-.railEnd .railSummary {
-  color: rgb(255 255 255 / 0.78);
-}
-
-.railArrow {
-  position: absolute;
-  top: 16px;
-  right: 22px;
-  font-size: 44px;
-  line-height: 1;
-}
-
 /* ---------- 3b. Manifesto ---------- */
 
 .mSection {
@@ -1440,33 +1298,7 @@
   opacity: 0;
 }
 
-
-
-/* ---------- 3b. The mark as a window ---------- */
-
-.revealSection {
-  position: relative;
-  height: 320svh;
-  background: var(--color-brand-white);
-}
-
-.revealStage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-}
-
 /* The film, seen through the traced logo; BrandReveal sizes and places it. */
-.revealWindow {
-  position: absolute;
-  inset: 0;
-  mask-image: url("/icons/tws-mask.svg");
-  mask-repeat: no-repeat;
-  mask-size: 72vw auto;
-  mask-position: center;
-  will-change: mask-size, mask-position;
-}
 
 .revealFilm {
   position: absolute;
@@ -1478,21 +1310,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* Under the mark once it has pulled back: half its height plus a gap below centre. */
-.revealLine {
-  position: absolute;
-  top: calc(50% + min(72vw, 900px) * 0.1129 + clamp(24px, 3vw, 40px));
-  left: 50%;
-  width: min(40ch, calc(100vw - 32px));
-  margin: 0;
-  color: var(--color-ink);
-  font-size: clamp(15px, 1.3vw, 18px);
-  line-height: 1.5;
-  text-align: center;
-  opacity: 0;
-  transform: translateX(-50%);
 }
 
 /* ---------- The homepage's opening (FlowPreloader) ---------- */
@@ -1545,26 +1362,6 @@
 }
 
 /* ---------- 4. Depth fly-through ---------- */
-
-.depthSection {
-  position: relative;
-  z-index: 1;
-  height: 340svh;
-  color: #fff;
-  pointer-events: none;
-}
-
-.depthStage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-  perspective: 900px;
-}
-
-.depthStage[data-entered] {
-  background: var(--color-brand-black);
-}
 
 .depthItem {
   pointer-events: auto;
@@ -1625,7 +1422,6 @@
   background: var(--color-brand-black);
   color: #fff;
 }
-
 
 /* The fly-through's frames, when FlowOutro plays them first. */
 .outroDepth {
@@ -1876,8 +1672,6 @@
     animation: none;
   }
 }
-
-/* ---------- 6. Reading: chapters, link rows, questions ---------- */
 
 /*
  * A piece of reading comes up out of a blur the first time it scrolls into

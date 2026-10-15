@@ -26,17 +26,3 @@ export function fallbackSrc(name: string) {
   if (!widths) throw new Error(`No generated media for "${name}"`);
   return `${DIR}/${name}-${widths[Math.min(2, widths.length - 1)]}.webp`;
 }
-
-/**
- * How wide each card renders, as `sizes`. `sizes` cannot read a custom
- * property, so these are the sections' spans written as viewport units.
- */
-export const SIZES = {
-  /** Capabilities: full bleed on a phone, a span of 8 from 1020px. */
-  capability: "(min-width: 1020px) 63vw, 100vw",
-  /** Industries: a span of 3 at 1280, 4 at 1020, 5 at 744, full below. */
-  industry:
-    "(min-width: 1280px) 22vw, (min-width: 1020px) 30vw, (min-width: 744px) 37vw, 92vw",
-  /** Work thumbnails: a fixed 240px strip on a phone, a span of 2.5 above. */
-  project: "(min-width: 1020px) 18vw, 240px",
-} as const;

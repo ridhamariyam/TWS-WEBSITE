@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { useId, useRef } from "react";
-import { fallbackSrc, srcSet } from "@/lib/images";
 import { ROUTES } from "@/lib/site-links";
 import { STUDIO_PRINCIPLES } from "@/lib/studio-content";
+import type { Scene } from "./scenes";
 import { easeInOut, range, useScrollStage } from "./use-scroll-stage";
 import { Swatch } from "./swatch";
 import styles from "./flow.module.css";
 
 /*
  * A pinned black stage that plays through a run of bento layouts of
- * photographs and violet cards. Scrolling carries each layout up and out
+ * brand swatches and violet cards. Scrolling carries each layout up and out
  * while the next rises in behind it, column by column, and the text on the
  * cards types itself in as its layout settles. A violet bar along the top
  * keeps count, and the bar along the bottom stays put.
@@ -19,10 +19,6 @@ import styles from "./flow.module.css";
  * The homepage's run ("How we work") is the default; other pages pass their
  * own scenes and bar.
  */
-
-import type { Scene, Tile } from "./scenes";
-
-export type { Scene, Tile };
 
 const LAYOUTS = {
   A: styles.sceneA,
@@ -176,7 +172,7 @@ export function StudioScenes({
                 };
                 const content = (
                   <>
-                    {tile.media && <TileMedia media={tile.media} />}
+                    {tile.media && <Swatch name={tile.media.image} className={styles.tileFill} />}
                     {tile.stat && <strong>{tile.stat}</strong>}
                     {tile.type && (
                       <span
@@ -224,37 +220,3 @@ export function StudioScenes({
     </section>
   );
 }
-
-function TileMedia({ media }: { media: NonNullable<Tile["media"]> }) {
-  if ("video" in media) {
-    return (
-      <video
-        className={styles.tileFill}
-        src={media.video}
-        poster={media.poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
-    );
-  }
-  if ("photo" in media) {
-    return (
-      <img
-        className={styles.tileFill}
-        src={fallbackSrc(media.photo)}
-        srcSet={srcSet(media.photo)}
-        sizes="(min-width: 1020px) 40vw, 50vw"
-        alt=""
-        loading="lazy"
-      />
-    );
-  }
-  return (
-    <Swatch name={media.image} className={styles.tileFill} />
-  );
-}
-

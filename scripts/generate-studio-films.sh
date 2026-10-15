@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# Builds the studio's own films — the brand films and screen recordings of
-# its builds — from the masters in assets/videos/ into the web cuts in
+# Builds screen recordings of the studio's projects from the masters in
+# assets/videos/ into the web cuts in
 # public/videos/, each with a WebP poster.
 #
 # The masters stay outside public/ for the same reason the image masters do:
@@ -10,8 +10,6 @@
 # What each cut does to its master:
 #   - Screen recordings lose their bottom strip, where the Next.js dev badge
 #     sat while they were recorded.
-#   - The two brand films keep their full frame, with the generator's mark in
-#     the bottom-right corner blanked by delogo.
 #   - Everything loses its audio: every film on the site plays muted.
 #
 # Run with: bash scripts/generate-studio-films.sh   (needs ffmpeg)
@@ -37,12 +35,7 @@ cut() {
 }
 
 echo "studio films:"
-# PEN Foundation, the mobile site: the 3D unit and the opening lines.
-cut pen-mobile   pen-mobile-recording.webm  0 24   "crop=iw:ih-72:0:0,scale=408:-2"          24 2
 # PEN Foundation, the desktop site.
 cut pen-desktop  pen-desktop-recording.webm 0 15.5 "crop=iw:ih-64:0:0,scale=1440:-2"         27 1
 # ZEEN, the storefront.
 cut zeen-store   zeen-recording.webm        0 6.1  "crop=iw:ih-64:0:0,scale=1440:-2"         27 1
-# The brand films, 640x360 masters: kept at their own size, never upscaled.
-cut brand-collage brand-collage.mp4         0 8    "delogo=x=562:y=282:w=38:h=38"            23 2.5
-cut brand-lines   brand-lines.mp4           0 10   "delogo=x=562:y=282:w=38:h=38"            23 4

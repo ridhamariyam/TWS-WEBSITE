@@ -16,9 +16,6 @@ export const metadata: Metadata = pageMetadata({
 /*
  * The portfolio: the same projects as /work, shown full screen, one at a
  * time. Every project here is real and links to its case study.
- *
- * The dev server also shows the layout placeholders (see the
- * /dev-placeholders route), badged as such; a production build drops them.
  */
 
 const PROJECT_ITEMS: PortfolioItem[] = PROJECTS.map((project) => ({
@@ -31,23 +28,11 @@ const PROJECT_ITEMS: PortfolioItem[] = PROJECTS.map((project) => ({
   alt: `Screens from the ${project.name} project`,
 }));
 
-const PLACEHOLDER_ITEMS: PortfolioItem[] =
-  process.env.NODE_ENV === "production"
-    ? []
-    : [1, 2, 3, 4].map((n) => ({
-        key: `placeholder-${n}`,
-        title: `Placeholder ${n}`,
-        role: "Not TWS work",
-        src: `/dev-placeholders/dummy${n}.jpg`,
-        alt: "",
-        placeholder: true,
-      }));
-
 export default function PortfolioPage() {
   return (
     <PageShell>
       <h1 className="sr-only">Portfolio</h1>
-      <PortfolioView items={[...PROJECT_ITEMS, ...PLACEHOLDER_ITEMS]} />
+      <PortfolioView items={PROJECT_ITEMS} />
     </PageShell>
   );
 }

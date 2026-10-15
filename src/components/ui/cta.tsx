@@ -11,7 +11,7 @@ import { isInternalHref } from "@/lib/site-links";
  * button set on a light surface.
  */
 
-export type CtaVariant = "primary" | "primary-subtle" | "secondary" | "inline";
+type CtaVariant = "primary" | "primary-subtle" | "secondary" | "inline";
 
 type CtaOwnProps = {
   variant?: CtaVariant;
@@ -23,7 +23,7 @@ type CtaOwnProps = {
   children: React.ReactNode;
 };
 
-export type CtaProps = CtaOwnProps &
+type CtaProps = CtaOwnProps &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof CtaOwnProps> &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof CtaOwnProps>;
 

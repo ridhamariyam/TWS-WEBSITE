@@ -9,7 +9,7 @@ import styles from "./flow.module.css";
  * a list of rows. Each piece comes into focus as it scrolls into view.
  */
 
-export type ChapterItem = { title: string; body?: string };
+type ChapterItem = { title: string; body?: string };
 
 export function FlowChapter({
   id,

@@ -1,4 +1,0 @@
-
-===== zz-scroll-top top=0 h=0 =====
-div.scroll-top [0, 0, 0, 0] d:flex fd:column jc:center ai:center fs:17px lh:32px color:rgb(111, 112, 113)
-  span.scroll-line [0, 0, 0, 0] pos:relative bg:rgba(255, 255, 255, 0.15)

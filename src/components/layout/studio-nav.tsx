@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TwsLogo } from "@/components/ui/tws-logo";
-import { SOCIAL_PROFILES } from "@/lib/footer-content";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
 import { ROUTES } from "@/lib/site-links";
 import styles from "./studio-nav.module.css";
 
@@ -135,7 +135,7 @@ export function StudioNav() {
               <i />
               <i />
             </span>
-            <span className={styles.toggleLabel}>{isOpen ? "Close" : "Menu"}</span>
+            <span>{isOpen ? "Close" : "Menu"}</span>
           </button>
         </div>
       </div>

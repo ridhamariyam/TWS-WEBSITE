@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Anek_Malayalam, Anton, Instrument_Serif, Inter, Poppins, Unbounded } from "next/font/google";
-import { INTRO_FLAG_SCRIPT } from "@/components/sections/hero-intro-flag";
 import { CookieConsent } from "@/components/layout/cookie-consent";
 import { SITE_URL } from "@/lib/seo";
 import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp";
@@ -135,12 +134,6 @@ export default function RootLayout({
       className={`${sans.variable} ${display.variable} ${ui.variable} ${body.variable} ${accent.variable} ${wordmark.variable}`}
     >
       <body className="bg-primitive-white text-ink font-sans">
-        {/*
-          * First in the body, so it runs before the hero is parsed. It marks
-          * a tab that has already watched the intro, so a reload or a
-          * restored scroll position does not replay it.
-          */}
-        <script dangerouslySetInnerHTML={{ __html: INTRO_FLAG_SCRIPT }} />
         {children}
         <FloatingWhatsApp />
         <CookieConsent />
