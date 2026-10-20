@@ -26,66 +26,183 @@
   text-transform: uppercase;
 }
 
-/* ---------- Floating nav ---------- */
+/* ---------- Top bar ---------- */
 
 .nav {
   position: fixed;
-  inset: 14px 0 auto;
+  inset: 0 0 auto;
   z-index: 50;
-  display: flex;
-  justify-content: center;
-  padding-inline: 12px;
-  pointer-events: none;
+  color: #fff;
 }
 
-.navPill {
+/* Frosted, so the links read over any section. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(1 6 28 / 0.55);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nav[data-frosted]::before {
+  opacity: 1;
+}
+
+.navBar {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding: 5px;
-  border: 1px solid rgb(255 255 255 / 0.1);
-  border-radius: 999px;
-  background: rgb(0 0 0 / 0.82);
-  backdrop-filter: blur(14px);
-  color: #fff;
-  font-size: 13px;
-  pointer-events: auto;
+  height: 64px;
+  padding-inline: 16px;
 }
 
 .navMark {
   display: flex;
-  padding: 6px 12px;
+  flex: none;
 }
 
-.navLink {
-  padding: 8px 12px;
-  border-radius: 999px;
-  color: rgb(255 255 255 / 0.72);
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.navLink:hover {
-  background: rgb(255 255 255 / 0.1);
-  color: #fff;
-}
-
-.navLinkWide {
+.navLinks {
   display: none;
 }
 
-@media (width >= 600px) {
-  .navLinkWide {
-    display: inline-flex;
-  }
+.navLink,
+.navCta,
+.navMenuLink {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+.navLink {
+  position: relative;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* A line drawn under the link on hover, and kept under the current page. */
+.navLink::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -2px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-out-quint);
+}
+
+.navLink:hover::after,
+.navLink[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .navCta {
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--color-brand-blue);
-  color: var(--color-brand-white);
-  font-weight: 500;
+  display: none;
+  margin-left: auto;
+  color: #6f8bff;
+  font-size: 28px;
+  line-height: 1.2;
   white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.navCta:hover {
+  color: #fff;
+}
+
+.navToggle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 5px;
+  margin-left: auto;
+  padding: 10px 6px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navToggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.nav[data-open] .navToggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav[data-open] .navToggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav[data-open] .navToggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* The phone menu: the pages in very large type on black, filling the screen. */
+.navMenu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  padding: 80px 16px 40px;
+  background: #000;
+}
+
+.navMenu[hidden] {
+  display: none;
+}
+
+.navMenuLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.navMenuLink {
+  color: #fff;
+  font-size: clamp(44px, 13vw, 64px);
+  line-height: 1.05;
+}
+
+.navMenuLink[aria-current="page"],
+.navMenuCta {
+  color: #6f8bff;
+}
+
+/* The menu covers the bar, so the mark sits on it. */
+.nav[data-open] .navMark {
+  position: relative;
+  z-index: 1;
+}
+
+@media (width >= 900px) {
+  .navBar {
+    height: 72px;
+    padding-inline: 45px;
+  }
+
+  .navLinks {
+    display: flex;
+    gap: 36px;
+    margin-left: clamp(80px, 16vw, 240px);
+  }
+
+  .navCta {
+    display: inline;
+  }
+
+  .navToggle,
+  .navMenu {
+    display: none;
+  }
 }
 
 /* ---------- Shared buttons and type ---------- */
@@ -1310,55 +1427,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* ---------- The homepage's opening (FlowPreloader) ---------- */
-
-.preloader {
-  position: fixed;
-  inset: 0;
-  /* Over everything, the cookie banner (950) included, until it lifts. */
-  z-index: 1000;
-  overflow: hidden;
-  background: var(--color-brand-white);
-  will-change: transform;
-}
-
-.preloaderWindow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  opacity: 0;
-  mask-image: url("/icons/tws-mask.svg");
-  mask-repeat: no-repeat;
-  mask-size: min(72vw, 900px) auto;
-  mask-position: center;
-}
-
-/* The hero card's shade along its top, coming up as the film lands in the card. */
-.preloaderShade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 40%);
-  opacity: 0;
-}
-
-/* The tagline, under the mark before it swells: half its height plus a gap below centre. */
-.preloaderLine {
-  position: absolute;
-  top: calc(50% + min(72vw, 900px) * 0.1129 + clamp(24px, 3vw, 40px));
-  left: 50%;
-  width: min(40ch, calc(100vw - 32px));
-  margin: 0;
-  color: var(--color-ink);
-  font-size: clamp(16px, 1.7vw, 24px);
-  line-height: 1.5;
-  text-align: center;
-  opacity: 0;
-  transform: translateX(-50%);
 }
 
 /* ---------- 4. Depth fly-through ---------- */

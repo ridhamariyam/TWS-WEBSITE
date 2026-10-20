@@ -1,0 +1,200 @@
+/* The homepage's opening film. Timings and motion live in hero-stage.tsx. */
+
+/* Tall enough that scrolling plays the film at a readable pace. */
+.hero {
+  position: relative;
+  height: 400svh;
+  background: #010a2c;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  color: #fff;
+  font-size: clamp(26px, min(7.5vw, 11svh), 110px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.film {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- Background: two soft diagonal beams of blue ---------- */
+
+/* Holds the beams; scrolling turns and slides it (see hero-stage.tsx). */
+.light {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.streak {
+  position: absolute;
+  width: 140vmax;
+  height: 30vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #2b7bff 0%, rgb(24 92 255 / 0.6) 45%, transparent 100%);
+  filter: blur(3vmax);
+  will-change: transform;
+}
+
+.streakTop {
+  top: -16vmax;
+  left: -5vmax;
+  animation: drift-top 6s ease-in-out infinite alternate;
+}
+
+.streakBottom {
+  bottom: -18vmax;
+  left: -40vmax;
+  animation: drift-bottom 7.5s ease-in-out infinite alternate;
+}
+
+@keyframes drift-top {
+  from { transform: rotate(-24deg) translateX(-12%) scaleY(0.85); }
+  to { transform: rotate(-14deg) translateX(14%) translateY(10%) scaleY(1.15); }
+}
+
+@keyframes drift-bottom {
+  from { transform: rotate(-20deg) translateX(14%) scaleY(1.1); }
+  to { transform: rotate(-30deg) translateX(-10%) translateY(-12%) scaleY(0.9); }
+}
+
+/* ---------- Type ---------- */
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  gap: 0.27em;
+  margin: 0;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.word {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+/* The frame's corners, drawn round where "game," lands. */
+.select {
+  position: absolute;
+  inset: -0.12em -0.2em;
+  opacity: 0;
+  background:
+    linear-gradient(#fff, #fff) left top / 0.32em 1.5px,
+    linear-gradient(#fff, #fff) left top / 1.5px 0.32em,
+    linear-gradient(#fff, #fff) right bottom / 0.32em 1.5px,
+    linear-gradient(#fff, #fff) right bottom / 1.5px 0.32em;
+  background-repeat: no-repeat;
+}
+
+.dot {
+  display: inline-block;
+}
+
+/* ---------- Tool rows round "like" ---------- */
+
+.rows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.rowAbove,
+.rowBelow {
+  position: absolute;
+}
+
+.rowAbove {
+  right: 0.7em;
+  bottom: 0.75em;
+}
+
+.rowBelow {
+  top: 0.7em;
+  left: 1.2em;
+}
+
+.iconSet {
+  position: absolute;
+  display: flex;
+  gap: 0.36em;
+  visibility: hidden;
+}
+
+.rowAbove .iconSet {
+  right: 0;
+  bottom: 0;
+}
+
+.rowBelow .iconSet {
+  top: 0;
+  left: 0;
+}
+
+.icon {
+  width: 0.62em;
+  height: 0.62em;
+  opacity: 0;
+}
+
+/* ---------- The ring of cards ---------- */
+
+.cardsScene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  visibility: hidden;
+}
+
+.cardsRing {
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--cw, 220px);
+  aspect-ratio: 0.78;
+  overflow: hidden;
+  border-radius: calc(var(--cw, 220px) * 0.08);
+  background: var(--color-brand-navy);
+  box-shadow: 0 1.5em 3em rgb(0 0 0 / 0.35);
+  backface-visibility: hidden;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- The dip to black ---------- */
+
+.blackout {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streakTop,
+  .streakBottom {
+    animation: none;
+  }
+}

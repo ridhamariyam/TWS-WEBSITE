@@ -29,6 +29,8 @@ import styles from "./flow.module.css";
  *
  * The phrase is a plain lead and an italic accent: "beyond ordinary" on the
  * homepage, each page's closing line elsewhere.
+ *
+ * `cta={null}` leaves the call to action out, so the footer follows the phrase.
  */
 
 /** Where letter `i` starts: deterministic, so server and client agree. */
@@ -60,7 +62,7 @@ export function FlowOutro({
 }: {
   lead?: string;
   accent?: string;
-  cta?: { label: string; href: string };
+  cta?: { label: string; href: string } | null;
   /** A line of microcopy under the call to action. */
   note?: string;
   /** Frames to fly past before the phrase gathers (see DepthGallery). */
@@ -171,7 +173,7 @@ export function FlowOutro({
           </p>
         </div>
       </section>
-      <FlowCta cta={cta} note={note} />
+      {cta && <FlowCta cta={cta} note={note} />}
     </>
   );
 }

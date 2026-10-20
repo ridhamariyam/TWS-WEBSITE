@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { FlowPage } from "@/components/flow/flow-page";
-import { FlowPreloader } from "@/components/flow/flow-preloader";
 import { HeroStage } from "@/components/flow/hero-stage";
 import { ParticleDive } from "@/components/flow/particle-dive";
 import { StudioScenes } from "@/components/flow/studio-scenes";
@@ -13,16 +12,14 @@ import { organizationJsonLd, pageMetadata } from "@/lib/seo";
  * The homepage, told as the visitor's journey in pinned stages, each leading
  * into the next:
  *
- *   job      the hero: the intro's film, full screen, shrinking straight
- *            into the three kinds of job we build for (the service ring);
+ *   job      the hero: the studio film, drawn in code;
  *   found    "Beyond ordinary" — people decide online now;
  *   trusted  everything online evolved, most websites didn't, so we
  *            rethought them: websites, web applications and e-commerce
  *            (the manifesto);
  *   how      four stages, no mystery (the bento run);
  *   who      the industries fly past and gather into "beyond ordinary"
- *            again, the refrain;
- *   invite   thewebstudio. Start a project.
+ *            again, the refrain, and the footer follows.
  *
  * Native scrolling throughout; each stage reads its own scroll progress.
  */
@@ -42,7 +39,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
       />
-      <FlowPreloader line="Strategy, design and engineering under one roof." />
       <HeroStage />
       <ParticleDive />
       <Manifesto />
@@ -50,7 +46,7 @@ export default function Home() {
       <FlowOutro
         cards={INDUSTRY_ITEMS}
         cardsTitle="Made for businesses like yours"
-        note="Tell us what your website needs to do. We'll take it from there."
+        cta={null}
       />
     </FlowPage>
   );
